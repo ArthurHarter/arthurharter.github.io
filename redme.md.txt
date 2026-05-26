@@ -1,0 +1,26 @@
+# ⚡ ElétricaFácil
+
+Site gratuito de **tabelas técnicas e guias práticos de elétrica residencial**, baseado na NBR 5410.
+
+## 📋 Conteúdo
+
+- Tabela de bitola de fios × corrente máxima
+- Disjuntor ideal para cada equipamento
+- Consumo elétrico de eletrodomésticos
+- Guias de instalação de chuveiro e ar-condicionado
+- Altura padrão de tomadas e interruptores
+
+## 🌐 Acesse o site
+
+👉 [seuusuario.github.io/eletrica-facil](https://seuusuario.github.io/eletrica-facil)
+
+## 🛠️ Tecnologias
+
+- HTML5 + CSS3 puro (sem frameworks)
+- SEO otimizado com meta tags e sitemap
+- 100% responsivo para mobile
+- Hospedagem via GitHub Pages
+
+## 📌 Licença
+
+Conteúdo informativo. Consulte sempre um eletricista habilitado (NR10 / CREA).

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tabelas técnicas de elétrica residencial: bitola de fios, disjuntores, consumo de eletrodomésticos e muito mais. Guias práticos e atualizados.">
+<meta name="keywords" content="tabela bitola fios, disjuntor residencial, instalação elétrica, elétrica residencial, consumo eletrodomésticos, normas ABNT elétrica">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Elétrica Fácil — Tabelas e Guias Técnicos">
+<meta property="og:description" content="Consulte tabelas de bitola de fios, disjuntores e consumo elétrico. Guias práticos para instalações residenciais.">
+<meta property="og:type" content="website">
+<title>Elétrica Fácil — Tabelas Técnicas e Guias Práticos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5C518;
+    --dark: #0F0F0F;
+    --surface: #1A1A1A;
+    --surface2: #242424;
+    --text: #F0EDE6;
+    --muted: #888;
+    --border: #2E2E2E;
+    --accent: #FF6B2B;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,15,15,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--yellow); }
+  nav { display: flex; gap: 28px; }
+  nav a {
+    font-size: 14px; font-weight: 500; color: var(--muted);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px; margin: 0 auto;
+    padding: 80px 24px 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero-label {
+    display: inline-block;
+    background: var(--yellow); color: var(--dark);
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px; border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+  h1 em { font-style: normal; color: var(--yellow); }
+  .hero-sub {
+    color: var(--muted); font-size: 17px;
+    max-width: 420px; margin-bottom: 32px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--yellow); color: var(--dark);
+    font-weight: 700; font-size: 15px;
+    padding: 14px 28px; border-radius: 4px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,197,24,0.3); }
+  .hero-visual {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .hero-visual-header {
+    background: var(--surface2);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .mini-table { width: 100%; border-collapse: collapse; }
+  .mini-table th {
+    background: var(--surface2);
+    padding: 10px 16px; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.5px;
+    color: var(--yellow); text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .mini-table td {
+    padding: 10px 16px; font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .mini-table tr:last-child td { border-bottom: none; }
+  .mini-table tr:hover td { background: var(--surface2); }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px; border-radius: 2px;
+    font-size: 11px; font-weight: 700;
+  }
+  .badge-ok { background: rgba(74,222,128,0.15); color: #4ade80; }
+  .badge-warn { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .badge-hot { background: rgba(255,107,43,0.15); color: var(--accent); }
+
+  /* STATS */
+  .stats {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stats-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 0 24px;
+  }
+  .stat {
+    padding: 28px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800;
+    color: var(--yellow); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); }
+
+  /* SECTION */
+  section { padding: 72px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800; letter-spacing: -1px;
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--muted); font-size: 16px;
+    max-width: 540px; margin-bottom: 48px;
+  }
+
+  /* CARDS GRID */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .card:hover {
+    border-color: var(--yellow);
+    transform: translateY(-4px);
+  }
+  .card-icon {
+    font-size: 28px; margin-bottom: 16px;
+    display: block;
+  }
+  .card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 8px; letter-spacing: -0.3px;
+  }
+  .card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 16px; font-size: 13px; font-weight: 600;
+    color: var(--yellow);
+  }
+
+  /* FULL TABLE SECTION */
+  .table-section { background: var(--surface); }
+  .full-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 32px; border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .full-table thead th {
+    background: var(--surface2);
+    padding: 14px 20px;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.3px; color: var(--yellow);
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  .full-table tbody td {
+    padding: 13px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .full-table tbody tr:last-child td { border-bottom: none; }
+  .full-table tbody tr:hover td { background: var(--surface2); }
+  .highlight { color: var(--yellow); font-weight: 700; }
+
+  /* TIPS */
+  .tips-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .tip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--yellow);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+  }
+  .tip h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .tip p { font-size: 14px; color: var(--muted); }
+
+  /* AFFILIATE BANNER */
+  .affiliate-banner {
+    background: linear-gradient(135deg, var(--surface2) 0%, #1f1a0a 100%);
+    border: 1px solid rgba(245,197,24,0.3);
+    border-radius: 12px;
+    padding: 40px 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    margin-top: 48px;
+  }
+  .affiliate-banner h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800; margin-bottom: 8px;
+  }
+  .affiliate-banner p { color: var(--muted); font-size: 14px; }
+  .btn-affiliate {
+    flex-shrink: 0;
+    background: var(--yellow); color: var(--dark);
+    font-weight: 700; font-size: 14px;
+    padding: 12px 24px; border-radius: 4px;
+    white-space: nowrap;
+    transition: transform 0.15s;
+  }
+  .btn-affiliate:hover { transform: scale(1.03); }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 48px;
+  }
+  .footer-brand .logo { font-size: 18px; margin-bottom: 10px; }
+  .footer-brand p { font-size: 13px; color: var(--muted); max-width: 280px; }
+  .footer-links h5 {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px;
+  }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 14px; color: var(--muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-bottom {
+    max-width: 1100px; margin: 32px auto 0;
+    padding-top: 24px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+    display: flex; justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .stats-inner { grid-template-columns: repeat(2,1fr); }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .cards { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .affiliate-banner { flex-direction: column; }
+    .footer-inner { flex-direction: column; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">⚡ Elétrica<span>Fácil</span></div>
+    <nav>
+      <a href="#tabelas">Tabelas</a>
+      <a href="#disjuntores">Disjuntores</a>
+      <a href="#consumo">Consumo</a>
+      <a href="#dicas">Dicas</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div>
+      <div class="hero-label">Referência técnica gratuita</div>
+      <h1>Tabelas de <em>elétrica</em> residencial</h1>
+      <p class="hero-sub">Consulte bitola de fios, disjuntores corretos e consumo de eletrodomésticos. Tudo em um só lugar, atualizado conforme NBR 5410.</p>
+      <a href="#tabelas" class="hero-cta">Ver tabelas ↓</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-header">Tabela rápida — bitola × corrente</div>
+      <table class="mini-table">
+        <thead><tr><th>Fio (mm²)</th><th>Corrente máx.</th><th>Uso típico</th></tr></thead>
+        <tbody>
+          <tr><td class="highlight">1,5 mm²</td><td>15 A</td><td><span class="badge badge-ok">Iluminação</span></td></tr>
+          <tr><td class="highlight">2,5 mm²</td><td>21 A</td><td><span class="badge badge-ok">Tomadas</span></td></tr>
+          <tr><td class="highlight">4,0 mm²</td><td>27 A</td><td><span class="badge badge-warn">Chuveiro</span></td></tr>
+          <tr><td class="highlight">6,0 mm²</td><td>35 A</td><td><span class="badge badge-warn">Ar-cond.</span></td></tr>
+          <tr><td class="highlight">10 mm²</td><td>50 A</td><td><span class="badge badge-hot">Trifásico</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Tabelas técnicas</div></div>
+      <div class="stat"><div class="stat-num">NBR</div><div class="stat-label">5410 atualizada</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-label">Cadastro necessário</div></div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <section id="tabelas">
+    <div class="section-inner">
+      <div class="section-tag">Consulte agora</div>
+      <h2>Tabelas e guias técnicos</h2>
+      <p class="section-sub">Acesse rapidamente as principais referências para instalações elétricas residenciais.</p>
+      <div class="cards">
+        <div class="card">
+          <span class="card-icon">🔌</span>
+          <h3>Bitola de Fios</h3>
+          <p>Tabela completa de bitola × corrente máxima para instalações residenciais e comerciais.</p>
+          <a href="bitola-de-fios.html" class="card-link">Ver tabela →</a>
+        </div>
+        <div class="card">
+          <span class="card-icon">⚙️</span>
+          <h3>Disjuntores</h3>
+          <p>Qual disjuntor usar para cada equipamento. Chuveiro, ar-condicionado, forno e mais.</p>
+          <a href="disjuntores.html" class="card-link">Ver tabela →</a>
+        </div>
+        <div class="card">
+          <span class="card-icon">📊</span>
+          <h3>Consumo Elétrico</h3>
+          <p>Consumo em kWh de cada eletrodoméstico. Calcule sua conta de luz antes de comprar.</p>
+          <a href="consumo-eletrico.html" class="card-link">Ver tabela →</a>
+        </div>
+        <div class="card">
+          <span class="card-icon">🏠</span>
+          <h3>Tomadas e Pontos</h3>
+          <p>Altura padrão de tomadas e interruptores conforme NBR 5410. Evite multas e reprovações.</p>
+          <a href="tomadas-padrao.html" class="card-link">Ver guia →</a>
+        </div>
+        <div class="card">
+          <span class="card-icon">🌡️</span>
+          <h3>Chuveiro Elétrico</h3>
+          <p>Como dimensionar o fio e disjuntor certo para qualquer potência de chuveiro.</p>
+          <a href="chuveiro-eletrico.html" class="card-link">Ver guia →</a>
+        </div>
+        <div class="card">
+          <span class="card-icon">❄️</span>
+          <h3>Ar-Condicionado</h3>
+          <p>Fiação e disjuntor para ar-condicionado por BTU. Do 9.000 ao 60.000 BTUs.</p>
+          <a href="ar-condicionado.html" class="card-link">Ver guia →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN TABLE -->
+  <section id="disjuntores" class="table-section">
+    <div class="section-inner">
+      <div class="section-tag">Tabela principal</div>
+      <h2>Disjuntor certo para cada equipamento</h2>
+      <p class="section-sub">Use esta tabela para dimensionar corretamente os disjuntores da sua instalação residencial.</p>
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>Equipamento</th>
+            <th>Potência típica</th>
+            <th>Corrente aprox.</th>
+            <th>Disjuntor ideal</th>
+            <th>Fio mínimo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Iluminação geral</td><td>até 1.000 W</td><td>4,5 A</td><td class="highlight">10 A</td><td>1,5 mm²</td></tr>
+          <tr><td>Tomadas comuns</td><td>até 1.500 W</td><td>6,8 A</td><td class="highlight">16 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Chuveiro 5.500 W</td><td>5.500 W</td><td>25 A</td><td class="highlight">30 A</td><td>4,0 mm²</td></tr>
+          <tr><td>Chuveiro 7.500 W</td><td>7.500 W</td><td>34 A</td><td class="highlight">40 A</td><td>6,0 mm²</td></tr>
+          <tr><td>Ar-cond. 9.000 BTU</td><td>~900 W</td><td>4,1 A</td><td class="highlight">10 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Ar-cond. 12.000 BTU</td><td>~1.200 W</td><td>5,5 A</td><td class="highlight">16 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Ar-cond. 18.000 BTU</td><td>~1.800 W</td><td>8,2 A</td><td class="highlight">16 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Ar-cond. 24.000 BTU</td><td>~2.400 W</td><td>10,9 A</td><td class="highlight">20 A</td><td>4,0 mm²</td></tr>
+          <tr><td>Forno elétrico</td><td>~2.000 W</td><td>9,1 A</td><td class="highlight">20 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Micro-ondas</td><td>~1.300 W</td><td>5,9 A</td><td class="highlight">16 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Geladeira comum</td><td>~150 W</td><td>0,7 A</td><td class="highlight">10 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Máq. de lavar 10 kg</td><td>~500 W</td><td>2,3 A</td><td class="highlight">16 A</td><td>2,5 mm²</td></tr>
+          <tr><td>Secadora de roupas</td><td>~2.500 W</td><td>11,4 A</td><td class="highlight">20 A</td><td>4,0 mm²</td></tr>
+          <tr><td>Aquecedor elétrico</td><td>~2.000 W</td><td>9,1 A</td><td class="highlight">20 A</td><td>2,5 mm²</td></tr>
+        </tbody>
+      </table>
+
+      <div class="affiliate-banner">
+        <div>
+          <h3>Precisa comprar disjuntores ou fios?</h3>
+          <p>Compare preços e veja os mais vendidos no Mercado Livre. Entrega rápida para todo o Brasil.</p>
+        </div>
+        <!-- SUBSTITUA ESSE LINK PELO SEU LINK DE AFILIADO DO MERCADO LIVRE -->
+        <a href="https://www.mercadolivre.com.br/c/material-eletrico" target="_blank" rel="noopener" class="btn-affiliate">Ver materiais elétricos →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSUMO -->
+  <section id="consumo">
+    <div class="section-inner">
+      <div class="section-tag">Economize energia</div>
+      <h2>Consumo de eletrodomésticos</h2>
+      <p class="section-sub">Quanto cada aparelho gasta por mês. Baseado em uso médio diário.</p>
+      <table class="full-table">
+        <thead>
+          <tr>
+            <th>Eletrodoméstico</th>
+            <th>Potência</th>
+            <th>Uso médio/dia</th>
+            <th>Consumo mensal</th>
+            <th>Custo aprox./mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Geladeira frost-free</td><td>150 W</td><td>24h (compressor varia)</td><td class="highlight">30–45 kWh</td><td>R$ 30–50</td></tr>
+          <tr><td>Ar-cond. 12.000 BTU</td><td>1.200 W</td><td>8h</td><td class="highlight">288 kWh</td><td>R$ 250–320</td></tr>
+          <tr><td>Chuveiro elétrico</td><td>5.500 W</td><td>20 min</td><td class="highlight">55 kWh</td><td>R$ 50–70</td></tr>
+          <tr><td>TV LED 50"</td><td>100 W</td><td>5h</td><td class="highlight">15 kWh</td><td>R$ 13–18</td></tr>
+          <tr><td>Computador desktop</td><td>300 W</td><td>6h</td><td class="highlight">54 kWh</td><td>R$ 47–65</td></tr>
+          <tr><td>Máq. lavar 10 kg</td><td>500 W</td><td>1h (12x/mês)</td><td class="highlight">6 kWh</td><td>R$ 5–8</td></tr>
+          <tr><td>Ferro de passar</td><td>1.000 W</td><td>30 min</td><td class="highlight">15 kWh</td><td>R$ 13–18</td></tr>
+          <tr><td>Micro-ondas</td><td>1.300 W</td><td>15 min</td><td class="highlight">9,75 kWh</td><td>R$ 8–12</td></tr>
+          <tr><td>Lâmpada LED 9W</td><td>9 W</td><td>6h</td><td class="highlight">1,62 kWh</td><td>R$ 1,50</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:16px; font-size:13px; color: var(--muted);">* Valores estimados com tarifa média de R$ 0,87/kWh (bandeira amarela, 2024). Consulte sua fatura para o valor exato.</p>
+    </div>
+  </section>
+
+  <!-- DICAS -->
+  <section id="dicas" style="background: var(--surface);">
+    <div class="section-inner">
+      <div class="section-tag">Segurança em primeiro lugar</div>
+      <h2>Dicas essenciais de elétrica residencial</h2>
+      <p class="section-sub">Erros comuns que causam acidentes e como evitá-los.</p>
+      <div class="tips-grid">
+        <div class="tip">
+          <h4>Sempre desligue o disjuntor antes de mexer</h4>
+          <p>Nunca faça qualquer serviço elétrico com a energia ligada. Desligue o disjuntor do circuito e confirme com um detector de tensão antes de tocar nos fios.</p>
+        </div>
+        <div class="tip">
+          <h4>Nunca use fio abaixo da bitola mínima</h4>
+          <p>Fios subdimensionados aquecem, derretem a isolação e causam incêndios. Use sempre a bitola indicada na tabela ou superior.</p>
+        </div>
+        <div class="tip">
+          <h4>Chuveiro exige fio e disjuntor exclusivos</h4>
+          <p>O chuveiro elétrico é o aparelho que mais consome energia em pico. Ele nunca deve compartilhar circuito com outros equipamentos.</p>
+        </div>
+        <div class="tip">
+          <h4>Instale DPS no padrão de entrada</h4>
+          <p>O Dispositivo de Proteção contra Surtos (DPS) protege toda a instalação contra raios e picos de tensão. Obrigatório pela NBR 5410.</p>
+        </div>
+        <div class="tip">
+          <h4>Fio verde/amarelo é exclusivo para terra</h4>
+          <p>O condutor de proteção (terra) nunca deve ser usado como neutro ou fase. Confundir essa ligação pode causar choque elétrico grave.</p>
+        </div>
+        <div class="tip">
+          <h4>Disjuntor não é fusível — use o tamanho certo</h4>
+          <p>Usar um disjuntor maior do que o necessário para "não desligar mais" é extremamente perigoso. O disjuntor protege o fio, não o aparelho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">⚡ Elétrica<span>Fácil</span></div>
+      <p>Tabelas e guias técnicos gratuitos para instalações elétricas residenciais, baseados na NBR 5410.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Tabelas</h5>
+      <ul>
+        <li><a href="bitola-de-fios.html">Bitola de Fios</a></li>
+        <li><a href="disjuntores.html">Disjuntores</a></li>
+        <li><a href="consumo-eletrico.html">Consumo Elétrico</a></li>
+        <li><a href="chuveiro-eletrico.html">Chuveiro Elétrico</a></li>
+        <li><a href="ar-condicionado.html">Ar-Condicionado</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Site</h5>
+      <ul>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="privacidade.html">Privacidade</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ElétricaFácil. Conteúdo informativo — consulte sempre um eletricista habilitado.</span>
+    <span>Baseado na NBR 5410</span>
+  </div>
+</footer>
+
+</body>
+</html>
