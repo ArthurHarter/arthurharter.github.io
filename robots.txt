@@ -24,3 +24,9 @@ Site gratuito de **tabelas técnicas e guias práticos de elétrica residencial*
 ## 📌 Licença
 
 Conteúdo informativo. Consulte sempre um eletricista habilitado (NR10 / CREA).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://arthurharter.github.io/eletrica-facil/sitemap.xml
+
