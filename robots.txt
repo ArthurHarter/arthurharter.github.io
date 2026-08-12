@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arthurharter.github.io/sitemap.xml
+Sitemap: https://guiaeletricafacil.com.br/sitemap.xml
