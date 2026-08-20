@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Potência Elétrica (W) | Guia Elétrica Fácil</title>
+<meta name="description" content="Calcule a potência elétrica de um circuito monofásico ou trifásico a partir da tensão e da corrente.">
+<link rel="canonical" href="https://guiaeletricafacil.com.br/calculadora-potencia.html">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D92EY9PKFW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D92EY9PKFW');
+</script>
+
+<style>
+  :root{
+    --bg: #0b0f1a;
+    --surface: #121a2b;
+    --surface-alt: #182238;
+    --border: #232c44;
+    --text: #eef1f8;
+    --text-muted: #8b95ae;
+    --gold: #ffcc33;
+    --amber: #ff8a00;
+    --cyan: #29d3e0;
+    --green: #37d67a;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  header.site{
+    border-bottom: 1px solid var(--border);
+    background: rgba(11,15,26,0.9);
+    backdrop-filter: blur(6px);
+    position: sticky; top: 0; z-index: 20;
+  }
+  .site-header-inner{ display:flex; align-items:center; justify-content:space-between; padding: 16px 0; }
+  .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; font-family:'Rajdhani', sans-serif; font-weight:700; font-size: 1.2rem; color: var(--text); }
+  .logo svg{ width:26px; height:26px; flex-shrink:0; }
+  nav.site-nav{ display:flex; gap: 20px; font-size: 0.9rem; font-weight: 500; }
+  nav.site-nav a{ text-decoration:none; color: var(--text-muted); transition: color 0.15s ease; }
+  nav.site-nav a:hover, nav.site-nav a:focus-visible{ color: var(--gold); }
+  nav.site-nav a.current{ color: var(--gold); }
+
+  .hero{ padding: 44px 0 30px; border-bottom: 1px solid var(--border); }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.74rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--cyan); display:flex; align-items:center; gap:8px; margin-bottom: 12px;
+  }
+  .eyebrow::before{ content:""; width: 7px; height:7px; border-radius:50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); display:inline-block; }
+  .hero h1{
+    font-family:'Rajdhani', sans-serif; font-weight: 700; font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+    line-height: 1.1; margin: 0 0 12px;
+    background: linear-gradient(135deg, var(--gold), var(--amber));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p.lead{ color: var(--text-muted); max-width: 60ch; font-size: 1rem; margin: 0; }
+
+  main{ padding: 40px 0 80px; }
+
+  .card{
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 26px; margin-bottom: 24px;
+  }
+
+  .field{ margin-bottom: 18px; }
+  .field label{
+    display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text);
+  }
+  .field .hint{ font-size: 0.78rem; color: var(--text-muted); margin-top: 5px; }
+
+  input[type=number], select{
+    width: 100%; background: var(--surface-alt); border: 1px solid var(--border); border-radius: 8px;
+    padding: 11px 13px; color: var(--text); font-family: 'IBM Plex Mono', monospace; font-size: 0.95rem;
+    outline: none; transition: border-color 0.15s ease;
+  }
+  input[type=number]:focus, select:focus{ border-color: var(--gold); }
+
+  .radio-group{ display:flex; gap: 10px; flex-wrap: wrap; }
+  .radio-group label{
+    display:flex; align-items:center; gap: 7px; background: var(--surface-alt);
+    border: 1px solid var(--border); border-radius: 8px; padding: 9px 14px;
+    font-size: 0.86rem; font-weight: 500; cursor: pointer; color: var(--text-muted);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .radio-group input{ accent-color: var(--gold); }
+  .radio-group label:has(input:checked){ border-color: var(--gold); color: var(--text); }
+
+  .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 520px){ .grid-2{ grid-template-columns: 1fr; } }
+
+  .btn{
+    font-family:'Rajdhani', sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--gold), var(--amber)); color: #1a1200;
+    border: none; border-radius: 8px; padding: 13px 22px; cursor: pointer; width: 100%;
+    transition: filter 0.15s ease, transform 0.05s ease;
+  }
+  .btn:hover{ filter: brightness(1.08); }
+  .btn:active{ transform: scale(0.99); }
+
+  .result{
+    margin-top: 22px; padding: 20px; border-radius: var(--radius);
+    background: var(--surface-alt); border: 1px solid var(--border);
+    display:none;
+  }
+  .result.show{ display:block; }
+  .result .result-label{
+    font-family:'IBM Plex Mono', monospace; font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px;
+  }
+  .result .result-value{
+    font-family:'Rajdhani', sans-serif; font-weight: 700; font-size: 2.1rem; color: var(--gold); line-height:1.1;
+  }
+  .result .result-sub{ font-size: 0.86rem; color: var(--text-muted); margin-top: 8px; }
+  .result .result-extra{
+    margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border);
+    font-size: 0.86rem; color: var(--text); display:flex; justify-content:space-between; gap: 10px; flex-wrap: wrap;
+  }
+  .warn{
+    margin-top: 14px; padding: 12px 14px; border-radius: 8px;
+    background: rgba(255,138,0,0.08); border: 1px solid rgba(255,138,0,0.3);
+    font-size: 0.82rem; color: #ffb765;
+  }
+
+  .related{
+    margin-top: 6px;
+  }
+  .related h2{
+    font-family:'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 14px;
+  }
+  .related-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px){ .related-grid{ grid-template-columns: 1fr; } }
+  .related-card{
+    display:block; text-decoration:none; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; transition: border-color 0.15s ease;
+  }
+  .related-card:hover{ border-color: var(--gold); }
+  .related-card .rc-title{ font-weight: 600; font-size: 0.92rem; color: var(--text); margin-bottom: 4px; }
+  .related-card .rc-sub{ font-size: 0.78rem; color: var(--text-muted); }
+
+  .disclaimer{
+    font-size: 0.78rem; color: var(--text-muted); margin-top: 30px; padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  footer.site{
+    border-top: 1px solid var(--border); padding: 26px 0; color: var(--text-muted);
+    font-size: 0.85rem; text-align:center;
+  }
+
+  .hub-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 6px; }
+  @media (max-width: 560px){ .hub-grid{ grid-template-columns: 1fr; } }
+  .hub-card{
+    display:block; text-decoration:none; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px; transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+  .hub-card:hover{ border-color: var(--gold); transform: translateY(-2px); }
+  .hub-card .hc-icon{ font-size: 1.7rem; margin-bottom: 10px; display:block; }
+  .hub-card .hc-title{ font-family:'Rajdhani', sans-serif; font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; }
+  .hub-card .hc-sub{ font-size: 0.84rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-header-inner">
+    <a href="/index.html" class="logo">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2 L5 14 H11 L9.5 22 L19 9 H13 L14.5 2 Z" fill="url(#boltGrad)"/>
+        <defs>
+          <linearGradient id="boltGrad" x1="5" y1="2" x2="19" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#ffcc33"/>
+            <stop offset="1" stop-color="#ff8a00"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      Guia Elétrica Fácil
+    </a>
+    <nav class="site-nav">
+      <a href="/index.html">Início</a>
+      <a href="/sobre.html">Sobre</a>
+      <a href="/calculadoras.html" class="current">Calculadoras</a>
+      <a href="/blog.html">Notícias</a>
+      <a href="/contato.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Calculadora · Potência</div>
+    <h1>⚡ Calculadora de Potência</h1>
+    <p class="lead">Descubra a potência (em watts) de um circuito a partir da tensão e da corrente medidas ou de projeto.</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <div class="card">
+    <div class="field">
+      <label for="tensao">Tensão (V)</label>
+      <input type="number" id="tensao" placeholder="Ex: 220" min="0" step="any" value="220">
+    </div>
+
+    <div class="field">
+      <label for="corrente">Corrente (A)</label>
+      <input type="number" id="corrente" placeholder="Ex: 10" min="0" step="any">
+    </div>
+
+    <div class="field">
+      <label>Tipo de circuito</label>
+      <div class="radio-group">
+        <label><input type="radio" name="tipo" value="mono" checked> Monofásico</label>
+        <label><input type="radio" name="tipo" value="tri"> Trifásico</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="fp">Fator de potência (cos φ)</label>
+      <input type="number" id="fp" placeholder="Ex: 0.92" min="0.1" max="1" step="0.01" value="1">
+      <div class="hint">Use 1 para cargas resistivas. Motores e equipamentos indutivos costumam ficar entre 0.8 e 0.95.</div>
+    </div>
+
+    <button class="btn" onclick="calcular()">Calcular potência</button>
+
+    <div class="result" id="result">
+      <div class="result-label">Potência do circuito</div>
+      <div class="result-value" id="resultValue">—</div>
+      <div class="result-sub" id="resultSub"></div>
+      <div class="result-extra" id="resultExtra"></div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Outras calculadoras</h2>
+    <div class="related-grid">
+        <a class="related-card" href="/calculadora-corrente.html">
+          <div class="rc-title">🔌 Calculadora de Corrente</div>
+          <div class="rc-sub">Descubra a corrente de um circuito</div>
+        </a>
+        <a class="related-card" href="/calculadora-consumo.html">
+          <div class="rc-title">💡 Calculadora de Consumo</div>
+          <div class="rc-sub">Estime o gasto em kWh e em R$</div>
+        </a>
+        <a class="related-card" href="/calculadora-queda-tensao.html">
+          <div class="rc-title">📏 Queda de Tensão</div>
+          <div class="rc-sub">Verifique se o cabo está adequado</div>
+        </a>
+        <a class="related-card" href="/calculadora-bitola-cabo.html">
+          <div class="rc-title">🔥 Dimensionamento de Cabo</div>
+          <div class="rc-sub">Encontre a bitola ideal</div>
+        </a>
+        <a class="related-card" href="/calculadora-disjuntor.html">
+          <div class="rc-title">🛡️ Dimensionamento de Disjuntor</div>
+          <div class="rc-sub">Encontre o disjuntor ideal</div>
+        </a>
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    Esta calculadora fornece uma estimativa para fins educativos e de consulta rápida, com base em fórmulas e
+    referências usuais do setor elétrico. Ela não substitui um projeto elétrico, dimensionamento completo conforme a
+    NBR 5410 ou a avaliação de um profissional habilitado. Para instalações reais, consulte um eletricista ou
+    engenheiro responsável.
+  </p>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    © <span id="year"></span> Guia Elétrica Fácil — ferramentas e conteúdo informativo sobre elétrica residencial e industrial.
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function calcular(){
+  const v = parseFloat(document.getElementById('tensao').value);
+  const i = parseFloat(document.getElementById('corrente').value);
+  const fp = parseFloat(document.getElementById('fp').value) || 1;
+  const tipo = document.querySelector('input[name="tipo"]:checked').value;
+  const resultEl = document.getElementById('result');
+
+  if(!v || !i || v <= 0 || i <= 0){
+    resultEl.classList.remove('show');
+    return;
+  }
+
+  let potencia;
+  if(tipo === 'mono'){
+    potencia = v * i * fp;
+  } else {
+    potencia = Math.sqrt(3) * v * i * fp;
+  }
+
+  document.getElementById('resultValue').textContent = potencia.toFixed(0) + ' W';
+  document.getElementById('resultSub').textContent =
+    tipo === 'mono'
+      ? `P = V × I × cosφ = ${v} × ${i} × ${fp}`
+      : `P = √3 × V × I × cosφ = 1.732 × ${v} × ${i} × ${fp}`;
+  document.getElementById('resultExtra').innerHTML =
+    `<span>Em kW</span><strong>${(potencia/1000).toFixed(2)} kW</strong>`;
+
+  resultEl.classList.add('show');
+}
+
+</script>
+
+</body>
+</html>
