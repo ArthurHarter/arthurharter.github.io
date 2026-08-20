@@ -19,13 +19,13 @@
 <meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ferramentas gratuitas para calcular corrente, potência, consumo, queda de tensão, bitola de cabo e disjuntor.">
+<meta name="description" content="Calcule quanto um aparelho elétrico consome por mês em kWh e o custo estimado na conta de luz.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Tabelas e Calculadoras sobre Elétrica — Guia Elétrica Fácil">
-<meta property="og:description" content="Ferramentas gratuitas para calcular corrente, potência, consumo, queda de tensão, bitola de cabo e disjuntor.">
+<meta property="og:title" content="Calculadora de Consumo de Energia Elétrica (kWh) — Guia Elétrica Fácil">
+<meta property="og:description" content="Calcule quanto um aparelho elétrico consome por mês em kWh e o custo estimado na conta de luz.">
 <meta property="og:type" content="website">
-<title>Tabelas e Calculadoras sobre Elétrica — Guia Elétrica Fácil</title>
-<link rel="canonical" href="https://guiaeletricafacil.com.br/calculadoras.html">
+<title>Calculadora de Consumo de Energia Elétrica (kWh) — Guia Elétrica Fácil</title>
+<link rel="canonical" href="https://guiaeletricafacil.com.br/calculadora-consumo.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -295,55 +295,66 @@ footer {
 
 <main>
   <div class="page-hero" style="padding-left:0; padding-right:0;">
-    <div class="breadcrumb"><a href="/calculadoras.html">Calculadoras</a> → Todas</div>
-    <div class="section-tag">Ferramentas gratuitas</div>
-    <h1>Tabelas e <span class="em">Calculadoras</span> sobre Elétrica</h1>
-    <p class="lead">Ferramentas rápidas para o seu dia a dia: calcule corrente, potência, consumo, queda de tensão e dimensionamento de cabos e disjuntores.</p>
+    <div class="breadcrumb"><a href="/calculadoras.html">Calculadoras</a> → Consumo</div>
+    <div class="section-tag">Calculadora · Consumo</div>
+    <h1>Calculadora de <span class="em">Consumo</span></h1>
+    <p class="lead">Estime quanto um aparelho gasta de energia por mês e quanto isso representa em reais na sua conta de luz.</p>
   </div>
 
 
-  <div class="cards">
-    <a class="hub-card" href="/calculadora-corrente.html">
-      <span class="card-icon">🔌</span>
-      <h3>Calculadora de Corrente</h3>
-      <p>Descubra a corrente (A) de um circuito a partir da potência e tensão.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+  <div class="calc-layout">
+    
+    <div class="card">
+      <h2>Dados do aparelho</h2>
+      <div class="field">
+        <label for="potencia">Potência do aparelho (W)</label>
+        <input type="number" id="potencia" placeholder="Ex: 1500" min="0" step="any">
+        <div class="hint">Costuma estar na etiqueta do produto ou no manual.</div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="horas">Horas de uso/dia</label>
+          <input type="number" id="horas" placeholder="Ex: 3" min="0" step="any">
+        </div>
+        <div class="field">
+          <label for="dias">Dias de uso/mês</label>
+          <input type="number" id="dias" placeholder="Ex: 30" min="0" max="31" step="1" value="30">
+        </div>
+      </div>
+      <div class="field">
+        <label for="tarifa">Tarifa de energia (R$/kWh)</label>
+        <input type="number" id="tarifa" placeholder="Ex: 0.87" min="0" step="any" value="0.87">
+        <div class="hint">Confira o valor exato na sua última conta de luz — varia por estado e concessionária.</div>
+      </div>
+      <button class="btn-calc" onclick="calcular()">Calcular consumo ⚡</button>
+    </div>
 
-    <a class="hub-card" href="/calculadora-consumo.html">
-      <span class="card-icon">💡</span>
-      <h3>Calculadora de Consumo</h3>
-      <p>Estime o consumo em kWh e o custo mensal de um aparelho.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+    <div>
+      <div class="result-panel empty-state" id="emptyState">Preencha os campos e clique em calcular para ver o resultado.</div>
+      <div class="result-panel" id="resultPanel">
+        <div class="result-top">
+          <span class="result-emoji" id="resultEmoji">⚡</span>
+          <span class="result-toplabel">Resultado</span>
+        </div>
+        <div class="result-value" id="resultValue">—</div>
+        <div class="result-context" id="resultContext"></div>
+        <div class="result-breakdown" id="resultBreakdown"></div>
+        <div class="result-warn" id="resultWarn" style="display:none;"></div>
+      </div>
 
-    <a class="hub-card" href="/calculadora-queda-tensao.html">
-      <span class="card-icon">📏</span>
-      <h3>Queda de Tensão</h3>
-      <p>Verifique se a bitola do cabo é adequada para a distância do circuito.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+      <div class="howto" id="howtoBox">
+        <button class="howto-toggle" id="howtoToggle" aria-expanded="false">
+          <span>📐 Como chegamos nesse resultado?</span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="howto-body" id="howtoBody"></div>
+      </div>
 
-    <a class="hub-card" href="/calculadora-potencia.html">
-      <span class="card-icon">⚡</span>
-      <h3>Calculadora de Potência</h3>
-      <p>Calcule a potência (W) a partir da tensão e da corrente.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-bitola-cabo.html">
-      <span class="card-icon">🔥</span>
-      <h3>Dimensionamento de Cabo</h3>
-      <p>Encontre a seção de referência do cabo com base na corrente.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-disjuntor.html">
-      <span class="card-icon">🛡️</span>
-      <h3>Dimensionamento de Disjuntor</h3>
-      <p>Encontre o disjuntor comercial ideal para o seu circuito.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+      <div class="next-steps" id="nextSteps">
+        <h3>💡 Próximo passo</h3>
+        <div class="next-grid" id="nextGrid"></div>
+      </div>
+</div>
   </div>
   <p class="disclaimer">
     <strong>Sobre esta calculadora:</strong> os resultados são estimativas para fins educativos e de consulta
@@ -376,6 +387,56 @@ function initHowtoToggle(){
 }
 initHowtoToggle();
 
+
+function revealPanels(){
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('resultPanel').classList.add('show');
+  document.getElementById('howtoBox').classList.add('show');
+  document.getElementById('nextSteps').classList.add('show');
+}
+function hidePanels(){
+  document.getElementById('emptyState').style.display = 'flex';
+  document.getElementById('resultPanel').classList.remove('show');
+  document.getElementById('howtoBox').classList.remove('show');
+  document.getElementById('nextSteps').classList.remove('show');
+}
+
+function calcular(){
+  const p = parseFloat(document.getElementById('potencia').value);
+  const h = parseFloat(document.getElementById('horas').value);
+  const d = parseFloat(document.getElementById('dias').value);
+  const tarifa = parseFloat(document.getElementById('tarifa').value);
+
+  if(!p || !h || !d || !tarifa || p <= 0 || h <= 0 || d <= 0 || tarifa <= 0){ hidePanels(); return; }
+
+  const kwhMes = (p * h * d) / 1000;
+  const custo = kwhMes * tarifa;
+  const fmt = (n, d=2) => n.toLocaleString('pt-BR', {minimumFractionDigits:d, maximumFractionDigits:d});
+
+  document.getElementById('resultValue').textContent =
+    custo.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+  document.getElementById('resultContext').textContent = 'Custo mensal estimado';
+  document.getElementById('resultBreakdown').innerHTML = `
+    <div><span>Potência</span><strong>${fmt(p,0)} W</strong></div>
+    <div><span>Uso</span><strong>${fmt(h)} h/dia × ${fmt(d,0)} dias</strong></div>
+    <div><span>Consumo mensal</span><strong>${fmt(kwhMes)} kWh</strong></div>
+    <div><span>Tarifa</span><strong>R$ ${fmt(tarifa)}/kWh</strong></div>
+  `;
+  document.getElementById('resultWarn').style.display = 'none';
+
+  document.getElementById('howtoBody').innerHTML = `
+    <p>Fórmula do consumo:</p><code>kWh = (P × horas × dias) / 1000</code>
+    <p>Substituindo os valores:</p><code>kWh = (${fmt(p,0)} × ${fmt(h)} × ${fmt(d,0)}) / 1000 = ${fmt(kwhMes)} kWh</code>
+    <p>Custo:</p><code>Custo = kWh × tarifa = ${fmt(kwhMes)} × R$ ${fmt(tarifa)} = R$ ${fmt(custo)}</code>
+  `;
+
+  document.getElementById('nextGrid').innerHTML = `
+    <a class="next-card" href="/calculadora-potencia.html"><div class="nc-q">Quer calcular a potência de outro aparelho?</div><div class="nc-cta">CALCULAR POTÊNCIA →</div></a>
+    <a class="next-card" href="/calculadoras.html"><div class="nc-q">Ver todas as calculadoras</div><div class="nc-cta">VER TODAS →</div></a>
+  `;
+
+  revealPanels();
+}
 
 </script>
 
