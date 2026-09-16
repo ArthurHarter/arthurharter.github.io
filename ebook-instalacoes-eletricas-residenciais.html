@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Prático de Instalações Elétricas Residenciais — Guia Elétrica Fácil</title>
+<meta name="description" content="E-book: aprenda do zero à execução como planejar, dimensionar e executar instalações elétricas residenciais com segurança, conforme a NBR 5410.">
+<meta name="google-adsense-account" content="ca-pub-9229331673302760">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Guia Prático de Instalações Elétricas Residenciais — do zero à execução">
+<meta property="og:description" content="E-book prático de instalações elétricas residenciais, conforme a NBR 5410.">
+<meta property="og:type" content="product">
+<link rel="canonical" href="https://guiaeletricafacil.com.br/ebook-instalacoes-eletricas-residenciais.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F0F0F;
+    --bg-raised:#171717;
+    --card-border:#2A2A2A;
+    --yellow:#F5C518;
+    --teal:#4DD0C4;
+    --cream:#F5F1E8;
+    --muted:#A3A3A0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'DM Sans',sans-serif;
+    line-height:1.65;
+  }
+  h1,h2,h3,.brand{font-family:'Syne',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 6vw;
+    border-bottom:1px solid var(--card-border);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .brand{font-size:1.3rem;font-weight:700;color:var(--cream);}
+  .brand span{color:var(--yellow);}
+  nav{display:flex;gap:28px;flex-wrap:wrap;}
+  nav a{font-size:0.95rem;color:var(--muted);transition:color .2s;}
+  nav a:hover, nav a.active{color:var(--yellow);}
+
+  .breadcrumb{
+    padding:18px 6vw 0;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  .breadcrumb a:hover{color:var(--yellow);}
+
+  main{padding:40px 6vw 20px;max-width:1100px;margin:0 auto;}
+
+  .hero{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:48px;
+    align-items:start;
+    margin-bottom:64px;
+  }
+  .hero img{
+    width:100%;
+    border-radius:10px;
+    border:1px solid var(--card-border);
+    display:block;
+  }
+  .hero-content h1{
+    font-size:2.1rem;
+    font-weight:800;
+    margin:0 0 18px;
+    color:var(--cream);
+    line-height:1.25;
+  }
+  .hero-content .lead{
+    color:var(--muted);
+    font-size:1.05rem;
+    margin:0 0 28px;
+  }
+  .buy-box{
+    background:var(--bg-raised);
+    border:1px solid var(--card-border);
+    border-radius:10px;
+    padding:24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .price-tag .price{
+    font-family:'Syne',sans-serif;
+    font-weight:800;
+    font-size:2rem;
+    color:var(--yellow);
+    display:block;
+  }
+  .price-tag .price-note{
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+  .btn-buy{
+    background:var(--yellow);
+    color:#0F0F0F;
+    font-weight:700;
+    font-size:1.05rem;
+    padding:16px 32px;
+    border-radius:8px;
+    transition:transform .15s, background .2s;
+    display:inline-block;
+  }
+  .btn-buy:hover{background:#ffd94a;transform:translateY(-1px);}
+  .secure-note{
+    font-size:0.8rem;
+    color:var(--muted);
+    margin-top:14px;
+  }
+
+  section.content{max-width:760px;margin:0 auto 56px;}
+  section.content h2{
+    font-size:1.5rem;
+    color:var(--cream);
+    margin:0 0 18px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--card-border);
+  }
+  section.content p{color:var(--muted);font-size:1rem;margin:0 0 16px;}
+
+  .checklist{list-style:none;margin:0 0 8px;padding:0;}
+  .checklist li{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:10px 0;
+    border-bottom:1px solid var(--card-border);
+    color:var(--cream);
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist .mark{color:var(--yellow);font-weight:700;flex-shrink:0;}
+
+  .audience{list-style:none;margin:0;padding:0;}
+  .audience li{
+    padding:10px 0 10px 22px;
+    position:relative;
+    color:var(--muted);
+    border-bottom:1px solid var(--card-border);
+  }
+  .audience li:last-child{border-bottom:none;}
+  .audience li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--teal);
+  }
+
+  .cta-final{
+    max-width:760px;
+    margin:0 auto 80px;
+    text-align:center;
+    background:var(--bg-raised);
+    border:1px solid var(--card-border);
+    border-radius:10px;
+    padding:44px 28px;
+  }
+  .cta-final h2{
+    font-size:1.5rem;
+    margin:0 0 12px;
+    color:var(--cream);
+  }
+  .cta-final p{color:var(--muted);margin:0 0 26px;}
+
+  footer{
+    border-top:1px solid var(--card-border);
+    padding:26px 6vw;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.85rem;
+  }
+
+  @media(max-width:760px){
+    .hero{grid-template-columns:1fr;}
+    .hero img{max-width:280px;margin:0 auto;}
+    .buy-box{flex-direction:column;align-items:stretch;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="index.html">⚡ Guia Elétrica<span>Fácil</span></a>
+  <nav>
+    <a href="bitola-de-fios.html">Bitola de Fios</a>
+    <a href="disjuntores.html">Disjuntores</a>
+    <a href="chuveiro-eletrico.html">Chuveiro</a>
+    <a href="ebooks.html" class="active">E-books</a>
+  </nav>
+</header>
+
+<p class="breadcrumb"><a href="index.html">Início</a> → <a href="ebooks.html">E-books</a> → Instalações Elétricas Residenciais</p>
+
+<main>
+  <div class="hero">
+    <img src="capa-instalacoes-eletricas-residenciais.png" alt="Capa do e-book Guia Prático de Instalações Elétricas Residenciais">
+    <div class="hero-content">
+      <h1>Guia Prático de Instalações Elétricas Residenciais — do zero à execução</h1>
+      <p class="lead">Aprenda de forma direta e sem enrolação como planejar, dimensionar e executar instalações elétricas residenciais com segurança, conforme as normas técnicas.</p>
+
+      <div class="buy-box">
+        <div class="price-tag">
+          <span class="price">R$ 29,90</span>
+          <span class="price-note">Acesso imediato após a compra</span>
+        </div>
+        <a class="btn-buy" href="https://go.hotmart.com/U107454334M?dp=1" target="_blank" rel="noopener">Quero garantir meu acesso</a>
+      </div>
+      <p class="secure-note">Compra processada com segurança pela Hotmart.</p>
+    </div>
+  </div>
+
+  <section class="content">
+    <h2>Sobre o e-book</h2>
+    <p>Você quer entender de verdade como funciona uma instalação elétrica residencial, sem depender de "achismo" ou de vídeos soltos na internet que nunca fecham o assunto?</p>
+    <p>Este e-book foi criado para levar você do zero absoluto até a execução prática, com uma linguagem direta — ideal tanto para quem está começando na área elétrica quanto para quem quer fazer ou acompanhar a instalação da própria casa com segurança e conforme as normas técnicas.</p>
+  </section>
+
+  <section class="content">
+    <h2>O que você vai aprender</h2>
+    <ul class="checklist">
+      <li><span class="mark">✓</span> Conceitos fundamentais de eletricidade aplicados ao dia a dia residencial</li>
+      <li><span class="mark">✓</span> Como dimensionar corretamente disjuntores, cabos e circuitos</li>
+      <li><span class="mark">✓</span> Leitura e interpretação de projetos elétricos básicos</li>
+      <li><span class="mark">✓</span> Passo a passo para planejar uma instalação do início ao fim</li>
+      <li><span class="mark">✓</span> Boas práticas de segurança e normas (NBR 5410)</li>
+      <li><span class="mark">✓</span> Erros comuns que colocam a instalação — e a vida das pessoas — em risco</li>
+    </ul>
+  </section>
+
+  <section class="content">
+    <h2>Para quem é este e-book</h2>
+    <ul class="audience">
+      <li>Estudantes e profissionais em início de carreira na área elétrica</li>
+      <li>Proprietários que querem entender e acompanhar de perto uma reforma ou construção</li>
+      <li>Entusiastas de eletrônica e automação residencial</li>
+      <li>Quem está cansado de conteúdo picado e quer um material completo e organizado</li>
+    </ul>
+  </section>
+
+  <div class="cta-final">
+    <h2>Chega de depender de informação fragmentada</h2>
+    <p>Aprenda de forma estruturada, prática e aplicável — e execute sua instalação elétrica com confiança.</p>
+    <a class="btn-buy" href="https://go.hotmart.com/U107454334M?dp=1" target="_blank" rel="noopener">Garantir acesso por R$ 29,90</a>
+  </div>
+</main>
+
+<footer>
+  © 2026 Guia Elétrica Fácil — Conteúdo informativo. Consulte sempre um eletricista habilitado (NR10 / CREA).
+</footer>
+
+</body>
+</html>
