@@ -21,18 +21,18 @@
 <meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ferramentas gratuitas para calcular corrente, potência, consumo, resistores, queda de tensão, bitola de cabo e disjuntor.">
+<meta name="description" content="Converta entre kW, kVA e cv (cavalo-vapor) usando o fator de potência. Calculadora gratuita com fórmulas explicadas.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Tabelas e Calculadoras sobre Elétrica — Guia Elétrica Fácil">
-<meta property="og:description" content="Ferramentas gratuitas para calcular corrente, potência, consumo, resistores, queda de tensão, bitola de cabo e disjuntor.">
+<meta property="og:title" content="Conversor de kW, kVA e cv — Guia Elétrica Fácil">
+<meta property="og:description" content="Converta entre kW, kVA e cv (cavalo-vapor) usando o fator de potência. Calculadora gratuita com fórmulas explicadas.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://guiaeletricafacil.com.br/calculadoras.html">
+<meta property="og:url" content="https://guiaeletricafacil.com.br/calculadora-disjuntor.html">
 <meta property="og:image" content="https://guiaeletricafacil.com.br/logo-192.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tabelas e Calculadoras sobre Elétrica — Guia Elétrica Fácil">
-<meta name="twitter:description" content="Ferramentas gratuitas para calcular corrente, potência, consumo, resistores, queda de tensão, bitola de cabo e disjuntor.">
-<title>Tabelas e Calculadoras sobre Elétrica — Guia Elétrica Fácil</title>
-<link rel="canonical" href="https://guiaeletricafacil.com.br/calculadoras.html">
+<meta name="twitter:title" content="Conversor de kW, kVA e cv — Guia Elétrica Fácil">
+<meta name="twitter:description" content="Converta entre kW, kVA e cv (cavalo-vapor) usando o fator de potência. Calculadora gratuita com fórmulas explicadas.">
+<title>Conversor de kW, kVA e cv — Guia Elétrica Fácil</title>
+<link rel="canonical" href="https://guiaeletricafacil.com.br/conversor-kva-kw-cv.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -284,6 +284,7 @@ footer {
 
 @media (max-width: 768px){ nav { display: none; } }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual a diferença entre kW e kVA?", "acceptedAnswer": {"@type": "Answer", "text": "kW é a potência ativa, que de fato vira trabalho útil. kVA é a potência aparente, que inclui também a parcela usada para magnetizar motores e transformadores. kVA = kW dividido pelo fator de potência."}}, {"@type": "Question", "name": "Quanto vale 1 cv em kW?", "acceptedAnswer": {"@type": "Answer", "text": "1 cv (cavalo-vapor métrico) equivale a 0,7355 kW. É comum em motores e bombas; já o hp (horsepower, usado nos EUA) equivale a 0,7457 kW, um valor levemente diferente."}}, {"@type": "Question", "name": "Qual fator de potência devo usar?", "acceptedAnswer": {"@type": "Answer", "text": "Para cargas puramente resistivas, como chuveiro ou resistência, use 1,00. Para motores elétricos, o fator de potência costuma ficar entre 0,80 e 0,95 — confira na placa de identificação do equipamento."}}]}</script>
 </head>
 <body>
 
@@ -302,83 +303,64 @@ footer {
 
 <main>
   <div class="page-hero" style="padding-left:0; padding-right:0;">
-    <div class="breadcrumb"><a href="/calculadoras.html">Calculadoras</a> → Todas</div>
-    <div class="section-tag">Ferramentas gratuitas</div>
-    <h1>Tabelas e <span class="em">Calculadoras</span> sobre Elétrica</h1>
-    <p class="lead">Ferramentas rápidas para o seu dia a dia: calcule corrente, potência, consumo, resistores, capacitores, queda de tensão, conversão de unidades e dimensionamento de cabos e disjuntores. Já são 10 calculadoras gratuitas.</p>
+    <div class="breadcrumb"><a href="/calculadoras.html">Calculadoras</a> → Conversor kW, kVA e cv</div>
+    <div class="section-tag">Calculadora · Conversão de Potência</div>
+    <h1>Conversor de <span class="em">kW, kVA e cv</span></h1>
+    <p class="lead">Converta entre potência ativa (kW), potência aparente (kVA) e cavalo-vapor (cv), usando o fator de potência.</p>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:14px">Atualizado em setembro de 2026 · Referência: ABNT NBR 5410</p>
   </div>
 
 
-  <div class="cards">
-    <a class="hub-card" href="/calculadora-corrente.html">
-      <span class="card-icon">🔌</span>
-      <h3>Calculadora de Corrente</h3>
-      <p>Descubra a corrente (A) de um circuito a partir da potência e tensão.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+  <div class="calc-layout">
+    
+    <div class="card">
+      <h2>Dados da potência</h2>
+      <div class="field">
+        <label for="valor">Valor</label>
+        <input type="number" id="valor" placeholder="Ex: 10" min="0" step="any" value="10">
+      </div>
+      <div class="field">
+        <label for="unidade">Unidade</label>
+        <select id="unidade">
+          <option value="kw">kW (potência ativa)</option>
+          <option value="kva">kVA (potência aparente)</option>
+          <option value="cv">cv (cavalo-vapor)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fp">Fator de potência (0,10 a 1,00)</label>
+        <input type="number" id="fp" placeholder="Ex: 0.92" min="0.1" max="1" step="0.01" value="0.92">
+        <div class="hint">Use 1,00 para cargas puramente resistivas (chuveiro, resistência). Motores costumam ficar entre 0,80 e 0,95.</div>
+      </div>
+      <button class="btn-calc" onclick="calcular()">Converter ⚡</button>
+    </div>
 
-    <a class="hub-card" href="/calculadora-consumo.html">
-      <span class="card-icon">💡</span>
-      <h3>Calculadora de Consumo</h3>
-      <p>Estime o consumo em kWh e o custo mensal de um aparelho.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+    <div>
+      <div class="result-panel empty-state" id="emptyState">Preencha os campos e clique em calcular para ver o resultado.</div>
+      <div class="result-panel" id="resultPanel">
+        <div class="result-top">
+          <span class="result-emoji" id="resultEmoji">⚡</span>
+          <span class="result-toplabel">Resultado</span>
+        </div>
+        <div class="result-value" id="resultValue">—</div>
+        <div class="result-context" id="resultContext"></div>
+        <div class="result-breakdown" id="resultBreakdown"></div>
+        <div class="result-warn" id="resultWarn" style="display:none;"></div>
+      </div>
 
-    <a class="hub-card" href="/calculadora-queda-tensao.html">
-      <span class="card-icon">📏</span>
-      <h3>Queda de Tensão</h3>
-      <p>Verifique se a bitola do cabo é adequada para a distância do circuito.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+      <div class="howto" id="howtoBox">
+        <button class="howto-toggle" id="howtoToggle" aria-expanded="false">
+          <span>📐 Como chegamos nesse resultado?</span>
+          <span class="chev">▾</span>
+        </button>
+        <div class="howto-body" id="howtoBody"></div>
+      </div>
 
-    <a class="hub-card" href="/calculadora-potencia.html">
-      <span class="card-icon">⚡</span>
-      <h3>Calculadora de Potência</h3>
-      <p>Calcule a potência (W) a partir da tensão e da corrente.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/conversor-kva-kw-cv.html">
-      <span class="card-icon">🔁</span>
-      <h3>Conversor de kW, kVA e cv</h3>
-      <p>Converta entre potência ativa, aparente e cavalo-vapor com o fator de potência.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-bitola-cabo.html">
-      <span class="card-icon">🔥</span>
-      <h3>Dimensionamento de Cabo</h3>
-      <p>Encontre a seção de referência do cabo com base na corrente.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-disjuntor.html">
-      <span class="card-icon">🛡️</span>
-      <h3>Dimensionamento de Disjuntor</h3>
-      <p>Encontre o disjuntor comercial ideal para o seu circuito.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-resistores.html">
-      <span class="card-icon">🔩</span>
-      <h3>Calculadora de Resistores</h3>
-      <p>Resistência equivalente em série ou paralelo, com tensão, corrente e potência por resistor.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-codigo-cores-resistores.html">
-      <span class="card-icon">🎨</span>
-      <h3>Código de Cores de Resistores</h3>
-      <p>Descubra o valor de um resistor pelas cores das faixas (4, 5 ou 6 faixas).</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
-
-    <a class="hub-card" href="/calculadora-capacitores.html">
-      <span class="card-icon">🔋</span>
-      <h3>Calculadora de Capacitores</h3>
-      <p>Capacitância equivalente em série ou paralelo, com carga e energia por capacitor.</p>
-      <div class="card-link">Usar calculadora →</div>
-    </a>
+      <div class="next-steps" id="nextSteps">
+        <h3>💡 Próximo passo</h3>
+        <div class="next-grid" id="nextGrid"></div>
+      </div>
+</div>
   </div>
   <p class="disclaimer">
     <strong>Sobre esta calculadora:</strong> os resultados são estimativas para fins educativos e de consulta
@@ -387,6 +369,15 @@ footer {
     técnicas aplicáveis — para instalações reais, consulte um eletricista ou engenheiro responsável.
   </p>
 
+
+  <section style="max-width:1100px;margin:48px auto 0;padding:0 24px">
+    <h2 style="font-family:'Syne',sans-serif;font-size:22px;margin-bottom:20px">Perguntas frequentes</h2>
+    <div style="display:grid;gap:20px">
+      <div><h4 style="font-size:15.5px;margin-bottom:6px">Qual a diferença entre kW e kVA?</h4><p style="color:var(--muted);font-size:14px">kW é a potência ativa, que de fato vira trabalho útil. kVA é a potência aparente, que inclui também a parcela usada para magnetizar motores e transformadores. kVA = kW dividido pelo fator de potência.</p></div>
+      <div><h4 style="font-size:15.5px;margin-bottom:6px">Quanto vale 1 cv em kW?</h4><p style="color:var(--muted);font-size:14px">1 cv (cavalo-vapor métrico) equivale a 0,7355 kW. É comum em motores e bombas; já o hp (horsepower, usado nos EUA) equivale a 0,7457 kW, um valor levemente diferente.</p></div>
+      <div><h4 style="font-size:15.5px;margin-bottom:6px">Qual fator de potência devo usar?</h4><p style="color:var(--muted);font-size:14px">Para cargas puramente resistivas, como chuveiro ou resistência, use 1,00. Para motores elétricos, o fator de potência costuma ficar entre 0,80 e 0,95 — confira na placa de identificação do equipamento.</p></div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -411,6 +402,66 @@ function initHowtoToggle(){
 }
 initHowtoToggle();
 
+
+function revealPanels(){
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('resultPanel').classList.add('show');
+  document.getElementById('howtoBox').classList.add('show');
+  document.getElementById('nextSteps').classList.add('show');
+}
+function hidePanels(){
+  document.getElementById('emptyState').style.display = 'flex';
+  document.getElementById('resultPanel').classList.remove('show');
+  document.getElementById('howtoBox').classList.remove('show');
+  document.getElementById('nextSteps').classList.remove('show');
+}
+
+const CV_PARA_KW = 0.7355; // cv metrico
+
+function calcular(){
+  const v = parseFloat(document.getElementById('valor').value);
+  const u = document.getElementById('unidade').value;
+  const fp = parseFloat(document.getElementById('fp').value);
+  const warnEl = document.getElementById('resultWarn');
+
+  if(!v || v <= 0 || !fp || fp <= 0 || fp > 1){ hidePanels(); return; }
+
+  let kw;
+  if(u === 'kw') kw = v;
+  else if(u === 'kva') kw = v * fp;
+  else kw = v * CV_PARA_KW;
+
+  const kva = kw / fp;
+  const cv = kw / CV_PARA_KW;
+  const f = (x) => x.toLocaleString('pt-BR', {maximumFractionDigits: 3});
+
+  document.getElementById('resultValue').textContent = f(kw) + ' kW';
+  document.getElementById('resultContext').textContent = 'Potencia ativa equivalente';
+  document.getElementById('resultBreakdown').innerHTML = `
+    <div><span>Potencia ativa</span><strong>${f(kw)} kW</strong></div>
+    <div><span>Potencia aparente</span><strong>${f(kva)} kVA</strong></div>
+    <div><span>Cavalo-vapor</span><strong>${f(cv)} cv</strong></div>
+    <div><span>Fator de potencia usado</span><strong>${fp}</strong></div>
+  `;
+
+  warnEl.style.display = 'block';
+  warnEl.textContent = 'Em motores, o cv da placa e a potencia mecanica no eixo — a potencia eletrica consumida e maior, pois inclui o rendimento do motor. Este conversor nao considera o rendimento.';
+
+  document.getElementById('howtoBody').innerHTML = `
+    <p>Como funciona:</p>
+    <p>kVA = kW / fator de potencia. kW = kVA x fator de potencia. 1 cv (metrico) = 0,7355 kW.</p>
+    <code>Entrada: ${v} ${u.toUpperCase()} → ${f(kw)} kW → ${f(kva)} kVA → ${f(cv)} cv</code>
+  `;
+
+  document.getElementById('nextGrid').innerHTML = `
+    <a class="next-card" href="/calculadora-disjuntor.html"><div class="nc-q">Quer dimensionar a protecao dessa carga?</div><div class="nc-cta">CALCULAR DISJUNTOR &rarr;</div></a>
+    <a class="next-card" href="/calculadora-consumo.html"><div class="nc-q">Quer saber o custo de energia?</div><div class="nc-cta">CALCULAR CONSUMO &rarr;</div></a>
+    <a class="next-card" href="/material-gratuito.html"><div class="nc-q">Quer o checklist completo de instalacao?</div><div class="nc-cta">BAIXAR PDF GRATIS &rarr;</div></a>
+    <button class="next-card" onclick="window.print()" style="cursor:pointer;text-align:left;font-family:inherit;width:100%"><div class="nc-q">Quer guardar este resultado?</div><div class="nc-cta">SALVAR EM PDF &rarr;</div></button>
+  `;
+
+  revealPanels();
+}
 
 </script>
 
