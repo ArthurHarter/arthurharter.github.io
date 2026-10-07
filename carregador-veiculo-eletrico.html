@@ -36,7 +36,7 @@ gtag('config', 'G-D92EY9PKFW');
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Carregador de Veículo Elétrico em Casa",
-  "about": "Geração distribuída, compensação de energia e dimensionamento elétrico de sistemas solares residenciais",
+  "about": "Instalação de carregador de veículo elétrico residencial, dimensionamento de disjuntor, fiação e DR conforme a NBR 17019",
   "publisher": { "@type": "Organization", "name": "Guia Elétrica Fácil" }
 }
 </script>
@@ -138,32 +138,32 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <main>
 <div class="hero">
 <div class="hero-label">Guia atualizado 2026</div>
-<h1>Energia solar residencial e o <em>Fio B</em></h1>
-<p class="hero-sub">Como funciona a compensação de energia da geração distribuída, o que é cobrado no Fio B e como dimensionar a proteção elétrica do seu sistema fotovoltaico.</p>
+<h1>Carregador de <em>Veículo Elétrico</em> em casa</h1>
+<p class="hero-sub">Fiação, disjuntor e DR corretos para instalar um carregador (wallbox) de veículo elétrico em casa ou na vaga do condomínio, conforme a NBR 17019 e a NBR 5410.</p>
 </div>
 
 <section id="como-funciona">
 <div class="section-inner">
-<div class="section-tag">Entenda o sistema</div>
-<h2>Como funciona a geração distribuída (GD)</h2>
-<p class="section-sub">O sistema solar fotovoltaico instalado em casa gera energia durante o dia. O que não é consumido na hora é injetado na rede da distribuidora, virando crédito para abater o consumo em outros horários — é a chamada compensação de energia.</p>
+<div class="section-tag">Entenda a instalação</div>
+<h2>Circuito exclusivo para o carregador</h2>
+<p class="section-sub">O carregador de veículo elétrico puxa corrente alta por horas seguidas, geralmente durante a noite. Por isso ele precisa de um circuito só para ele, dimensionado para o pior caso (carga máxima, por tempo prolongado) — nunca dividido com outras tomadas.</p>
 
 <div class="tips-grid">
 <div class="tip">
-<h4>O que é o Fio B</h4>
-<p>É a parcela da tarifa que remunera o uso da rede de distribuição (os fios e postes) pela energia solar que você injeta e depois recupera como crédito. Desde a Lei 14.300/2022, essa parcela passou a ser cobrada de forma crescente sobre a energia compensada.</p>
+<h4>DR comum pode não ser suficiente</h4>
+<p>Carregadores de VE podem gerar corrente de fuga em corrente contínua, que um DR convencional (Tipo A) não detecta direito. A NBR 17019 recomenda DR Tipo B dedicado ao circuito do carregador, ou um Tipo A combinado com um dispositivo de detecção de corrente residual CC (RDC-DD) — confirme a exigência com o fabricante do carregador.</p>
 </div>
 <div class="tip">
-<h4>Cronograma de cobrança</h4>
-<p>A cobrança do Fio B sobre a energia solar compensada segue uma escada: 15% em 2023, 30% em 2024, 45% em 2025, 60% em 2026, com previsão de 75% em 2027 e 90% em 2028, conforme o cronograma da lei.</p>
+<h4>Monofásico ou trifásico</h4>
+<p>A maioria dos carregadores residenciais no Brasil roda em 220V monofásico (até 7,4 kW). Carregadores de 11 kW ou 22 kW exigem entrada trifásica — confirme a disponibilidade desse padrão no seu quadro e com a distribuidora antes de comprar o equipamento.</p>
 </div>
 <div class="tip">
-<h4>Quem já tinha sistema instalado</h4>
-<p>Consumidores que protocolaram a instalação até 7 de janeiro de 2023 mantêm o direito à compensação integral (sem cobrança do Fio B) garantido até 2045, nas regras antigas de net metering.</p>
+<h4>Instalando em condomínio</h4>
+<p>Em vaga de garagem compartilhada, a instalação geralmente depende de aprovação do condomínio e, dependendo da distância até o quadro geral, pode exigir um padrão de medição individualizado. Consulte a administração e a distribuidora local antes de comprar o equipamento.</p>
 </div>
 <div class="tip">
-<h4>Mesmo assim ainda compensa</h4>
-<p>Mesmo com a cobrança crescente do Fio B, a energia solar continua reduzindo a conta de luz de forma expressiva, porque a maior parte da tarifa (geração, Fio A e encargos) segue sendo compensada integralmente.</p>
+<h4>Atenção à queda de tensão</h4>
+<p>O carregador costuma ficar longe do quadro (garagem, vaga externa). Em trechos longos, a bitola calculada pela corrente pode não ser suficiente — vale conferir também a <a href="/calculadora-queda-tensao.html" style="color:var(--yellow)">queda de tensão</a> do trecho.</p>
 </div>
 </div>
 </div>
@@ -172,32 +172,33 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <section id="protecao" class="table-section">
 <div class="section-inner">
 <div class="section-tag">Dimensionamento elétrico</div>
-<h2>Proteção elétrica do sistema solar</h2>
-<p class="section-sub">Referência de disjuntor CC/CA conforme a potência do sistema. Sempre confirme o dimensionamento com o projetista responsável, considerando a corrente de curto-circuito dos módulos.</p>
+<h2>Disjuntor e fio por potência do carregador</h2>
+<p class="section-sub">Referência para carregadores em 220V monofásico e 380V trifásico. Sempre confirme o dimensionamento com o manual do fabricante do carregador e com um eletricista.</p>
 
 <table class="full-table">
 <thead>
 <tr>
-<th>Potência do sistema</th>
-<th>Corrente aprox. (CA, 220V)</th>
-<th>Disjuntor CA de referência</th>
+<th>Potência do carregador</th>
+<th>Tipo</th>
+<th>Corrente aprox.</th>
+<th>Disjuntor de referência</th>
 <th>Fio de referência</th>
 </tr>
 </thead>
 <tbody>
-<tr><td data-label="Potência">até 3 kWp</td><td data-label="Corrente">~14 A</td><td class="highlight" data-label="Disjuntor">16 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Potência">3 a 5 kWp</td><td data-label="Corrente">~23 A</td><td class="highlight" data-label="Disjuntor">25 A</td><td data-label="Fio">4,0 mm²</td></tr>
-<tr><td data-label="Potência">5 a 8 kWp</td><td data-label="Corrente">~36 A</td><td class="highlight" data-label="Disjuntor">40 A</td><td data-label="Fio">6,0 mm²</td></tr>
-<tr><td data-label="Potência">8 a 10 kWp</td><td data-label="Corrente">~45 A</td><td class="highlight" data-label="Disjuntor">50 A</td><td data-label="Fio">10 mm²</td></tr>
+<tr><td data-label="Potência">3,7 kW (16A)</td><td data-label="Tipo">Monofásico 220V</td><td data-label="Corrente">16,8 A</td><td class="highlight" data-label="Disjuntor">20 A</td><td data-label="Fio">2,5 mm²</td></tr>
+<tr><td data-label="Potência">7,4 kW (32A)</td><td data-label="Tipo">Monofásico 220V</td><td data-label="Corrente">33,6 A</td><td class="highlight" data-label="Disjuntor">40 A</td><td data-label="Fio">6,0 mm²</td></tr>
+<tr><td data-label="Potência">11 kW</td><td data-label="Tipo">Trifásico 380V</td><td data-label="Corrente">~16,7 A/fase</td><td class="highlight" data-label="Disjuntor">20 A tripolar</td><td data-label="Fio">2,5 mm²</td></tr>
+<tr><td data-label="Potência">22 kW</td><td data-label="Tipo">Trifásico 380V</td><td data-label="Corrente">~33,4 A/fase</td><td class="highlight" data-label="Disjuntor">40 A tripolar</td><td data-label="Fio">6,0 mm²</td></tr>
 </tbody>
 </table>
 <p class="table-note">
-Todo sistema fotovoltaico conectado à rede exige um disjuntor CA exclusivo no quadro, string box com proteção contra surto no lado CC, e aterramento dedicado conforme a NBR 5410 e a NBR 16690. A instalação deve ser feita por profissional habilitado e homologada junto à distribuidora local.
+Premissas: cabo de cobre, instalação embutida, sem agrupamento com outros circuitos, uso contínuo (carga por mais de 1 hora) considerado no dimensionamento. Circuito exclusivo com terra e DR dedicado são obrigatórios. Estes valores são referência inicial — o dimensionamento final deve considerar a distância até o quadro e a corrente nominal do carregador específico.
 </p>
 
 <div class="affiliate-banner">
 <div>
-<h3>Precisa de disjuntores ou DPS para o seu sistema solar?</h3>
+<h3>Precisa de disjuntor, DR ou cabo para o carregador?</h3>
 <p>Compare preços e veja os mais vendidos no Mercado Livre. Entrega rápida para todo o Brasil.</p>
 </div>
 <a href="ofertas.html" class="btn-affiliate">Ver materiais elétricos →</a>
@@ -223,7 +224,8 @@ Todo sistema fotovoltaico conectado à rede exige um disjuntor CA exclusivo no q
 <li><a href="ar-condicionado.html">Ar-Condicionado</a></li>
 <li><a href="tomadas-padrao.html">Tomadas e Pontos</a></li>
 <li><a href="dr-diferencial-residual.html">DR Diferencial Residual</a></li>
-<li><a href="carregador-veiculo-eletrico.html">Energia Solar</a></li>
+<li><a href="torneira-eletrica.html">Torneira Elétrica</a></li>
+<li><a href="energia-solar.html">Energia Solar</a></li>
 <li><a href="carregador-veiculo-eletrico.html">Carregador de VE</a></li>
 </ul>
 </div>
@@ -232,6 +234,7 @@ Todo sistema fotovoltaico conectado à rede exige um disjuntor CA exclusivo no q
 <ul>
 <li><a href="calculadora-corrente.html">Corrente</a></li>
 <li><a href="calculadora-potencia.html">Potência</a></li>
+<li><a href="conversor-kva-kw-cv.html">Conversor kW/kVA/cv</a></li>
 <li><a href="calculadora-consumo.html">Consumo</a></li>
 <li><a href="calculadora-queda-tensao.html">Queda de Tensão</a></li>
 <li><a href="calculadora-bitola-cabo.html">Bitola de Cabo</a></li>
