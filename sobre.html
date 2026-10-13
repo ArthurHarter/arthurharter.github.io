@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://guiaeletricafacil.com.br/sobre.html">
 <meta property="og:image" content="https://guiaeletricafacil.com.br/logo-192.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sobre — Elétrica Fácil">
+<meta name="twitter:title" content="Sobre — Guia Elétrica Fácil">
 <meta name="twitter:description" content="Sobre o Guia Elétrica Fácil: tabelas, guias técnicos e calculadoras online gratuitas para instalações elétricas residenciais baseados na NBR 5410.">
 <link rel="canonical" href="https://guiaeletricafacil.com.br/sobre.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +50,10 @@ h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,48px);font-weight:800;
 h1 em{font-style:normal;color:var(--yellow)}
 p{color:var(--muted);font-size:16px;margin-bottom:20px}
 p strong{color:var(--text)}
+h2{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;letter-spacing:-0.5px;margin:48px 0 16px;scroll-margin-top:80px}
+ul.lista{margin:0 0 20px 20px;color:var(--muted)}
+ul.lista li{margin-bottom:8px}
+ul.lista strong{color:var(--text)}
 .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0}
 .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:center}
 .stat-box .num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--yellow);line-height:1;margin-bottom:6px}
@@ -79,7 +83,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
   <div class="page-inner">
     <p class="breadcrumb"><a href="index.html">Início</a> → Sobre</p>
 
-    <h1>Sobre o <em>ElétricaFácil</em></h1>
+    <h1>Sobre o <em>Guia Elétrica Fácil</em></h1>
 
     <p>O <strong>Guia Elétrica Fácil</strong> nasceu de uma necessidade simples: ter em um só lugar as tabelas técnicas de elétrica residencial que eletricistas, construtores e proprietários precisam consultar no dia a dia.</p>
 
@@ -88,6 +92,36 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
     <p>Aqui você encontra tabelas de bitola de fios, disjuntores, consumo de eletrodomésticos, alturas padrão de tomadas e muito mais — tudo organizado para consulta rápida, sem enrolação.</p>
 
     <p>Além das tabelas, o site conta agora com <strong>10 calculadoras elétricas interativas</strong>: você informa os dados do seu circuito (potência, tensão, corrente ou componentes) e recebe na hora o resultado de corrente, potência, consumo, resistores, capacitores, código de cores, queda de tensão, bitola de cabo recomendada e disjuntor ideal. São ferramentas rápidas para tirar dúvidas do dia a dia, mas seguem o mesmo espírito das nossas tabelas — <strong>estimativas de referência, e não um projeto elétrico</strong>.</p>
+    <h2>Quem faz o site</h2>
+    <p>O Guia Elétrica Fácil é um projeto independente criado e mantido por <strong>Arthur</strong>, estudante de Engenharia Civil que atua na área de energia elétrica e trabalha com documentação técnica e projetos. A ideia é transformar o que se aprende na faculdade e na prática em consulta rápida e em linguagem simples.</p>
+    <p>É importante deixar claro: o site é <strong>material educativo</strong>. Não é um serviço de engenharia e o conteúdo não é assinado por responsável técnico (ART). Para executar ou projetar uma instalação, procure um profissional habilitado.</p>
+
+    <h2 id="metodologia">Como elaboramos o conteúdo</h2>
+    <ul class="lista">
+      <li><strong>Fórmulas básicas:</strong> corrente (I = P ÷ V), potência e consumo, com as tensões usuais de 127 V e 220 V.</li>
+      <li><strong>Capacidade de condução dos cabos:</strong> valores de referência da NBR 5410 para cobre com isolação de PVC, eletroduto embutido em alvenaria (método B1) e 30 °C, com 2 ou 3 condutores carregados. Em outras condições, os valores mudam.</li>
+      <li><strong>Disjuntores:</strong> escolhemos o menor valor comercial que atende à corrente do circuito e conferimos se o cabo suporta esse valor. Regra: corrente do circuito ≤ disjuntor ≤ capacidade do cabo.</li>
+      <li><strong>Queda de tensão:</strong> cálculo com a resistividade do cobre a 20 °C (0,0172 Ω·mm²/m). Em operação o cabo esquenta e a queda real é um pouco maior, por isso é bom deixar folga.</li>
+      <li><strong>Potência dos equipamentos:</strong> os valores das tabelas são típicos. A corrente real está na etiqueta e no manual do equipamento, e é ela que deve ser usada no projeto.</li>
+    </ul>
+    <p>Cada página mostra a data da <strong>última revisão</strong>. Quando um erro é encontrado, a página é corrigida e a data muda.</p>
+
+    <h2>Referências</h2>
+    <ul class="lista">
+      <li>ABNT NBR 5410 — Instalações elétricas de baixa tensão (consulte sempre a edição vigente).</li>
+      <li>ABNT NBR NM 60898 — Disjuntores para proteção de sobrecorrentes para instalações domésticas e similares.</li>
+      <li>NR-10 — Segurança em instalações e serviços em eletricidade.</li>
+      <li>Manuais e etiquetas dos fabricantes dos equipamentos citados.</li>
+    </ul>
+
+    <h2>O que o site não cobre</h2>
+    <ul class="lista">
+      <li>Projeto completo de instalação, cálculo de demanda e dimensionamento do quadro e do ramal de entrada.</li>
+      <li>Correções por agrupamento de circuitos, temperatura ambiente e outros métodos de instalação (citadas, mas não calculadas nas ferramentas simples).</li>
+      <li>Correntes de partida de motores, harmônicas, curto-circuito e seletividade.</li>
+      <li>Instalações industriais, comerciais de grande porte e de média tensão.</li>
+    </ul>
+
     <p>Também publicamos um <strong>e-book</strong> para quem quer ir além das consultas rápidas e aprender instalações elétricas residenciais do zero à execução.</p>
 
     <div class="stat-row">
@@ -100,7 +134,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:32px
       <p><strong style="color:#FF6B2B">⚠️ Aviso importante:</strong> O conteúdo e as calculadoras do Guia Elétrica Fácil têm caráter informativo e educacional. Os resultados são estimativas baseadas em fórmulas e referências usuais do setor elétrico e <strong>não substituem</strong> um projeto elétrico, o dimensionamento completo conforme a NBR 5410 nem a avaliação de um profissional habilitado. Para qualquer instalação elétrica, consulte sempre um eletricista ou engenheiro eletricista com registro no CREA e certificação NR10. Instalações elétricas feitas incorretamente oferecem risco de choque e incêndio.</p>
     </div>
 
-    <p style="margin-top:32px">Dúvidas ou sugestões? <a href="contato.html" style="color:var(--yellow);font-weight:600">Entre em contato conosco →</a></p>
+    <p style="font-size:13px;margin-top:32px">Última revisão desta página: <time datetime="2026-10-08">8 de outubro de 2026</time>.</p>
+    <p>Encontrou um erro ou tem uma sugestão? <a href="contato.html" style="color:var(--yellow);font-weight:600">Entre em contato conosco →</a></p>
   </div>
 </main>
 

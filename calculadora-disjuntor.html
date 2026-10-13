@@ -306,6 +306,7 @@ footer {
     <div class="section-tag">Calculadora · Dimensionamento de Disjuntor</div>
     <h1>Dimensionamento de <span class="em">Disjuntor</span></h1>
     <p class="lead">Encontre o disjuntor comercial adequado para proteger o seu circuito, com base na corrente elétrica.</p>
+    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-10-08">8 de outubro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
   </div>
 
 
@@ -394,10 +395,16 @@ function hidePanels(){
 }
 
 const disjuntoresComerciais = [6, 10, 16, 20, 25, 32, 40, 50, 63, 70, 80, 100, 125, 150];
+// capacidade de referência (cobre, PVC, B1, 30°C, 2 condutores carregados)
+const cabosRef = [
+  {secao: 1.5, iz: 17.5}, {secao: 2.5, iz: 24}, {secao: 4, iz: 32}, {secao: 6, iz: 41}, {secao: 10, iz: 57},
+  {secao: 16, iz: 76}, {secao: 25, iz: 101}, {secao: 35, iz: 125}, {secao: 50, iz: 151}, {secao: 70, iz: 192}, {secao: 95, iz: 232}
+];
 
 function calcular(){
   const i = parseFloat(document.getElementById('corrente').value);
   if(!i || i <= 0){ hidePanels(); return; }
+  const fmt = n => String(n).replace('.', ',');
 
   const escolhido = disjuntoresComerciais.find(d => d >= i);
   const warnEl = document.getElementById('resultWarn');
@@ -405,7 +412,7 @@ function calcular(){
   if(!escolhido){
     document.getElementById('resultValue').textContent = 'Acima da tabela';
     document.getElementById('resultContext').textContent = 'Corrente muito alta para esta lista simplificada';
-    document.getElementById('resultBreakdown').innerHTML = `<div><span>Corrente informada</span><strong>${i} A</strong></div>`;
+    document.getElementById('resultBreakdown').innerHTML = `<div><span>Corrente informada</span><strong>${fmt(i)} A</strong></div>`;
     warnEl.style.display = 'block';
     warnEl.textContent = 'Consulte um profissional para disjuntores acima de 150 A.';
     document.getElementById('howtoBody').innerHTML = '<p>Não há referência nesta lista simplificada para essa corrente.</p>';
@@ -413,21 +420,27 @@ function calcular(){
     revealPanels();
     return;
   }
+  const cabo = cabosRef.find(c => c.iz >= escolhido);
+  const caboTxt = cabo ? fmt(cabo.secao) + ' mm²' : 'acima de 95 mm²';
 
   document.getElementById('resultValue').textContent = escolhido + ' A';
-  document.getElementById('resultContext').textContent = 'Disjuntor comercial recomendado';
+  document.getElementById('resultContext').textContent = 'Disjuntor comercial mínimo para a corrente informada';
   document.getElementById('resultBreakdown').innerHTML = `
-    <div><span>Corrente do circuito</span><strong>${i} A</strong></div>
+    <div><span>Corrente do circuito</span><strong>${fmt(i)} A</strong></div>
     <div><span>Disjuntor</span><strong>${escolhido} A</strong></div>
+    <div><span>Cabo mínimo p/ este disjuntor</span><strong>${caboTxt}</strong></div>
+    <div><span>Referência do cabo</span><strong>B1 · PVC · 2 cond.</strong></div>
   `;
 
   warnEl.style.display = 'block';
-  warnEl.textContent = 'O disjuntor deve proteger o cabo: confira a ampacidade de referência do cabo escolhido — a corrente nominal do disjuntor não deve ultrapassar a capacidade do condutor.';
+  warnEl.textContent = 'O disjuntor deve proteger o cabo: a corrente nominal do disjuntor não pode ultrapassar a capacidade do condutor nas condições reais de instalação (agrupamento, temperatura, método). Alguns equipamentos, como motores e compressores, pedem curva C e uma folga maior — consulte o manual.';
 
   document.getElementById('howtoBody').innerHTML = `
-    <p>Como funciona:</p>
-    <p>Buscamos o menor disjuntor comercial com corrente nominal igual ou imediatamente superior à corrente do circuito.</p>
-    <code>Corrente do circuito: ${i} A → Disjuntor comercial: ${escolhido} A</code>
+    <p><strong>1. Corrente do circuito (Ib):</strong> ${fmt(i)} A.</p>
+    <p><strong>2. Disjuntor (In):</strong> o menor valor comercial maior ou igual a Ib. Valores considerados: 6, 10, 16, 20, 25, 32, 40, 50, 63, 70, 80, 100, 125 e 150 A.</p>
+    <p><strong>3. Proteção do cabo:</strong> o cabo precisa suportar pelo menos o valor do disjuntor (Iz ≥ In). Na condição de referência, o menor cabo que atende é ${caboTxt}.</p>
+    <code>Ib = ${fmt(i)} A ≤ In = ${escolhido} A ≤ Iz${cabo ? ' = ' + fmt(cabo.iz) + ' A (' + caboTxt + ')' : ''}</code>
+    <p>Se quiser mais folga, o próximo valor comercial acima também pode servir, desde que o cabo continue suportando esse valor nas suas condições reais.</p>
   `;
 
   document.getElementById('nextGrid').innerHTML = `

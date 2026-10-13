@@ -306,6 +306,7 @@ footer {
     <div class="section-tag">Calculadora · Dimensionamento de Cabo</div>
     <h1>Dimensionamento de <span class="em">Cabo</span></h1>
     <p class="lead">Encontre a bitola (seção) de referência para o cabo do seu circuito, com base na corrente elétrica.</p>
+    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-10-08">8 de outubro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
   </div>
 
 
@@ -319,11 +320,19 @@ footer {
         <div class="hint">Se não souber a corrente, use a <a href="/calculadora-corrente.html">calculadora de corrente</a> primeiro.</div>
       </div>
       <div class="field">
+        <label>Condutores carregados</label>
+        <div class="radio-group">
+          <label><input type="radio" name="cond" value="c2" checked> 2 (fase + neutro, ou fase + fase)</label>
+          <label><input type="radio" name="cond" value="c3"> 3 (trifásico, ou 2 fases + neutro)</label>
+        </div>
+        <div class="hint">Chuveiro, tomadas e a maioria dos circuitos residenciais usam 2 condutores carregados. O terra não conta.</div>
+      </div>
+      <div class="field">
         <label>Método de instalação</label>
         <div class="radio-group">
           <label><input type="radio" name="metodo" value="b1" checked> Eletroduto embutido em alvenaria</label>
         </div>
-        <div class="hint">Referência simplificada para o método mais comum em instalações residenciais (NBR 5410, método de referência B1, cabos de PVC, até 3 condutores carregados, 30°C).</div>
+        <div class="hint">Referência simplificada para o método mais comum em instalações residenciais (NBR 5410, método de referência B1, cobre com isolação de PVC, 30°C, um único circuito no eletroduto).</div>
       </div>
       <button class="btn-calc" onclick="calcular()">Calcular bitola do cabo ⚡</button>
     </div>
@@ -400,29 +409,30 @@ function hidePanels(){
   document.getElementById('nextSteps').classList.remove('show');
 }
 
-// tabela simplificada de referência (cobre, PVC, método B1, até 3 condutores carregados, 30°C)
+// tabela simplificada de referência (cobre, PVC, método B1, 30°C)
 const tabelaReferencia = [
-  {secao: 1.5, capacidade: 17.5},
-  {secao: 2.5, capacidade: 24},
-  {secao: 4,   capacidade: 32},
-  {secao: 6,   capacidade: 41},
-  {secao: 10,  capacidade: 57},
-  {secao: 16,  capacidade: 76},
-  {secao: 25,  capacidade: 101},
-  {secao: 35,  capacidade: 125},
-  {secao: 50,  capacidade: 151},
-  {secao: 70,  capacidade: 192},
-  {secao: 95,  capacidade: 232},
+  {secao: 1.5, c2: 17.5, c3: 15.5},
+  {secao: 2.5, c2: 24,   c3: 21},
+  {secao: 4,   c2: 32,   c3: 28},
+  {secao: 6,   c2: 41,   c3: 36},
+  {secao: 10,  c2: 57,   c3: 50},
+  {secao: 16,  c2: 76,   c3: 68},
+  {secao: 25,  c2: 101,  c3: 89},
+  {secao: 35,  c2: 125,  c3: 111},
+  {secao: 50,  c2: 151,  c3: 134},
+  {secao: 70,  c2: 192,  c3: 171},
+  {secao: 95,  c2: 232,  c3: 207},
 ];
 
 function calcular(){
   const i = parseFloat(document.getElementById('corrente').value);
   if(!i || i <= 0){ hidePanels(); return; }
-
-  const escolhido = tabelaReferencia.find(c => c.capacidade >= i);
+  const cond = document.querySelector('input[name="cond"]:checked').value;
+  const nCond = cond === 'c2' ? 2 : 3;
   const warnEl = document.getElementById('resultWarn');
+  const idx = tabelaReferencia.findIndex(c => c[cond] >= i);
 
-  if(!escolhido){
+  if(idx < 0){
     document.getElementById('resultValue').textContent = 'Acima da tabela';
     document.getElementById('resultContext').textContent = 'Corrente muito alta para esta tabela simplificada';
     document.getElementById('resultBreakdown').innerHTML = `<div><span>Corrente informada</span><strong>${i} A</strong></div>`;
@@ -433,30 +443,41 @@ function calcular(){
     revealPanels();
     return;
   }
+  const esc = tabelaReferencia[idx];
+  const ant = idx > 0 ? tabelaReferencia[idx-1] : null;
+  const cap = esc[cond];
+  const fmt = n => String(n).replace('.', ',');
 
-  document.getElementById('resultValue').textContent = escolhido.secao + ' mm²';
-  document.getElementById('resultContext').textContent = 'Bitola de referência para o seu circuito';
+  document.getElementById('resultValue').textContent = fmt(esc.secao) + ' mm²';
+  document.getElementById('resultContext').textContent = 'Seção mínima de referência para a corrente informada';
   document.getElementById('resultBreakdown').innerHTML = `
-    <div><span>Corrente do circuito</span><strong>${i} A</strong></div>
-    <div><span>Capacidade de referência</span><strong>${escolhido.capacidade} A</strong></div>
-    <div><span>Método</span><strong>B1 (eletroduto embutido)</strong></div>
-    <div><span>Isolação</span><strong>PVC, cobre</strong></div>
+    <div><span>Corrente do circuito</span><strong>${fmt(i)} A</strong></div>
+    <div><span>Capacidade do cabo</span><strong>${fmt(cap)} A</strong></div>
+    <div><span>Condutores carregados</span><strong>${nCond}</strong></div>
+    <div><span>Método / isolação</span><strong>B1 · PVC · cobre</strong></div>
   `;
 
+  let aviso = 'Este valor é uma capacidade de condução de referência para condições padrão — o dimensionamento real também depende do método de instalação, agrupamento de cabos, temperatura ambiente e queda de tensão.';
+  if(esc.secao < 2.5) aviso += ' Atenção: em circuitos de tomadas e outros de força a NBR 5410 exige no mínimo 2,5 mm² (1,5 mm² vale para iluminação).';
   warnEl.style.display = 'block';
-  warnEl.textContent = 'Este valor é uma capacidade de condução de referência para condições padrão — o dimensionamento real também depende do método de instalação, agrupamento de cabos, temperatura ambiente e queda de tensão. Confira também a calculadora de queda de tensão para trechos longos, e valide com um profissional.';
+  warnEl.textContent = aviso;
 
+  const passoAnt = ant
+    ? `<p><strong>3. Por que não ${fmt(ant.secao)} mm²?</strong> Ele suporta só ${fmt(ant[cond])} A, menos que os ${fmt(i)} A do circuito.</p>`
+    : `<p><strong>3.</strong> Esta é a menor seção da tabela.</p>`;
   document.getElementById('howtoBody').innerHTML = `
-    <p>Como funciona:</p>
-    <p>Comparamos a corrente do seu circuito (${i} A) com a tabela de capacidade de condução de referência da NBR 5410 para o método B1, escolhendo a primeira bitola cuja capacidade seja igual ou maior que a corrente.</p>
-    <code>${escolhido.secao} mm² → suporta até ${escolhido.capacidade} A (referência)</code>
+    <p><strong>1. Corrente do circuito (Ib):</strong> ${fmt(i)} A — o valor que você informou.</p>
+    <p><strong>2. Condição de referência:</strong> cobre, isolação de PVC, eletroduto embutido em alvenaria (B1), 30 °C, ${nCond} condutores carregados.</p>
+    ${passoAnt}
+    <p><strong>4. Seção escolhida:</strong> a primeira seção da tabela cuja capacidade (Iz) é maior ou igual à corrente.</p>
+    <code>Ib = ${fmt(i)} A ≤ Iz = ${fmt(cap)} A → ${fmt(esc.secao)} mm²</code>
+    <p><strong>5. O que ainda falta conferir:</strong> queda de tensão (circuitos longos), agrupamento com outros circuitos, temperatura ambiente e o disjuntor, que precisa ficar entre Ib e Iz.</p>
   `;
 
   document.getElementById('nextGrid').innerHTML = `
     <a class="next-card" href="/calculadora-disjuntor.html"><div class="nc-q">Quer saber o disjuntor ideal?</div><div class="nc-cta">CALCULAR DISJUNTOR →</div></a>
     <a class="next-card" href="/calculadora-queda-tensao.html"><div class="nc-q">Circuito longo? Confira a queda de tensão</div><div class="nc-cta">VERIFICAR QUEDA →</div></a>
   `;
-
   revealPanels();
 }
 
