@@ -1,0 +1,180 @@
+/* Guia Elétrica Fácil — efeitos visuais leves (CSS puro, sem dependências) */
+
+/* Barra de progresso de leitura: "carga" amarela no topo */
+.efx-bar{position:fixed;top:0;left:0;right:0;height:2px;z-index:200;pointer-events:none;
+  background:linear-gradient(90deg,#F5C518,#FF6B2B);box-shadow:0 0 8px rgba(245,197,24,.6);
+  transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+
+/* Header ganha profundidade ao rolar */
+header{transition:box-shadow .25s}
+header.efx-stuck{box-shadow:0 6px 24px rgba(0,0,0,.45)}
+
+/* Menu: sublinhado que "corre" no hover */
+header .header-inner nav a{position:relative}
+header .header-inner nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;
+  background:var(--yellow,#F5C518);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+header .header-inner nav a:hover::after,header .header-inner nav a.current::after{transform:scaleX(1)}
+
+/* Entrada suave ao rolar (só ativa quando o JS adiciona a classe .js) */
+@keyframes efx-in{from{opacity:0;translate:0 22px}}
+.js .rv:not(.rv-in){opacity:0}
+.js .rv.rv-in{animation:efx-in .6s cubic-bezier(.22,.8,.3,1) var(--d,0s) backwards}
+.js .rv.rv-now{animation:none}
+
+/* Fio que "energiza" sob os títulos de seção */
+@keyframes efx-wire{from{transform:scaleX(0)}}
+.section-tag+h2::after{content:"";display:block;width:56px;height:3px;margin:10px 0 -4px;border-radius:2px;
+  background:var(--yellow,#F5C518);box-shadow:0 0 10px rgba(245,197,24,.45);transform-origin:left}
+.js .section-tag+h2.rv-in::after{animation:efx-wire .8s .25s cubic-bezier(.22,.8,.3,1) backwards}
+
+/* Cards: brilho que segue o mouse + ícone com "faísca" */
+@media (hover:hover){
+  .card:hover,.hub-card:hover,.tip:hover,.next-card:hover{
+    background-image:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(245,197,24,.09),transparent 70%)}
+}
+.card-icon{transition:transform .25s}
+.card:hover .card-icon,.hub-card:hover .card-icon{transform:scale(1.12) rotate(-6deg)}
+
+/* Feedback de clique nos botões */
+.hero-cta:active,.btn:active,.btn-calc:active,.btn-affiliate:active,.btn-ebook:active{transform:scale(.97)}
+
+/* Calculadoras: "faísca" quando o resultado aparece/muda */
+@keyframes efx-spark{0%{box-shadow:0 0 0 0 rgba(245,197,24,.55)}100%{box-shadow:0 0 0 14px rgba(245,197,24,0)}}
+@keyframes efx-pop{from{opacity:.25;translate:0 8px}}
+.result-panel.efx-spark{animation:efx-spark .7s ease-out}
+.result-panel.efx-spark .result-value{animation:efx-pop .4s ease-out}
+
+
+/* Hero: inclinação 3D suave no cartão e botões "magnéticos" */
+.hero-visual{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out}
+@media (hover:hover){.hero-cta{translate:var(--tx,0) var(--ty,0)}}
+
+/* Fundo de energia no hero (canvas criado pelo JS) */
+.hero{position:relative;isolation:isolate}
+.efx-plasma{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 35%,transparent 78%);
+  mask-image:radial-gradient(ellipse at 50% 50%,#000 35%,transparent 78%)}
+
+/* Corrente passando na borda superior das estatísticas */
+.stats{position:relative;overflow:hidden}
+@keyframes efx-run{from{transform:translateX(-100%)}to{transform:translateX(400%)}}
+.stats::before{content:"";position:absolute;top:0;left:0;width:25%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--yellow,#F5C518),transparent);animation:efx-run 5s linear infinite}
+
+/* Palco do carro elétrico 3D */
+.efx-stage{position:relative;border:1px solid var(--border,#2E2E2E);border-radius:14px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 75%,rgba(245,197,24,.08),transparent 70%),var(--surface,#1A1A1A)}
+.efx-stage canvas{display:block;width:100%;height:auto;aspect-ratio:26/15;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.efx-hint{position:absolute;right:12px;bottom:10px;font-size:11px;letter-spacing:.5px;color:var(--muted,#888);pointer-events:none;transition:opacity .4s}
+.efx-used .efx-hint{opacity:0}
+.efx-ev{border-top:1px solid var(--border,#2E2E2E);border-bottom:1px solid var(--border,#2E2E2E);
+  background:radial-gradient(ellipse at 78% 50%,rgba(245,197,24,.09),transparent 60%)}
+.efx-ev-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.efx-ev .section-sub{margin-bottom:28px}
+.efx-hero2{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+@media (max-width:768px){.efx-ev-grid,.efx-hero2{grid-template-columns:1fr;gap:28px}.hero-visual{transform:none}}
+
+/* Seletor de cor do carro */
+.efx-cores{position:absolute;left:12px;bottom:8px;display:flex;gap:4px}
+.efx-cores button{width:22px;height:22px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.efx-cores button::before{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--c);border:2px solid rgba(255,255,255,.25);transition:transform .2s,border-color .2s}
+.efx-cores button:hover::before{transform:scale(1.15)}
+.efx-cores button.on::before{border-color:#fff}
+.efx-cores button:focus-visible{outline:2px solid var(--yellow,#F5C518);outline-offset:1px;border-radius:50%}
+
+/* ===== Base: acabamento profissional (todas as páginas) ===== */
+html{scroll-padding-top:84px;color-scheme:dark;-webkit-text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:#F5C518;color:#0F0F0F}
+:focus-visible{outline:2px solid var(--yellow,#F5C518);outline-offset:3px;border-radius:4px}
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+img{max-width:100%;height:auto}
+
+/* fundo "planta elétrica": grade amarela bem sutil no topo */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(245,197,24,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(245,197,24,.035) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 85% 55% at 50% 0,#000,transparent 75%);
+  mask-image:radial-gradient(ellipse 85% 55% at 50% 0,#000,transparent 75%)}
+
+/* tabelas: linha destacada ao passar o mouse */
+tbody tr{transition:background .2s}
+@media (hover:hover){tbody tr:hover{background:rgba(245,197,24,.05)}}
+
+/* campos: foco claro */
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--yellow,#F5C518)!important;box-shadow:0 0 0 3px rgba(245,197,24,.16)}
+
+/* sombra suave nos cards ao passar o mouse */
+@media (hover:hover){.card:hover,.hub-card:hover,.next-card:hover{box-shadow:0 16px 36px -20px rgba(245,197,24,.4)}}
+
+/* rodapé com filete de luz */
+footer{position:relative}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(245,197,24,.55),transparent)}
+
+/* "Leia também" no fim dos guias */
+.efx-related{margin:44px 0 0;padding:16px 20px;border:1px solid var(--border,#2E2E2E);border-left:3px solid var(--yellow,#F5C518);
+  border-radius:10px;background:var(--surface,#1A1A1A);font-size:15px;line-height:1.6;color:var(--muted,#888)}
+.efx-related strong{color:var(--text,#F0EDE6);margin-right:6px}
+.efx-related a{color:var(--yellow,#F5C518);font-weight:500}
+.efx-related a:hover{text-decoration:underline}
+
+/* perguntas mais buscadas (home) */
+.efx-quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.efx-quick-grid a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border:1px solid var(--border,#2E2E2E);
+  border-radius:12px;background:var(--dark,#0F0F0F);font-weight:500;line-height:1.5;color:var(--text,#F0EDE6);transition:border-color .2s,transform .2s}
+.efx-quick-grid a::after{content:"→";flex:none;color:var(--yellow,#F5C518);transition:transform .2s}
+.efx-quick-grid a:hover{border-color:var(--yellow,#F5C518);transform:translateY(-2px)}
+.efx-quick-grid a:hover::after{transform:translateX(4px)}
+@media (max-width:700px){.efx-quick-grid{grid-template-columns:1fr}}
+
+/* link "pular para o conteúdo" */
+.efx-skip{position:fixed;left:12px;top:-64px;z-index:300;background:var(--yellow,#F5C518);color:#0F0F0F;padding:10px 16px;
+  border-radius:8px;font-weight:700;font-size:14px;transition:top .2s}
+.efx-skip:focus{top:12px}
+
+/* menu mobile */
+.efx-burger{display:none;width:44px;height:44px;margin-right:-10px;border:0;background:none;cursor:pointer;position:relative;border-radius:10px}
+.efx-burger span,.efx-burger span::before,.efx-burger span::after{position:absolute;height:2px;border-radius:2px;background:var(--text,#F0EDE6);transition:transform .25s,top .25s,background .2s}
+.efx-burger span{content:"";display:block;left:11px;right:11px;top:21px}
+.efx-burger span::before,.efx-burger span::after{content:"";left:0;right:0}
+.efx-burger span::before{top:-7px}
+.efx-burger span::after{top:7px}
+.efx-open .efx-burger span{background:transparent}
+.efx-open .efx-burger span::before{top:0;transform:rotate(45deg)}
+.efx-open .efx-burger span::after{top:0;transform:rotate(-45deg)}
+.efx-menu{display:none;position:fixed;left:0;right:0;top:var(--efx-h,64px);z-index:99;max-height:calc(100vh - var(--efx-h,64px));overflow:auto;
+  padding:8px 24px 28px;background:rgba(15,15,15,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--border,#2E2E2E)}
+.efx-menu a{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--border,#2E2E2E);
+  font-size:16px;font-weight:500;color:var(--text,#F0EDE6)}
+.efx-menu a::after{content:"→";color:var(--muted,#888);transition:transform .2s,color .2s}
+.efx-menu a:hover::after{transform:translateX(4px);color:var(--yellow,#F5C518)}
+.efx-menu a[aria-current]{color:var(--yellow,#F5C518)}
+@keyframes efx-menu{from{opacity:0;translate:0 -8px}}
+@media (max-width:768px){
+  .efx-burger{display:block}
+  .efx-open .efx-menu{display:block;animation:efx-menu .25s ease-out}
+  .efx-lock{overflow:hidden}
+}
+
+/* voltar ao topo */
+.efx-top{position:fixed;right:18px;bottom:18px;z-index:90;width:44px;height:44px;border-radius:50%;border:1px solid var(--border,#2E2E2E);
+  background:rgba(26,26,26,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--yellow,#F5C518);font-size:20px;line-height:1;
+  cursor:pointer;opacity:0;pointer-events:none;translate:0 10px;transition:opacity .25s,translate .25s,border-color .2s}
+.efx-top.on{opacity:1;pointer-events:auto;translate:0 0}
+.efx-top:hover{border-color:var(--yellow,#F5C518)}
+
+/* Impressão: nada fica escondido */
+@media print{.rv{opacity:1!important;animation:none!important}.efx-bar,.efx-plasma,.efx-stage,.efx-menu,.efx-burger,.efx-top,.efx-skip,header,footer,.adsbygoogle{display:none!important}body::before{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .efx-bar{display:none}
+  .result-panel.efx-spark,.result-panel.efx-spark .result-value{animation:none}
+  header .header-inner nav a::after,header,.card-icon,.hero-visual{transition:none}
+  .stats::before{animation:none;display:none}
+  .hero-visual,.hero-cta{transform:none;translate:none}
+  .efx-top,.efx-burger span,.efx-burger span::before,.efx-burger span::after{transition:none}
+  .efx-open .efx-menu{animation:none}
+}
+
