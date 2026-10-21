@@ -3,7 +3,7 @@ Guia Elétrica Fácil — pacote 3D v12
 
 efeitos3d.js (cache ?v=7)
 - Removidos do carro os painéis de vidro planos, as molduras e o "pilar" da v10/v11: apareciam soltos, fora da carroceria. Os vidros voltam a ser desenhados no shader.
-- Nova versão do carro para a home (data-efx3d="carro2"): pintura pérola, teto panorâmico de vidro, rodas turbina de 10 raios, barra de DRL contínua entre os faróis e rodapé escuro. A página do carregador continua com o carro azul (data-efx3d="carro").
+- Novo carro da home (data-efx3d="carro2"): esportivo elétrico original, sem marca, com carroceria própria (baixa e larga, cabine avançada, traseira musculosa). Sinais de EV: sem grade frontal, faixa de LED contínua no focinho, lâminas de ar na lateral, barra de luz traseira, rodas aerodinâmicas turbina com pinças de freio e porta de carga com wallbox. Botão "Trocar cor" (amarelo, branco, vermelho, azul, preto). A página do carregador também usa o esportivo (carro2). O sedã azul (data-efx3d="carro") continua disponível no código, sem uso nas páginas.
 - Curva de tom suave: os brilhos deixam de estourar em branco chapado.
 - Pintura com flocos metálicos e leve "casca de laranja".
 - Resolução interna maior (mínimo 1,4x) para reduzir serrilhado; a qualidade adaptativa continua baixando sozinha em aparelhos lentos.

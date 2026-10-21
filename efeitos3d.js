@@ -297,6 +297,70 @@
     if (tbar > .35 || fdrl > .35 || core > .4) { EMI = Math.max(tbar, fdrl, core * .8); if (tbar > Math.max(fdrl, core)) { EMR = 1; EMG = .15; EMB = .2; } else { EMR = .85; EMG = .93; EMB = 1; } }
   }
 
+
+  /* ===== carroceria do esportivo elétrico (variante 2): cabine avançada, traseira larga, sem grade ===== */
+  function carBodyS(px, py, pz, u, v, ax) {
+    var az = Math.abs(pz), P = U.paint, i;
+    var r = P[0] / 255, g = P[1] / 255, b = P[2] / 255;
+    var pw = .03, vhi = sstep(.575, .595, v), vsd = vhi * (1 - sstep(.80, .83, v));
+    var xA = 1.12 - (v - .585) * 1.7, xC = -1.2 + (v - .585) * 1.25;
+    /* vidros: para-brisa, laterais e vidro traseiro */
+    var wsh = sstep(xA + pw - .006, xA + pw + .006, u) * sstep(1.2, 1.185, u) * vhi * sstep(.97, .93, v);
+    var sid = sstep(xC + pw - .006, xC + pw + .006, u) * sstep(xA - pw + .006, xA - pw - .006, u) * vsd;
+    var rear = sstep(-1.82, -1.8, u) * sstep(xC - pw + .006, xC - pw - .006, u) * vhi * sstep(.9, .86, v);
+    var gl = Math.max(wsh, sid, rear);
+    if (u > 1.2 || u < -1.82) gl = 0;
+    /* soleira e moldura do vidro */
+    var sill = sstep(.55, .565, v) * (1 - sstep(.585, .6, v));
+    var trimM = sill * .95;
+    var rocker = sstep(.3, .22, v), under = sstep(.16, .08, v);
+    var bf = sstep(1.98, 2.1, u) * sstep(.36, .3, v), br2 = sstep(-1.98, -2.12, u) * sstep(.44, .36, v);
+    var bump = Math.max(bf, br2);
+    /* portas: frestas e maçaneta embutida */
+    var sideF = sstep(.35, .7, az / .95) * sstep(.2, .28, v) * (1 - sstep(.53, .555, v));
+    var seam = Math.max(sstep(.008, .002, Math.abs(u - 1.0)), sstep(.008, .002, Math.abs(u + .3))) * sideF * .5;
+    var hbx = sstep(.08, .065, Math.abs(u + .12)), hnd = hbx * sstep(.014, .008, Math.abs(v - .49)) * sideF;
+    /* lâmina lateral de ar (entrada de refrigeração das baterias/motor) com aletas */
+    var blade = sstep(-1.38, -1.3, u) * sstep(-.52, -.6, u) * sstep(.22, .27, v) * sstep(.545, .5, v) * sstep(.5, .75, az / .95);
+    var bl = .5 + .5 * Math.sin(u * 80);
+    /* capô: vinco central e junta */
+    var onHood = sstep(1.22, 1.3, u) * sstep(2.1, 2.0, u) * sstep(.74, .8, v);
+    var hseam = sstep(.006, .0015, Math.abs(v - .83)) * sstep(1.25, 1.35, u) * sstep(2.05, 1.95, u) * .5;
+    /* tampa traseira com aletas aerodinâmicas */
+    var deck = sstep(-1.78, -1.7, u) * sstep(-1.02, -1.1, u) * sstep(.86, .9, v);
+    var lv = deck * (.5 + .5 * Math.sin(u * 62));
+    /* faróis finos de LED, faixa de DRL azul-gelo e linha de luz contínua no focinho */
+    var sideW = sstep(.2, .35, az);
+    var fh = sstep(1.62, 1.72, u) * sstep(.435, .46, v) * sstep(.6, .575, v) * sideW * (1 - bump * .5);
+    var fdrl = fh * sstep(.016, .004, Math.abs(v - .535 + (u - 1.9) * .06));
+    var nline = sstep(2.0, 2.1, u) * sstep(.55, .4, az) * sstep(.008, .002, Math.abs(v - .52 - (u - 2.0) * .04)) * (1 - bump);
+    var ldx = (u - 1.92) / .1, ldz = (az - .72) / .09, ld = Math.sqrt(ldx * ldx + ldz * ldz);
+    var lens = fh * sstep(1.1, .6, ld), bez = fh * sstep(1.5, 1.1, ld) * (1 - lens), core = fh * sstep(.6, .15, ld);
+    /* lanterna traseira: barra contínua + cantos */
+    var tl = sstep(-1.92, -2.0, u) * sstep(.46, .48, v) * sstep(.58, .55, v);
+    var tbar = tl * sstep(.02, .006, Math.abs(v - .52));
+    var corner = sstep(-1.78, -1.9, u) * sstep(.52, .56, v) * sstep(.64, .6, v) * sstep(.55, .75, az / .95) * (1 - tl);
+    /* composição */
+    var br = r * (1 - seam), bg = g * (1 - seam), bb = b * (1 - seam), kr = .36, ks = 1.1;
+    var q = hnd * .85; br = mix(br, .02, q); bg = mix(bg, .022, q); bb = mix(bb, .028, q);
+    q = Math.max(rocker * .93, blade * .9, bump * .92, trimM, lv * .55, fh * .93, tl * .9, corner * .8, hseam * .5);
+    br = mix(br, .016, q); bg = mix(bg, .018, q); bb = mix(bb, .022, q); kr = mix(kr, .3, q);
+    br = mix(br, .007, gl); bg = mix(bg, .012, gl); bb = mix(bb, .024, gl); kr = mix(kr, .55, gl);
+    q = under; br = mix(br, .012, q); bg = mix(bg, .012, q); bb = mix(bb, .014, q); kr = mix(kr, .08, q);
+    var paintK = (1 - gl) * (1 - Math.max(q, rocker, bump, blade));
+    var fl = hash2(Math.floor(u * 300), Math.floor(v * 300));
+    var flake = paintK * (fl > .94 ? 1 : 0);
+    light(br, bg, bb, 1 - gl * .85, kr, ks * (1 + gl * 1.3), 1, 0);
+    cr += flake * .03 * (.4 + cr); cg += flake * .03 * (.4 + cg); cb += flake * .03 * (.4 + cb);
+    var bs = blade * (1 - bl) * .06; cr += bs; cg += bs; cb += bs * 1.2;
+    cr += bez * .1 + lens * .55; cg += bez * .11 + lens * .6; cb += bez * .12 + lens * .7;
+    cr += core * .85; cg += core * .92; cb += core;
+    var drl = Math.max(fdrl, nline);
+    cr += drl * .85; cg += drl * 1.0; cb += drl * 1.2;
+    cr += tbar * 1.5 + corner * .55; cg += tbar * .08 + corner * .02; cb += tbar * .14 + corner * .04;
+    if (tbar > .35 || drl > .35 || core > .4) { EMI = Math.max(tbar, drl, core * .8); if (tbar > Math.max(drl, core)) { EMR = 1; EMG = .15; EMB = .2; } else { EMR = .8; EMG = .92; EMB = 1; } }
+  }
+
   function wheelShade(m, g, px, py, pz) {
     var w = WC[g], dx = px - w[0], dy = py - w[1], rad = Math.sqrt(dx * dx + dy * dy);
     if (m === M.TIRE) {
@@ -308,8 +372,8 @@
       return;
     }
     /* RIM: raios em "Y" duplo, anel externo e cubo */
-    var ang = Math.atan2(dy, dx) + U.t * 0, a5 = ang * (U.variant === 1 ? 10 : 5) / 6.28319 + (U.variant === 1 ? rad * 2.2 : 0), fa = a5 - Math.floor(a5) - .5;
-    var wsp = U.variant === 1 ? mix(.09, .14, sstep(.06, .24, rad)) : mix(.17, .27, sstep(.06, .24, rad));
+    var ang = Math.atan2(dy, dx) + U.t * 0, a5 = ang * (U.variant >= 1 ? 10 : 5) / 6.28319 + (U.variant >= 1 ? rad * 2.2 : 0), fa = a5 - Math.floor(a5) - .5;
+    var wsp = U.variant >= 1 ? mix(.09, .14, sstep(.06, .24, rad)) : mix(.17, .27, sstep(.06, .24, rad));
     var spoke = sstep(wsp + .02, wsp - .02, Math.abs(fa)) * sstep(.045, .075, rad);
     var lip = sstep(.215, .225, rad);
     var cap = 1 - sstep(.045, .05, rad);
@@ -317,9 +381,13 @@
     var k = sol > .5 ? 1 : 0;
     /* interior: disco de freio e sombra */
     var br = mix(.05, .66, sol), bgc = mix(.05, .68, sol), bbc = mix(.06, .72, sol);
-    if (U.variant === 1) { var lp = lip * (1 - cap), gr = mix(.13, .72, lp); br = mix(.05, gr, sol); bgc = mix(.05, gr * 1.02, sol); bbc = mix(.06, gr * 1.06, sol); }
+    if (U.variant >= 1) { var lp = lip * (1 - cap), gr = mix(.13, .72, lp); br = mix(.05, gr, sol); bgc = mix(.05, gr * 1.02, sol); bbc = mix(.06, gr * 1.06, sol); }
     light(br, bgc, bbc, mix(.5, 1, sol), mix(.2, .9, sol), mix(.2, 1.1, sol), 0, 1);
     if (cap > .5) { cr *= .45; cg *= .45; cb *= .5; }
+    if (U.variant === 2 && sol < .5) { /* pinça de freio atrás dos raios */
+      var cang = Math.atan2(dy, dx), cal = sstep(.1, .13, rad) * sstep(.215, .19, rad) * sstep(.62, .5, Math.abs(cang - .9));
+      if (cal > .5) { light(.78, .08, .06, 1, .3, .9, 1, 0); }
+    }
   }
 
   function shade(m, g, px, py, pz, nx, ny, nz, u, v, ax) {
@@ -331,7 +399,7 @@
     NX = nx; NY = ny; NZ = nz; VX = vx; VY = vy; VZ = vz; ca = 255; EMI = 0;
     var c;
     switch (m) {
-      case M.PAINT: carBody(px, py, pz, u, v, ax); break;
+      case M.PAINT: if (U.variant === 2) carBodyS(px, py, pz, u, v, ax); else carBody(px, py, pz, u, v, ax); break;
       case M.TIRE: case M.RIM: wheelShade(m, g, px, py, pz); break;
       case M.ARCH: light(.012, .012, .014, 1, .02, 0, 0, 0); break;
       case M.UNDER: light(.02, .02, .024, .6, .05, 0, 0, 0); break;
@@ -596,7 +664,89 @@
   }
   /* v12: versão da home (carro2) — pérola, teto panorâmico, rodas turbina de 10 raios, DRL contínuo */
   SC.carro = { build: buildCar, pitch: .2, dist: 12.8, focal: 1.78, cy: .6, target: [-.1, .66, .1], ground: groundCar, yaw0: 3.5, auto: .3, label: 'Carro elétrico em 3D carregando na wallbox' };
-  SC.carro2 = { build: buildCar, variant: 1, paintColor: [236, 238, 244], pitch: .17, dist: 12.4, focal: 1.78, cy: .6, target: [-.1, .66, .1], ground: groundCar, yaw0: 2.35, auto: .2, label: 'Carro elétrico em 3D carregando na wallbox' };
+  /* ================= esportivo elétrico (carro2): modelo original, sem marca ================= */
+  var SL = 2.25, SWH = [1.38, -1.32], SWZ = .8;
+  var syTop = hermite([[-2.25, .6], [-2.15, .72], [-1.95, .84], [-1.5, .93], [-1.0, 1.0], [-.55, 1.07], [-.1, 1.115], [.3, 1.1], [.62, 1.04], [.95, .9], [1.25, .78], [1.6, .69], [2.0, .6], [2.25, .5]]);
+  var syBelt = hermite([[-2.25, .6], [-1.9, .8], [-1.2, .82], [0, .8], [1.0, .74], [1.8, .64], [2.25, .5]]);
+  var syBot = hermite([[-2.25, .3], [-2.1, .19], [-1.8, .14], [1.8, .14], [2.1, .17], [2.25, .26]]);
+  function swB(x) { var u = Math.min(1, Math.abs(x) / SL), e = x > 0 ? 5 : 6; return .97 * (1 - .1 * sstep(.3, 1, x / SL)) * Math.pow(Math.max(0, 1 - Math.pow(u, e)), 1 / e); }
+  function sflare(x) { var a = (x - SWH[0]) / .5, b = (x - SWH[1]) / .55; return Math.exp(-a * a) * .8 + Math.exp(-b * b) * 1.3; } /* ombros traseiros mais largos */
+  function sRing(x) {
+    var yt = syTop(x), ybl = Math.min(syBelt(x), yt - .02), yb = Math.min(syBot(x), ybl - .1), wb = swB(x);
+    var g = clamp((yt - ybl) / .3, 0, 1), wg = wb * .68, d = yt - ybl; wb += sflare(x) * .03;
+    return [[0, yb], [wb * .8, yb], [wb * .96, yb + .06], [wb, yb + (ybl - yb) * .42], [wb * .995, ybl - (ybl - yb) * .12], [wb * .985, ybl],
+      [mix(wb * .93, wg, g), ybl + d * .1], [mix(wb * .82, wg * .95, g), ybl + d * .52], [mix(wb * .55, wg * .78, g), ybl + d * .9], [0, yt]];
+  }
+  function sArch(x, y) { var best = 0; for (var k = 0; k < 2; k++) { var dx = x - SWH[k], dy = y - WYC, d = Math.sqrt(dx * dx + dy * dy); best = Math.max(best, 1 - sstep(ARCH_IN, ARCH_OUT, d)); } return best; }
+  function buildSport() {
+    var m = new Mesh(), NXR = 130, xs = [], i;
+    for (i = 0; i <= NXR; i++) xs.push(-SL * Math.cos(Math.PI * i / NXR));
+    var rings = xs.map(function (x) { return chaikin(sRing(x), 2); });
+    var np = rings[0].length, nloop = np * 2 - 2;
+    m.grid(NXR + 1, nloop, function (i, j) {
+      var side = 1, idx = j;
+      if (j >= np) { side = -1; idx = nloop - j; }
+      var q = rings[i][idx], x = xs[i], y = q[1], z = q[0], a = sArch(x, y);
+      var zz = z > .62 ? .62 + (z - .62) * (1 - a) : z;
+      return [x, y, side * zz, x, q[2] / 9, a];
+    }, M.PAINT, 0, true);
+    /* rodas: pneus mais largos atrás, aro turbina */
+    WC = [];
+    [1, -1].forEach(function (s) {
+      SWH.forEach(function (xw, wi) {
+        var gi = WC.length, cz = s * SWZ, k = wi === 1 ? 1.14 : 1;
+        WC.push([xw, WYC, cz]);
+        var tire = [[.25, -.115 * k], [.3, -.125 * k], [.335, -.12 * k], [.357, -.085 * k], [.362, -.035 * k], [.362, .035 * k], [.357, .085 * k], [.335, .12 * k], [.3, .125 * k], [.25, .115 * k]];
+        m.lathe(xw, WYC, cz, tire, 44, M.TIRE, gi, 'z');
+        m.lathe(xw, WYC, cz, [[.25, -.115 * k], [.236, -.11 * k], [.236, .11 * k], [.25, .115 * k]], 32, M.ARCH, gi, 'z');
+        m.lathe(xw, WYC, cz, [[0, s * .085], [.05, s * .095], [.145, s * .1], [.236, s * .108]], 44, M.RIM, gi, 'z');
+      });
+    });
+    /* retrovisores em carbono sobre hastes finas */
+    [1, -1].forEach(function (s) {
+      m.roundBox(.74, .9, s * 1.0, .1, .04, .06, .035, 5, M.TRIM, 0);
+      m.roundBox(.82, .84, s * .93, .04, .06, .04, .02, 3, M.TRIM, 0);
+      /* frisos de carbono nas soleiras e entradas do spoiler dianteiro */
+      m.roundBox(.35, .17, s * .93, .75, .02, .02, .012, 3, M.TRIM, 0);
+    });
+    m.roundBox(2.1, .125, 0, .07, .012, .5, .01, 3, M.TRIM, 0);        /* splitter dianteiro */
+    m.roundBox(-1.97, .875, 0, .1, .012, .66, .01, 3, M.TRIM, 0);    /* aerofólio/lip traseiro fixo */
+    m.roundBox(-2.17, .2, 0, .06, .03, .42, .012, 3, M.TRIM, 0);    /* difusor traseiro */
+    for (i = -3; i <= 3; i++) m.roundBox(-2.2, .2, i * .11, .05, .035, .007, .004, 2, M.TRIM, 0);
+    /* porta de carga na lateral traseira (+z) */
+    var px = -1.62, py = .8, pz = swB(px) * .985;
+    m.roundBox(px, py, pz + .004, .065, .05, .012, .012, 4, M.TRIM, 0);
+    m.roundBox(px, py, pz + .014, .035, .026, .006, .006, 3, M.LED, 0);
+    /* wallbox, cabo catenária e plugue (mesmos da cena do sedã) */
+    var wx = -2.5, wz = 1.85;
+    m.roundBox(wx, .03, wz, .27, .03, .22, .02, 4, M.BASE, 0);
+    m.roundBox(wx, .55, wz, .06, .55, .06, .03, 4, M.WALL, 0);
+    m.roundBox(wx, 1.12, wz, .21, .3, .1, .07, 6, M.WALL, 0);
+    m.roundBox(wx, 1.15, wz - .09, .15, .21, .02, .02, 4, M.TRIM, 0);
+    m.roundBox(wx, 1.46, wz, .1, .018, .06, .012, 3, M.LED, 1);
+    m.roundBox(wx, 1.2, wz - .108, .045, .055, .006, .006, 3, M.LED, 1);
+    var pts = [], A = [wx + .1, .86, wz - .02], B = [px - .02, py - .01, pz + .03];
+    for (i = 0; i <= 22; i++) {
+      var t = i / 22;
+      pts.push([mix(A[0], B[0], t) + Math.sin(t * 3.14) * .22, mix(A[1], B[1], t) - Math.sin(t * 3.14) * .46 * (1 - t * .3), mix(A[2], B[2], t) + Math.sin(t * 3.14) * .1]);
+    }
+    m.tube(pts, .024, 9, M.CABLE, 0);
+    m.roundBox(B[0], B[1], B[2] - .012, .045, .04, .045, .018, 4, M.CABLE, 0);
+    return m.finish();
+  }
+  var SPORT_PAINTS = [PAINTS.amarelo, PAINTS.branco, PAINTS.vermelho, PAINTS.azul, PAINTS.preto];
+  SC.carro2 = {
+    build: buildSport, variant: 2, pitch: .15, dist: 12.6, focal: 1.78, cy: .62, target: [-.2, .52, .1], ground: groundCar, yaw0: 2.5, auto: .2,
+    paint: function (st) { return SPORT_PAINTS[(st.pi || 0) % SPORT_PAINTS.length]; },
+    label: 'Esportivo elétrico em 3D carregando na wallbox',
+    controls: function (wrap, st, api) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'efx-toggle'; b.setAttribute('aria-label', 'Trocar a cor do carro');
+      b.textContent = 'Trocar cor';
+      b.addEventListener('click', function (e) { e.stopPropagation(); st.pi = ((st.pi || 0) + 1) % SPORT_PAINTS.length; api.draw(); });
+      b.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+      wrap.appendChild(b);
+    }
+  };
 
 
   /* ================= cenas extras: disjuntor, lâmpada LED, painel solar ================= */
@@ -778,7 +928,7 @@
 
     function ensure() {
       if (ready) return;
-      if (!sc.mesh) sc.mesh = sc.build();
+      if (!sc.mesh) { sc.mesh = sc.build(); sc.wc = WC; }
       if (sc.init && !sc.inited) { sc.inited = true; sc.init(); }
       ready = true;
     }
@@ -804,7 +954,7 @@
       var ts = performance.now();
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, cw, ch);
       if (sc.ground) sc.ground(ctx, cw, ch, st, proj);
-      U.variant = sc.variant || 0; U.paint = sc.paint ? sc.paint(st) : (sc.paintColor || PAINTS.azul);
+      if (sc.wc) WC = sc.wc; U.variant = sc.variant || 0; U.paint = sc.paint ? sc.paint(st) : (sc.paintColor || PAINTS.azul);
       var b = renderScene(sc, st, ctx, cw, ch);
       ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(b.cv, 0, 0, cw, ch);
