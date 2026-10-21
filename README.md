@@ -11,7 +11,7 @@ Publicado em <https://guiaeletricafacil.com.br> (GitHub Pages, site estático).
 | `*.html` | Páginas do site (CSS específico de cada página fica inline) |
 | `efeitos.css` | Camada visual compartilhada: acabamento, menu mobile, animações de entrada, efeitos de energia |
 | `efeitos.js` | Interface compartilhada: menu mobile, link "pular para o conteúdo", voltar ao topo, barra de progresso, animações |
-| `efeitos3d.js` | Carro elétrico 3D (canvas, sem bibliotecas) e fagulhas do hero — só carrega em `index.html` e `carregador-veiculo-eletrico.html` |
+| `efeitos3d.js` | Cenas 3D em canvas, sem bibliotecas: carro elétrico (`carro` na página do carregador, `carro2` na home), disjuntor, lâmpada LED e painel solar, além das fagulhas do hero — carrega só em `index.html`, `carregador-veiculo-eletrico.html`, `disjuntores.html`, `calculadora-lampadas.html` e `energia-solar.html` |
 | `404.html` | Página de erro personalizada |
 | `site.webmanifest` | Metadados do site para celulares |
 | `og-image.png` | Imagem de compartilhamento (WhatsApp, redes sociais, Google Discover) |

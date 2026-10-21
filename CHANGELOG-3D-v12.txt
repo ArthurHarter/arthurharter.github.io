@@ -1,0 +1,20 @@
+Guia Elétrica Fácil — pacote 3D v12
+====================================
+
+efeitos3d.js (cache ?v=7)
+- Removidos do carro os painéis de vidro planos, as molduras e o "pilar" da v10/v11: apareciam soltos, fora da carroceria. Os vidros voltam a ser desenhados no shader.
+- Nova versão do carro para a home (data-efx3d="carro2"): pintura pérola, teto panorâmico de vidro, rodas turbina de 10 raios, barra de DRL contínua entre os faróis e rodapé escuro. A página do carregador continua com o carro azul (data-efx3d="carro").
+- Curva de tom suave: os brilhos deixam de estourar em branco chapado.
+- Pintura com flocos metálicos e leve "casca de laranja".
+- Resolução interna maior (mínimo 1,4x) para reduzir serrilhado; a qualidade adaptativa continua baixando sozinha em aparelhos lentos.
+- Lâmpada: removidos os anéis pretos que flutuavam fora do bulbo e suavizada a ponta superior.
+- Painel solar: removidas as tiras de grade da v10, que ficavam desalinhadas com as células do shader; agora só o shader desenha as células e os barramentos.
+
+Páginas
+- index.html: usa carro2, cache ?v=7 e o texto da tarifa de referência preenchido (R$ 0,81/kWh, mesmo valor do config-site.js).
+- carregador-veiculo-eletrico.html, disjuntores.html, calculadora-lampadas.html, energia-solar.html: cache ?v=7.
+- googleaaee2b92365fe048.html: estava vazio; agora tem o texto exigido pelo Google Search Console.
+
+Pendências que dependem de você (não preenchi dados pessoais)
+- config-site.js, index.html (rodapé), sobre.html e o bloco "editorial-stamp" do ebook ainda têm [PREENCHER: responsável técnico / autor / e-mail público]. Aparecem para o visitante.
+- Testar em Chrome/Firefox e no celular. A validação foi feita num renderizador de teste em Node, não num navegador real.

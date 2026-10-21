@@ -1,5 +1,5 @@
-/* Guia Elétrica Fácil — cenas 3D em canvas puro (sem bibliotecas):
-   carro elétrico + wallbox, disjuntor, lâmpada LED e painel solar.
+/* Guia Elétrica Fácil — cenas 3D em canvas puro (sem bibliotecas) — v12:
+   carro elétrico + wallbox (2 versões), disjuntor, lâmpada LED e painel solar.
    Renderizador próprio com z-buffer e sombreamento por pixel. */
 (function () {
   'use strict';
@@ -224,12 +224,13 @@
     var sid = sstep(xC + pw - .006, xC + pw + .006, u) * sstep(xA - pw + .006, xA - pw - .006, u) * vsd * (1 - sstep(.05, .035, Math.abs(u + .47)));
     var rear = sstep(-2.12, -2.1, u) * sstep(xC + .03, xC + .016, u) * vhi;
     var roof = 0;
-    var gl = Math.max(wsh, sid, rear, roof);
+    var gl = Math.max(wsh, sid, rear, roof), V1 = U.variant === 1;
     if (u > 1.06 || u < -2.12) gl = 0;
+    if (V1 && v > .9 && u > -1.62 && u < .5) gl = Math.max(gl, sstep(.905, .925, v) * sstep(-1.62, -1.55, u) * sstep(.5, .43, u));
     var sill = sstep(.55, .565, v) * (1 - sstep(.585, .6, v));
     var pill = vhi * (1 - sstep(.935, .95, v)) * (u > -2.12 && u < 1.06 ? 1 : 0);
     var trimM = Math.max(sill * .96, pill * .95 * (1 - gl));
-    var rocker = sstep(.27, .2, v), under = sstep(.16, .08, v);
+    var rocker = V1 ? sstep(.31, .22, v) : sstep(.27, .2, v), under = sstep(.16, .08, v);
     /* para-choques escuros (entrada de ar na frente, difusor atrás) */
     var bf = sstep(1.96, 2.1, u) * sstep(.42, .36, v), br2 = sstep(-2.0, -2.14, u) * sstep(.4, .33, v);
     var bump = Math.max(bf, br2);
@@ -262,6 +263,8 @@
     var ldx = (u - 1.93) / .07, ldz = (az - .6) / .09, ld = Math.sqrt(ldx * ldx + ldz * ldz);
     var lens = fh * sstep(1.1, .6, ld), bez = fh * sstep(1.5, 1.1, ld) * (1 - lens);
     var tl = sstep(-1.9, -1.97, u) * sstep(.42, .44, v) * sstep(.545, .52, v);
+    /* versão 2 (home): barra de DRL contínua entre os faróis */
+    var fbar = V1 ? sstep(1.9, 2.0, u) * sstep(.5, .36, az) * sstep(.011, .003, Math.abs(v - .505 - (u - 1.74) * .05)) * (1 - bump) : 0;
     var tbar = tl * sstep(.022, .007, Math.abs(v - .485));
     /* composição da cor-base */
     var br = r * (1 - seam), bg = g * (1 - seam), bb = b * (1 - seam), kr = .34, ks = 1;
@@ -275,7 +278,11 @@
     br = mix(br, .008, gl); bg = mix(bg, .014, gl); bb = mix(bb, .026, gl);
     kr = mix(kr, .5, gl);
     q = Math.max(under, arch); br = mix(br, .012, q); bg = mix(bg, .012, q); bb = mix(bb, .014, q); kr = mix(kr, .08, q);
-    light(br, bg, bb, 1 - gl * .85, kr, ks * (1 + gl * 1.2), 1, 0);
+    var paintK = (1 - gl) * (1 - Math.max(q, rocker, bump)) ;
+    var fl = hash2(Math.floor(u * 260), Math.floor(v * 260));
+    var flake = paintK * (fl > .93 ? 1 : 0), op = paintK * (fl - .5) * .05; /* casca de laranja sutil */
+    light(br * (1 + op), bg * (1 + op), bb * (1 + op), 1 - gl * .85, kr, ks * (1 + gl * 1.2), 1, 0);
+    cr += flake * (V1 ? .022 : .05) * (.4 + cr); cg += flake * (V1 ? .022 : .05) * (.4 + cg); cb += flake * (V1 ? .022 : .05) * (.4 + cb);
     cr += hlt * .3 + hmid * .12; cg += hlt * .3 + hmid * .12; cb += hlt * .3 + hmid * .12;
     cr += intake * (1 - slat) * .06; cg += intake * (1 - slat) * .07; cb += intake * (1 - slat) * .09;
     cr += nose * .035; cg += nose * .045; cb += nose * .07;
@@ -284,6 +291,7 @@
     /* emissivos (cores puras, somadas sobre base preta) */
     var core = fh * sstep(.62, .14, ld); /* projetor aceso: núcleo claro dentro da lente */
     cr += core * .85; cg += core * .9; cb += core;
+    fdrl = Math.max(fdrl, fbar);
     cr += fdrl * 1.05 + tbar * 1.5; cg += fdrl * 1.08 + tbar * .1; cb += fdrl * 1.15 + tbar * .16;
     cr += tl * .1; cg += fh * .015; cb += fh * .03;
     if (tbar > .35 || fdrl > .35 || core > .4) { EMI = Math.max(tbar, fdrl, core * .8); if (tbar > Math.max(fdrl, core)) { EMR = 1; EMG = .15; EMB = .2; } else { EMR = .85; EMG = .93; EMB = 1; } }
@@ -300,8 +308,8 @@
       return;
     }
     /* RIM: raios em "Y" duplo, anel externo e cubo */
-    var ang = Math.atan2(dy, dx) + U.t * 0, a5 = ang * 5 / 6.28319, fa = a5 - Math.floor(a5) - .5;
-    var wsp = mix(.17, .27, sstep(.06, .24, rad));
+    var ang = Math.atan2(dy, dx) + U.t * 0, a5 = ang * (U.variant === 1 ? 10 : 5) / 6.28319 + (U.variant === 1 ? rad * 2.2 : 0), fa = a5 - Math.floor(a5) - .5;
+    var wsp = U.variant === 1 ? mix(.09, .14, sstep(.06, .24, rad)) : mix(.17, .27, sstep(.06, .24, rad));
     var spoke = sstep(wsp + .02, wsp - .02, Math.abs(fa)) * sstep(.045, .075, rad);
     var lip = sstep(.215, .225, rad);
     var cap = 1 - sstep(.045, .05, rad);
@@ -309,6 +317,7 @@
     var k = sol > .5 ? 1 : 0;
     /* interior: disco de freio e sombra */
     var br = mix(.05, .66, sol), bgc = mix(.05, .68, sol), bbc = mix(.06, .72, sol);
+    if (U.variant === 1) { var lp = lip * (1 - cap), gr = mix(.13, .72, lp); br = mix(.05, gr, sol); bgc = mix(.05, gr * 1.02, sol); bbc = mix(.06, gr * 1.06, sol); }
     light(br, bgc, bbc, mix(.5, 1, sol), mix(.2, .9, sol), mix(.2, 1.1, sol), 0, 1);
     if (cap > .5) { cr *= .45; cg *= .45; cb *= .5; }
   }
@@ -344,11 +353,15 @@
       case M.PV: pvShade(u, v); break;
       default: light(.5, .5, .5, 1, .2, .3, 0, 0);
     }
-    cr = cr * 255; cg = cg * 255; cb = cb * 255;
-    /* leve curva de tom para não estourar */
+    /* curva de tom suave (ombro): realces não estouram em branco chapado */
+    cr = shoulder(cr) * 255; cg = shoulder(cg) * 255; cb = shoulder(cb) * 255;
     if (cr > 255) cr = 255; if (cg > 255) cg = 255; if (cb > 255) cb = 255;
+    if (cr < 0) cr = 0; if (cg < 0) cg = 0; if (cb < 0) cb = 0;
   }
 
+  function shoulder(x) { return x < .72 ? x : .72 + .28 * (1 - Math.exp(-(x - .72) / .28)); }
+  /* ruído barato e estável (hash) para flocos metálicos / casca de laranja */
+  function hash2(x, y) { var h = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return h - Math.floor(h); }
   function labelShade(g, u, v) {
     var T = U.texs && U.texs[g];
     if (!T) { light(.95, .95, .95, 1, .05, .2, 0, 0); return; }
@@ -500,6 +513,14 @@
       var zz = z > ARCH_Z ? ARCH_Z + (z - ARCH_Z) * (1 - a) : z;
       return [x, y, side * zz, x, q[2] / 9, a];
     }, M.PAINT, 0, true);
+    /* Faróis frontais, lanternas traseiras, grade e pequenos sensores. */
+    [-1, 1].forEach(function (side) {
+      m.roundBox(2.12, .67, side*.39, .13, .065, .055, .025, 6, M.GLASS, 0);
+      m.roundBox(2.205, .65, side*.39, .045, .035, .058, .016, 5, M.LED, 0);
+      m.roundBox(-2.12, .68, side*.40, .11, .07, .045, .02, 5, M.LED, 0);
+      m.roundBox(2.30, .47, side*.22, .018, .055, .12, .01, 3, M.TRIM, 0);
+    });
+    m.roundBox(2.305, .48, 0, .018, .075, .22, .012, 4, M.TRIM, 0);
     /* rodas */
     WC = [];
     [1, -1].forEach(function (s) {
@@ -573,7 +594,9 @@
     var s2 = ctx.createRadialGradient(0, 0, 0, 0, 0, 1); s2.addColorStop(0, 'rgba(0,0,0,.6)'); s2.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.scale(.55, .4); ctx.fillStyle = s2; ctx.beginPath(); ctx.arc(0, 0, 1, 0, 6.2832); ctx.fill(); ctx.restore();
   }
+  /* v12: versão da home (carro2) — pérola, teto panorâmico, rodas turbina de 10 raios, DRL contínuo */
   SC.carro = { build: buildCar, pitch: .2, dist: 12.8, focal: 1.78, cy: .6, target: [-.1, .66, .1], ground: groundCar, yaw0: 3.5, auto: .3, label: 'Carro elétrico em 3D carregando na wallbox' };
+  SC.carro2 = { build: buildCar, variant: 1, paintColor: [236, 238, 244], pitch: .17, dist: 12.4, focal: 1.78, cy: .6, target: [-.1, .66, .1], ground: groundCar, yaw0: 2.35, auto: .2, label: 'Carro elétrico em 3D carregando na wallbox' };
 
 
   /* ================= cenas extras: disjuntor, lâmpada LED, painel solar ================= */
@@ -624,6 +647,11 @@
       m.roundBox(x, 0, 0, .17, .88, .38, .03, 5, M.PLASTIC, 0);
       m.roundBox(x, .12, -.385, .145, .55, .018, .016, 4, M.WALL, 0);       /* painel frontal elevado */
       m.roundBox(x, .24, -.397, .08, .21, .008, .006, 3, M.BASE, 0); m.roundBox(x, .24, -.402, .066, .196, .008, .006, 3, M.METAL, 0); /* janela da alavanca */
+      /* Bornes metálicos com parafuso e ranhura visíveis no topo e na base. */
+      [-.69, .69].forEach(function (yy) {
+        m.lathe(x, yy, -.405, [[.027, 0], [.027, .006], [.022, .01]], 20, M.METAL, 0, 'z');
+        m.roundBox(x, yy, -.417, .015, .003, .002, .001, 2, M.BASE, 0);
+      });
       [1, -1].forEach(function (s) { m.roundBox(x, s * .905, -.12, .085, .02, .075, .008, 3, M.METAL, 0); m.roundBox(x, s * .925, -.12, .04, .012, .04, .006, 2, M.BASE, 0); });
       face(m, [[x - .13, -.42, -.405], [x + .13, -.42, -.405], [x + .13, -.28, -.405], [x - .13, -.28, -.405]], [0, 0, -1], M.LABEL, n, [[0, 0], [1, 0], [1, 1], [0, 1]]);
       if (n === 1) { m.roundBox(x, -.6, -.405, .045, .02, .008, .006, 3, M.LED, 5); }
@@ -651,11 +679,13 @@
   /* ---- lâmpada LED E27 ---- */
   function buildBulb() {
     var m = new Mesh(), Y = 1.4;
-    m.lathe(0, Y, 0, chaikin([[.29, 0], [.3, .1], [.4, .35], [.55, .7], [.63, 1.0], [.59, 1.35], [.45, 1.65], [.25, 1.85], [0, 1.92]], 3), 64, M.BULB, 0, 'y');
+    m.lathe(0, Y, 0, chaikin([[.29, 0], [.3, .1], [.4, .35], [.55, .7], [.63, 1.0], [.59, 1.35], [.47, 1.62], [.36, 1.8], [.22, 1.91], [.1, 1.955], [0, 1.97]], 3), 64, M.BULB, 0, 'y');
     m.lathe(0, Y, 0, [[.28, -.03], [.35, -.03], [.35, .08], [.3, .16]], 40, M.PLASTIC, 0, 'y');
     m.lathe(0, Y, 0, [[.29, -.03], [.3, -.07], [.255, -.11], [.3, -.17], [.255, -.21], [.3, -.27], [.255, -.31], [.3, -.37], [.255, -.41], [.3, -.47], [.26, -.51], [.3, -.55]], 40, M.METAL, 0, 'y');
     m.lathe(0, Y, 0, [[.3, -.55], [.41, -.58], [.42, -.64], [.42, -1.1], [.52, -1.16], [.52, -1.4], [0, -1.4]], 48, M.PLASTIC, 0, 'y');
     m.lathe(0, Y, 0, [[.4, -.6], [.4, -.7]], 40, M.BASE, 0, 'y');
+    m.lathe(0, Y, 0, [[.305, -.13], [.31, -.145], [.305, -.16]], 48, M.METAL, 0, 'y');
+    m.lathe(0, Y, 0, [[.305, -.29], [.31, -.305], [.305, -.32]], 48, M.METAL, 0, 'y');
     return m.finish();
   }
   SC.lampada = {
@@ -683,6 +713,7 @@
     var m = new Mesh(), n = [0, PVC, -PVS], d = [0, PVS, PVC];
     function pl(u0, u1, v0, v1, h, nn, mat, g, uv) { face(m, [pvPt(u0, v0, h), pvPt(u1, v0, h), pvPt(u1, v1, h), pvPt(u0, v1, h)], nn, mat, g, uv); }
     pl(-.5, .5, -.8, .8, 0, n, M.PV, 0, [[-.5, -.8], [.5, -.8], [.5, .8], [-.5, .8]]);
+    /* As células, os barramentos e as divisões são desenhados no shader (pvShade) — sem tiras geométricas para não desalinhar nem causar z-fighting. */
     pl(-.54, -.5, -.84, .84, 0, n, M.ALU, 0); pl(.5, .54, -.84, .84, 0, n, M.ALU, 0);
     pl(-.5, .5, -.84, -.8, 0, n, M.ALU, 0); pl(-.5, .5, .8, .84, 0, n, M.ALU, 0);
     function edge(u0, v0, u1, v1, nn) { face(m, [pvPt(u0, v0, -.06), pvPt(u1, v1, -.06), pvPt(u1, v1, 0), pvPt(u0, v0, 0)], nn, M.ALU, 0); }
@@ -738,6 +769,8 @@
     var kind = cv.getAttribute('data-efx3d'), sc = SC[kind];
     if (!sc) return;
     var wrap = cv.parentNode, ctx = cv.getContext('2d');
+    /* Evita interromper todo o script em ambientes sem Canvas 2D. */
+    if (!ctx) { cv.setAttribute('data-efx3d-error', 'canvas-2d-unavailable'); return; }
     var st = { yaw: sc.yaw0 || 0, scale: 1, qual: 1, buf: null, t: 0 };
     var cw = 520, ch = 300, dpr = 1, drag = false, lx = 0, vel = sc.auto === undefined ? .3 : sc.auto, run = false, vis = true, last = 0, t0 = performance.now();
     var activePointer = null, inertia = 0, scrollY = 0, scrollT = 0, ema = 8, moved = 0, lastRender = 0, ready = false, spare = 0;
@@ -754,7 +787,7 @@
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cw = r.width || 520; ch = r.height || 300;
       cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr);
-      st.scale = Math.min(dpr, 1.5) * st.qual;
+      st.scale = Math.min(Math.max(dpr, 1.4), 1.75) * st.qual;
       ensure(); draw(performance.now());
     }
     function proj(x, y, z) {
@@ -771,7 +804,7 @@
       var ts = performance.now();
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, cw, ch);
       if (sc.ground) sc.ground(ctx, cw, ch, st, proj);
-      if (sc.paint) U.paint = sc.paint(st);
+      U.variant = sc.variant || 0; U.paint = sc.paint ? sc.paint(st) : (sc.paintColor || PAINTS.azul);
       var b = renderScene(sc, st, ctx, cw, ch);
       ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(b.cv, 0, 0, cw, ch);
@@ -780,8 +813,8 @@
       st.yaw = y0;
       /* qualidade adaptativa: reduz a resolução interna se o aparelho estiver lento */
       var dt = performance.now() - ts; ema = ema * .88 + dt * .12;
-      if (ema > 24 && st.qual > .5) { st.qual = Math.max(.5, st.qual - .12); st.scale = Math.min(dpr, 1.5) * st.qual; ema = 16; }
-      else if (ema < 9 && st.qual < 1) { spare++; if (spare > 90) { spare = 0; st.qual = Math.min(1, st.qual + .06); st.scale = Math.min(dpr, 1.5) * st.qual; } }
+      if (ema > 24 && st.qual > .5) { st.qual = Math.max(.5, st.qual - .12); st.scale = Math.min(Math.max(dpr, 1.4), 1.75) * st.qual; ema = 16; }
+      else if (ema < 9 && st.qual < 1) { spare++; if (spare > 90) { spare = 0; st.qual = Math.min(1, st.qual + .06); st.scale = Math.min(Math.max(dpr, 1.4), 1.75) * st.qual; } }
     }
     function scrollTarget() {
       var r = cv.getBoundingClientRect(), vh = window.innerHeight || 800;
@@ -802,7 +835,7 @@
     }
     function start() { if (reduce || run || !vis || document.hidden || !ready) return; run = true; last = performance.now(); requestAnimationFrame(loop); }
     function stop() { run = false; }
-    cv.style.touchAction = sc === SC.carro ? 'none' : 'pan-y'; cv.addEventListener('contextmenu', function(e) { if (drag) e.preventDefault(); });
+    cv.style.touchAction = (sc === SC.carro || sc === SC.carro2) ? 'none' : 'pan-y'; cv.addEventListener('contextmenu', function(e) { if (drag) e.preventDefault(); });
     cv.addEventListener('pointerdown', function (e) { if (activePointer !== null || (e.pointerType === 'mouse' && e.button !== 0)) return; activePointer = e.pointerId; drag = true; lx = e.clientX; moved = 0; inertia = 0; wrap.classList.add('efx-used'); try { cv.setPointerCapture(e.pointerId); } catch (_) {} cv.style.cursor = 'grabbing'; });
     cv.addEventListener('pointermove', function (e) {
       if (!drag || e.pointerId !== activePointer) return;
