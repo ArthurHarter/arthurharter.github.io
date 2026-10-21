@@ -292,8 +292,8 @@ footer {
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://guiaeletricafacil.com.br/calculadoras.html"}, {"@type": "ListItem", "position": 3, "name": "Consumo", "item": "https://guiaeletricafacil.com.br/calculadora-consumo.html"}]}</script>
-<link rel="stylesheet" href="/efeitos.css?v=4">
-<script src="/efeitos.js?v=4" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=6">
+<script src="/efeitos.js?v=6" defer></script>
 </head>
 <body>
 
@@ -340,7 +340,7 @@ footer {
       </div>
       <div class="field">
         <label for="tarifa">Tarifa de energia (R$/kWh)</label>
-        <input type="number" id="tarifa" placeholder="Ex: 0.87" min="0" step="any" value="0.87">
+        <input type="number" id="tarifa" placeholder="Ex.: 0,81258 (referência ANEEL)" value="0.81258" min="0" step="any">
         <div class="hint">Confira o valor exato na sua última conta de luz — varia por estado e concessionária.</div>
       </div>
       <button class="btn-calc" onclick="calcular()">Calcular consumo ⚡</button>
@@ -457,5 +457,5 @@ function calcular(){
 
 </script>
 
-</body>
+<script src="config-site.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{const el=document.getElementById("tarifa");if(el&&window.GUIA_CONFIG?.tarifaKWh)el.value=window.GUIA_CONFIG.tarifaKWh;});</script></body>
 </html>

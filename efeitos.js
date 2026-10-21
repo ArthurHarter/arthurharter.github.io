@@ -130,20 +130,31 @@
       if (instant) e.classList.add('rv-now');
       e.classList.add('rv-in');
       var n = e.classList.contains('stat-num') ? e : e.querySelector('.stat-num');
-      if (n && !instant) countUp(n);
+      if (n && !instant && !n.dataset.done) { n.dataset.done = '1'; countUp(n); }
     }
 
     if (!('IntersectionObserver' in window)) return;
     document.documentElement.classList.add('js');
 
+    /* Revela ao entrar na tela, em qualquer direção, e reinicia ao sair:
+       a animação toca de novo quando o usuário volta (rolando para baixo ou para cima). */
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        var above = e.boundingClientRect.top < 0;
-        if (!e.isIntersecting && !above) return;
-        reveal(e.target, above && !e.isIntersecting);
-        io.unobserve(e.target);
+        var t = e.target;
+        if (e.isIntersecting) {
+          /* entrou por cima (rolando para cima) → desliza de cima para baixo */
+          var fromTop = e.boundingClientRect.top < (window.innerHeight || 800) * .3 && lastY < prevY;
+          t.classList.toggle('rv-up', fromTop);
+          if (!t.classList.contains('rv-in')) reveal(t, false);
+        } else {
+          /* saiu da tela: volta ao estado inicial para poder animar outra vez */
+          t.classList.remove('rv-in', 'rv-now', 'rv-up');
+        }
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    }, { rootMargin: '-4% 0px -8% 0px', threshold: 0.05 });
+
+    var lastY = window.pageYOffset, prevY = lastY;
+    window.addEventListener('scroll', function () { prevY = lastY; lastY = window.pageYOffset; }, { passive: true });
 
     var seen = new Map();
     Array.prototype.forEach.call(items, function (e) {

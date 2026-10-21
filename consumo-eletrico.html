@@ -132,8 +132,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Consumo Elétrico", "item": "https://guiaeletricafacil.com.br/consumo-eletrico.html"}]}</script>
-<link rel="stylesheet" href="/efeitos.css?v=4">
-<script src="/efeitos.js?v=4" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=6">
+<script src="/efeitos.js?v=6" defer></script>
 </head>
 <body>
 <header>
@@ -183,16 +183,16 @@
       </div>
 
       <h2>Tabela de consumo por eletrodoméstico</h2>
-      <p class="section-note">Baseado em uso médio diário. Tarifa de referência: R$ 0,87/kWh (bandeira amarela 2025).</p>
+      <p class="section-note">Consumo estimado a partir de potência e tempo de uso. Informe a tarifa real da sua conta; a ANEEL publica valores homologados por distribuidora, sem tributos e bandeiras.</p>
       <table class="full-table">
         <thead>
           <tr><th>Eletrodoméstico</th><th>Potência</th><th>Uso médio/dia</th><th>Consumo mensal</th><th>Custo aprox./mês</th><th>Vilão?</th></tr>
         </thead>
         <tbody>
-          <tr><td data-label="Aparelho">Ar-cond. 12.000 BTU</td><td data-label="Potência">1.200 W</td><td data-label="Uso/dia">8h</td><td class="highlight" data-label="Consumo/mês">288 kWh</td><td data-label="Custo/mês">R$ 250–320</td><td data-label="Vilão?"><span class="badge badge-hot">Alto</span></td></tr>
+          <tr><td data-label="Aparelho">Ar-cond. 12.000 BTU</td><td data-label="Potência">1.200 W</td><td data-label="Uso/dia">8h</td><td class="highlight" data-label="Consumo/mês">288 kWh</td><td data-label="Custo/mês">—</td><td data-label="Vilão?"><span class="badge badge-hot">Alto</span></td></tr>
           <tr><td data-label="Aparelho">Ar-cond. 9.000 BTU</td><td data-label="Potência">900 W</td><td data-label="Uso/dia">8h</td><td class="highlight" data-label="Consumo/mês">216 kWh</td><td data-label="Custo/mês">R$ 188–240</td><td data-label="Vilão?"><span class="badge badge-hot">Alto</span></td></tr>
           <tr><td data-label="Aparelho">Chuveiro elétrico 5.500W</td><td data-label="Potência">5.500 W</td><td data-label="Uso/dia">20 min</td><td class="highlight" data-label="Consumo/mês">55 kWh</td><td data-label="Custo/mês">R$ 48–70</td><td data-label="Vilão?"><span class="badge badge-warn">Médio</span></td></tr>
-          <tr><td data-label="Aparelho">Geladeira frost-free 400L</td><td data-label="Potência">150 W</td><td data-label="Uso/dia">24h (ciclo)</td><td class="highlight" data-label="Consumo/mês">40 kWh</td><td data-label="Custo/mês">R$ 35–50</td><td data-label="Vilão?"><span class="badge badge-warn">Médio</span></td></tr>
+          <tr><td data-label="Aparelho">Geladeira frost-free 400L</td><td data-label="Potência">150 W</td><td data-label="Uso/dia">24h (ciclo variável)</td><td class="highlight" data-label="Consumo/mês">Conforme etiqueta</td><td data-label="Custo/mês">R$ 35–50</td><td data-label="Vilão?"><span class="badge badge-warn">Médio</span></td></tr>
           <tr><td data-label="Aparelho">Computador desktop</td><td data-label="Potência">300 W</td><td data-label="Uso/dia">6h</td><td class="highlight" data-label="Consumo/mês">54 kWh</td><td data-label="Custo/mês">R$ 47–65</td><td data-label="Vilão?"><span class="badge badge-warn">Médio</span></td></tr>
           <tr><td data-label="Aparelho">TV LED 50"</td><td data-label="Potência">100 W</td><td data-label="Uso/dia">5h</td><td class="highlight" data-label="Consumo/mês">15 kWh</td><td data-label="Custo/mês">R$ 13–18</td><td data-label="Vilão?"><span class="badge badge-ok">Baixo</span></td></tr>
           <tr><td data-label="Aparelho">Ferro de passar</td><td data-label="Potência">1.000 W</td><td data-label="Uso/dia">30 min</td><td class="highlight" data-label="Consumo/mês">15 kWh</td><td data-label="Custo/mês">R$ 13–18</td><td data-label="Vilão?"><span class="badge badge-ok">Baixo</span></td></tr>
@@ -236,5 +236,7 @@ function calcular(){
   document.getElementById('r-ano').textContent=custo>0?'R$ '+(custo*12).toFixed(2):'—';
 }
 </script>
+<script src="config-site.js"></script>
+<script src="tarifa-consumo.js"></script>
 </body>
 </html>

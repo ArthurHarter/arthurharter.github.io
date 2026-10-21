@@ -17,8 +17,10 @@ header .header-inner nav a:hover::after,header .header-inner nav a.current::afte
 
 /* Entrada suave ao rolar (só ativa quando o JS adiciona a classe .js) */
 @keyframes efx-in{from{opacity:0;translate:0 22px}}
+@keyframes efx-in-up{from{opacity:0;translate:0 -22px}}
 .js .rv:not(.rv-in){opacity:0}
 .js .rv.rv-in{animation:efx-in .6s cubic-bezier(.22,.8,.3,1) var(--d,0s) backwards}
+.js .rv.rv-up.rv-in{animation-name:efx-in-up}
 .js .rv.rv-now{animation:none}
 
 /* Fio que "energiza" sob os títulos de seção */
@@ -81,6 +83,15 @@ header .header-inner nav a:hover::after,header .header-inner nav a.current::afte
 .efx-cores button:hover::before{transform:scale(1.15)}
 .efx-cores button.on::before{border-color:#fff}
 .efx-cores button:focus-visible{outline:2px solid var(--yellow,#F5C518);outline-offset:1px;border-radius:50%}
+
+
+/* Botão ligar/desligar dos visualizadores 3D (disjuntor, lâmpada) */
+.efx-toggle{position:absolute;left:12px;bottom:10px;padding:9px 16px;border-radius:999px;border:1px solid var(--border,#2E2E2E);
+  background:rgba(26,26,26,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--yellow,#F5C518);
+  font:600 13px/1 inherit;font-family:inherit;cursor:pointer;transition:border-color .2s,transform .15s}
+.efx-toggle:hover{border-color:var(--yellow,#F5C518)}
+.efx-toggle:active{transform:scale(.96)}
+.efx-toggle[aria-pressed="true"]{box-shadow:0 0 0 3px rgba(245,197,24,.12)}
 
 /* ===== Base: acabamento profissional (todas as páginas) ===== */
 html{scroll-padding-top:84px;color-scheme:dark;-webkit-text-size-adjust:100%}
