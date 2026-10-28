@@ -86,3 +86,12 @@ Base: arquivos do zip de 23/10 (já com a revisão acima) + `carregador-veiculo-
 **Verificação:** todos os números das páginas novas foram conferidos no PDF da NBR 5410:2004 (Versão Corrigida 2008); as calculadoras foram testadas contra os exemplos; 0 links internos quebrados.
 
 **Para decidir depois:** `calculadora-queda-tensao.html` e `como-calcular-queda-de-tensao.html` usam ρ = 0,0172 Ω·mm²/m (cobre a 20 °C). Com o cabo em carga (70 °C) a resistência é cerca de 20% maior, então a queda real fica ~20% acima do que o site mostra. As páginas novas usam o mesmo valor, por consistência, e avisam sobre a margem.
+
+---
+
+## Atualização de 28/10/2026: ajustes visuais
+
+- `index.html`: removida a seção "Para ir além" (card do e-book com a capa); fica o banner "Quer dimensionar do zero" com checklist e e-book, agora com botões alinhados e do mesmo tamanho. Nota do cartão do topo (tabela bitola × corrente) reescrita: menor, discreta e dentro do cartão. Ícones nos 4 cartões "Escolha o seu caminho".
+- `efeitos.css` / `efeitos.js` (v8): cartões dos caminhos com inclinação 3D, brilho que segue o mouse, filete que acende e setas que deslizam; links direcionais em grade com reflexo, barra lateral e seta em círculo; fundo de energia (partículas ligadas por fios e faísca ocasional, o mesmo do topo) em todas as seções de todas as páginas, que sobe de baixo ao entrar na tela e é liberado ao sair; filete de luz entre seções.
+- O fundo de energia respeita "reduzir movimento", não é impresso e só roda nas seções visíveis (pausa com a aba oculta; canvas liberado ao sair da tela).
+- Todas as páginas passaram a carregar `efeitos.css?v=8`, `efeitos.js?v=8` e `efeitos3d.js?v=8` para os navegadores baixarem a versão nova.
