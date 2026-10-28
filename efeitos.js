@@ -25,7 +25,7 @@
 
   ready(function () {
     var header = document.querySelector('header');
-    var main = document.querySelector('main');
+    var main = document.querySelector('main') || document.getElementById('conteudo');
     var path = location.pathname.replace(/\/$/, '/index.html') || '/index.html';
     if (!/\.\w+$/.test(path)) path += '.html';
     var i;

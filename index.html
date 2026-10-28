@@ -19,7 +19,6 @@ gtag('config', 'G-D92EY9PKFW');
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Tabelas técnicas e calculadoras de elétrica residencial: bitola de fios, disjuntores, consumo de eletrodomésticos, corrente, potência, queda de tensão e mais.">
-<meta name="keywords" content="tabela bitola fios, disjuntor residencial, calculadora elétrica, instalação elétrica, elétrica residencial, consumo eletrodomésticos, normas ABNT elétrica">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Guia Elétrica Fácil — Tabelas e Calculadoras sobre Elétrica">
 <meta property="og:description" content="Consulte tabelas de bitola de fios, disjuntores e consumo elétrico, e use calculadoras online para dimensionar seu circuito. Guias práticos para instalações residenciais.">
@@ -417,6 +416,19 @@ footer {
   h2 { font-size: 22px !important; }
   .affiliate-banner { flex-direction: column; padding: 24px 20px; }
 }
+
+.volt-toggle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 14px;font-size:14px;color:var(--muted)}
+.volt-btn{background:transparent;color:inherit;border:1px solid var(--yellow);border-radius:999px;padding:6px 16px;font:inherit;cursor:pointer}
+.volt-btn.is-active{background:var(--yellow);color:#0F0F0F;font-weight:700}
+.volt-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.path-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 26px;display:flex;flex-direction:column;gap:10px}
+.path-card h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--yellow);margin:0}
+.path-card p{font-size:14px;color:var(--muted);margin:0}
+.path-card ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
+.path-card a{color:var(--text);font-size:14.5px;text-decoration:none}
+.path-card a:hover,.path-card a:focus-visible{color:var(--yellow);text-decoration:underline}
 </style>
 <meta name="theme-color" content="#0F0F0F">
 <link rel="manifest" href="/site.webmanifest">
@@ -425,8 +437,8 @@ footer {
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
-<link rel="stylesheet" href="/efeitos.css?v=6">
-<script src="/efeitos.js?v=6" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=7">
+<script src="/efeitos.js?v=7" defer></script>
 <script src="/efeitos3d.js?v=7" defer></script>
 </head>
 <body>
@@ -434,12 +446,12 @@ footer {
 <div class="header-inner">
 <a href="index.html" class="logo">⚡ Guia Elétrica<span>Fácil</span></a>
 <nav>
-<a href="#tabelas">Tabelas</a>
-<a href="#disjuntores">Disjuntores</a>
-<a href="#consumo">Consumo</a>
-<a href="calculadoras.html">Calculadoras</a>
-<a href="blog.html">Notícias</a>
-<a href="ebooks.html">E-books</a>
+<a href="/bitola-de-fios.html">Bitola de Fios</a>
+<a href="/disjuntores.html">Disjuntores</a>
+<a href="/consumo-eletrico.html">Consumo</a>
+<a href="/calculadoras.html">Calculadoras</a>
+<a href="/blog.html">Notícias</a>
+<a href="/ebooks.html">E-books</a>
 </nav>
 </div>
 </header>
@@ -449,7 +461,7 @@ footer {
 <div>
 <div class="hero-label">Referência técnica gratuita</div>
 <h1>Tabelas e <em>calculadoras</em> de elétrica residencial</h1>
-<p class="hero-sub">Consulte bitola de fios, disjuntores corretos e consumo de eletrodomésticos — e use nossas calculadoras online para dimensionar seu circuito em segundos, tudo atualizado conforme a NBR 5410.</p>
+<p class="hero-sub">Consulte bitola de fios, disjuntores corretos e consumo de eletrodomésticos — e use nossas calculadoras online para dimensionar seu circuito em segundos, com valores de referência da ABNT NBR 5410:2004 (Versão Corrigida:2008).</p>
 <div class="hero-ctas">
 <a href="#tabelas" class="hero-cta">Ver tabelas ↓</a>
 <a href="calculadoras.html" class="hero-cta secondary">Usar calculadoras →</a>
@@ -460,20 +472,73 @@ footer {
 <table class="mini-table">
 <thead><tr><th>Fio (mm²)</th><th>Corrente máx.</th><th>Uso típico</th></tr></thead>
 <tbody>
-<tr><td class="highlight">1,5 mm²</td><td>15 A</td><td><span class="badge badge-ok">Iluminação</span></td></tr>
-<tr><td class="highlight">2,5 mm²</td><td>21 A</td><td><span class="badge badge-ok">Tomadas</span></td></tr>
+<tr><td class="highlight">1,5 mm²</td><td>17,5 A</td><td><span class="badge badge-ok">Iluminação</span></td></tr>
+<tr><td class="highlight">2,5 mm²</td><td>24 A</td><td><span class="badge badge-ok">Tomadas</span></td></tr>
 <tr><td class="highlight">4,0 mm²</td><td>32 A</td><td><span class="badge badge-warn">Chuveiro</span></td></tr>
-<tr><td class="highlight">6,0 mm²</td><td>41 A</td><td><span class="badge badge-warn">Ar-cond.</span></td></tr>
-<tr><td class="highlight">10 mm²</td><td>50 A</td><td><span class="badge badge-hot">Trifásico</span></td></tr>
+<tr><td class="highlight">6,0 mm²</td><td>41 A</td><td><span class="badge badge-warn">Chuveiro potente</span></td></tr>
+<tr><td class="highlight">10 mm²</td><td>57 A</td><td><span class="badge badge-hot">Cargas altas</span></td></tr>
 </tbody>
-</table><p class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6">Referência de dimensionamento a conferir: cobre, PVC 70 °C, método B1, 2 condutores carregados, ambiente 30 °C (ABNT NBR 5410). Para exemplos de potência em 220 V: em 127 V a corrente é maior; use a <a href="/calculadora-bitola-cabo.html">calculadora de bitola</a> e a <a href="/calculadora-disjuntor.html">calculadora de disjuntor</a>. Capacidades e fatores de correção exigem conferência da norma e das condições reais.</p>
+</table><p class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6">Capacidades de condução conforme ABNT NBR 5410:2004, Versão Corrigida:2008, Tabela 36 (método B1, PVC, 2 condutores carregados; cobre, 70 °C, ambiente 30 °C). Em 127 V as correntes dos equipamentos são cerca de 1,7 vez maiores que em 220 V. Use a <a href="/calculadora-bitola-cabo.html">calculadora de bitola</a> e a <a href="/calculadora-disjuntor.html">calculadora de disjuntor</a> e confirme com um profissional habilitado o método de instalação, o agrupamento e a temperatura reais.</p>
 </div>
 </div>
+
+<section id="caminhos" aria-labelledby="caminhos-h">
+<div class="section-inner">
+<div class="section-tag">Por onde começar</div>
+<h2 id="caminhos-h">Escolha o seu caminho</h2>
+<p class="section-sub">Calcule um valor, aprenda o conceito, consulte uma tabela ou dimensione a instalação. Tudo baseado na NBR 5410.</p>
+<div class="paths">
+<div class="path-card"><h3>Calcule</h3><p>Resultado na hora, sem cadastro.</p><ul>
+<li><a href="calculadora-bitola-cabo.html">Bitola de cabo</a></li>
+<li><a href="calculadora-disjuntor.html">Disjuntor</a></li>
+<li><a href="calculadora-queda-tensao.html">Queda de tensão</a></li>
+<li><a href="calculadora-consumo.html">Consumo de energia</a></li>
+<li><a href="calculadoras.html">Todas as calculadoras</a></li></ul></div>
+<div class="path-card"><h3>Aprenda</h3><p>Entenda o porquê antes de instalar.</p><ul>
+<li><a href="material-gratuito.html">Checklist grátis (PDF)</a></li>
+<li><a href="diferenca-tug-tue.html">Diferença entre TUG e TUE</a></li>
+<li><a href="como-calcular-queda-de-tensao.html">Como calcular a queda de tensão</a></li>
+<li><a href="ebooks.html">E-books</a></li>
+<li><a href="blog.html">Notícias</a></li></ul></div>
+<div class="path-card"><h3>Consulte</h3><p>Tabelas rápidas de referência.</p><ul>
+<li><a href="bitola-de-fios.html">Bitola de fios</a></li>
+<li><a href="disjuntores.html">Disjuntores</a></li>
+<li><a href="consumo-eletrico.html">Consumo elétrico</a></li>
+<li><a href="chuveiro-eletrico.html">Chuveiro elétrico</a></li>
+<li><a href="tomadas-padrao.html">Tomadas e pontos</a></li></ul></div>
+<div class="path-card"><h3>Dimensione</h3><p>Do circuito ao quadro, passo a passo.</p><ul>
+<li><a href="dimensionar-circuito-residencial.html">Dimensionar um circuito</a></li>
+<li><a href="dividir-circuitos-residencial.html">Dividir os circuitos da casa</a></li>
+<li><a href="quadro-de-distribuicao-residencial.html">Quadro de distribuição</a></li>
+<li><a href="fio-e-disjuntor-chuveiro-5500w.html">Fio e disjuntor do chuveiro</a></li></ul></div>
+</div>
+</div>
+</section>
+
+<section id="calculadoras" aria-labelledby="calc-h">
+<div class="section-inner">
+<div class="section-tag">Calculadoras online</div>
+<h2 id="calc-h">Calculadoras</h2>
+<p class="section-sub">Dimensione fio, disjuntor e consumo em segundos. Todas gratuitas e sem cadastro.</p>
+<div class="efx-quick-grid">
+<a href="calculadoras.html">Todas as calculadoras</a>
+<a href="calculadora-bitola-cabo.html">Bitola de cabo</a>
+<a href="calculadora-disjuntor.html">Disjuntor</a>
+<a href="calculadora-queda-tensao.html">Queda de tensão</a>
+<a href="calculadora-consumo.html">Consumo de energia</a>
+<a href="calculadora-potencia.html">Potência elétrica</a>
+<a href="calculadora-corrente.html">Corrente elétrica</a>
+<a href="calculadora-resistores.html">Resistores</a>
+<a href="calculadora-capacitores.html">Capacitores</a>
+<a href="calculadora-codigo-cores-resistores.html">Código de cores de resistores</a>
+</div>
+</div>
+</section>
 
 <div class="stats">
 <div class="stats-inner">
 <div class="stat"><div class="stat-num">11</div><div class="stat-label">Calculadoras online</div></div>
-<div class="stat"><div class="stat-num">NBR</div><div class="stat-label">5410 atualizada</div></div>
+<div class="stat"><div class="stat-num">NBR</div><div class="stat-label">5410:2004, Versão Corrigida 2008</div></div>
 <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratuito</div></div>
 <div class="stat"><div class="stat-num">Sem</div><div class="stat-label">Cadastro ou login</div></div>
 </div>
@@ -486,73 +551,73 @@ footer {
 <h2>Tabelas, guias e calculadoras</h2>
 <p class="section-sub">Acesse rapidamente as principais referências para instalações elétricas residenciais.</p>
 <div class="cards">
-<div class="card" onclick="window.location.href='calculadoras.html'">
+<div class="card">
 <span class="card-icon">🧮</span>
 <h3>Calculadoras Online</h3>
 <p>Corrente, potência, consumo, resistores, capacitores, código de cores, queda de tensão, bitola de cabo, disjuntor, lâmpadas e conversor de unidades — já são 11 calculadoras gratuitas.</p>
 <a href="calculadoras.html" class="card-link">Usar calculadoras →</a>
 </div>
-<div class="card" onclick="window.location.href='bitola-de-fios.html'">
+<div class="card">
 <span class="card-icon">🔌</span>
 <h3>Bitola de Fios</h3>
 <p>Tabela completa de bitola × corrente máxima para instalações residenciais e comerciais.</p>
 <a href="bitola-de-fios.html" class="card-link">Ver tabela →</a>
 </div>
-<div class="card" onclick="window.location.href='disjuntores.html'">
+<div class="card">
 <span class="card-icon">⚙️</span>
 <h3>Disjuntores</h3>
 <p>Qual disjuntor usar para cada equipamento. Chuveiro, ar-condicionado, forno e mais.</p>
 <a href="disjuntores.html" class="card-link">Ver tabela →</a>
 </div>
-<div class="card" onclick="window.location.href='consumo-eletrico.html'">
+<div class="card">
 <span class="card-icon">📊</span>
 <h3>Consumo Elétrico</h3>
 <p>Consumo em kWh de cada eletrodoméstico. Calcule sua conta de luz antes de comprar.</p>
 <a href="consumo-eletrico.html" class="card-link">Ver tabela →</a>
 </div>
-<div class="card" onclick="window.location.href='tomadas-padrao.html'">
+<div class="card">
 <span class="card-icon">🏠</span>
 <h3>Tomadas e Pontos</h3>
 <p>Altura padrão de tomadas e interruptores conforme NBR 5410. Evite multas e reprovações.</p>
 <a href="tomadas-padrao.html" class="card-link">Ver guia →</a>
 </div>
-<div class="card" onclick="window.location.href='chuveiro-eletrico.html'">
+<div class="card">
 <span class="card-icon">🌡️</span>
 <h3>Chuveiro Elétrico</h3>
 <p>Como dimensionar o fio e disjuntor certo para qualquer potência de chuveiro.</p>
 <a href="chuveiro-eletrico.html" class="card-link">Ver guia →</a>
 </div>
-<div class="card" onclick="window.location.href='ar-condicionado.html'">
+<div class="card">
 <span class="card-icon">❄️</span>
 <h3>Ar-Condicionado</h3>
 <p>Fiação e disjuntor para ar-condicionado por BTU. Do 9.000 ao 60.000 BTUs.</p>
 <a href="ar-condicionado.html" class="card-link">Ver guia →</a>
 </div>
-<div class="card" onclick="window.location.href='calculadora-lampadas.html'">
+<div class="card">
 <span class="card-icon">💡</span>
 <h3>Lâmpadas e LED</h3>
 <p>Corrente, disjuntor e fio para fluorescente, bulbo LED, fita LED, vapor de sódio ou mercúrio.</p>
 <a href="calculadora-lampadas.html" class="card-link">Usar calculadora →</a>
 </div>
-<div class="card" onclick="window.location.href='dr-diferencial-residual.html'">
+<div class="card">
 <span class="card-icon">🛑</span>
 <h3>DR Diferencial Residual</h3>
 <p>Sensibilidade e tipo de DR para banheiro, cozinha, piscina, chuveiro e mais.</p>
 <a href="dr-diferencial-residual.html" class="card-link">Ver guia →</a>
 </div>
-<div class="card" onclick="window.location.href='energia-solar.html'">
+<div class="card">
 <span class="card-icon">☀️</span>
 <h3>Energia Solar (GD)</h3>
 <p>Fio B, compensação de energia e o que muda na sua conta com placas solares em 2026.</p>
 <a href="energia-solar.html" class="card-link">Ver guia →</a>
 </div>
-<div class="card" onclick="window.location.href='carregador-veiculo-eletrico.html'">
+<div class="card">
 <span class="card-icon">🔋</span>
 <h3>Carregador de VE</h3>
 <p>Fiação, disjuntor e DR para carregador de veículo elétrico em casa ou condomínio.</p>
 <a href="carregador-veiculo-eletrico.html" class="card-link">Ver guia →</a>
 </div>
-<div class="card" onclick="window.location.href='diferenca-tug-tue.html'">
+<div class="card">
 <span class="card-icon">📐</span>
 <h3>TUG e TUE</h3>
 <p>Entenda a diferença entre tomadas de uso geral (TUG) e de uso específico (TUE) na instalação residencial.</p>
@@ -568,7 +633,13 @@ footer {
 <div class="section-tag">Tabela principal</div>
 <h2>Disjuntor certo para cada equipamento</h2>
 <p class="section-sub">Use esta tabela para dimensionar corretamente os disjuntores da sua instalação residencial.</p>
+<p class="voltage-note"><strong>Tensão considerada:</strong> valores calculados para 220 V. Em 127 V as correntes são cerca de 1,7 vez maiores (220 ÷ 127); recalcule na <a href="/calculadora-corrente.html">calculadora de corrente</a>. Capacidades dos fios conforme ABNT NBR 5410:2004, Versão Corrigida:2008, Tabela 36 (método B1, PVC, 2 condutores carregados).</p>
 
+<div class="volt-toggle" role="group" aria-label="Tensão da instalação">
+<span>Tensão da instalação:</span>
+<button type="button" class="volt-btn is-active" data-v="220" aria-pressed="true">220 V</button>
+<button type="button" class="volt-btn" data-v="127" aria-pressed="false">127 V</button>
+</div>
 <table class="full-table">
 <thead>
 <tr>
@@ -580,23 +651,25 @@ footer {
 </tr>
 </thead>
 <tbody>
-<tr><td data-label="Equipamento">Iluminação geral</td><td data-label="Potência">até 1.000 W</td><td data-label="Corrente">4,5 A</td><td class="highlight" data-label="Disjuntor">10 A</td><td data-label="Fio">1,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Tomadas comuns</td><td data-label="Potência">até 1.500 W</td><td data-label="Corrente">6,8 A</td><td class="highlight" data-label="Disjuntor">16 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Chuveiro 5.500 W</td><td data-label="Potência">5.500 W</td><td data-label="Corrente">25 A</td><td class="highlight" data-label="Disjuntor">30 A</td><td data-label="Fio">4,0 mm²</td></tr>
-<tr><td data-label="Equipamento">Chuveiro 6.000 W</td><td data-label="Potência">6.000 W</td><td data-label="Corrente">27 A</td><td class="highlight" data-label="Disjuntor">32 A</td><td data-label="Fio">4,0 mm²</td></tr>
-<tr><td data-label="Equipamento">Chuveiro 7.500 W</td><td data-label="Potência">7.500 W</td><td data-label="Corrente">34 A</td><td class="highlight" data-label="Disjuntor">40 A</td><td data-label="Fio">6,0 mm²</td></tr>
-<tr><td data-label="Equipamento">Ar-cond. 9.000 BTU</td><td data-label="Potência">~900 W</td><td data-label="Corrente">4,1 A</td><td class="highlight" data-label="Disjuntor">10 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Ar-cond. 12.000 BTU</td><td data-label="Potência">~1.200 W</td><td data-label="Corrente">5,5 A</td><td class="highlight" data-label="Disjuntor">16 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Ar-cond. 18.000 BTU</td><td data-label="Potência">~1.800 W</td><td data-label="Corrente">8,2 A</td><td class="highlight" data-label="Disjuntor">16 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Ar-cond. 24.000 BTU</td><td data-label="Potência">~2.400 W</td><td data-label="Corrente">10,9 A</td><td class="highlight" data-label="Disjuntor">20 A</td><td data-label="Fio">4,0 mm²</td></tr>
-<tr><td data-label="Equipamento">Forno elétrico</td><td data-label="Potência">~2.000 W</td><td data-label="Corrente">9,1 A</td><td class="highlight" data-label="Disjuntor">20 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Micro-ondas</td><td data-label="Potência">~1.300 W</td><td data-label="Corrente">5,9 A</td><td class="highlight" data-label="Disjuntor">16 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Geladeira comum</td><td data-label="Potência">~150 W</td><td data-label="Corrente">0,7 A</td><td class="highlight" data-label="Disjuntor">10 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Máq. de lavar 10 kg</td><td data-label="Potência">~500 W</td><td data-label="Corrente">2,3 A</td><td class="highlight" data-label="Disjuntor">16 A</td><td data-label="Fio">2,5 mm²</td></tr>
-<tr><td data-label="Equipamento">Secadora de roupas</td><td data-label="Potência">~2.500 W</td><td data-label="Corrente">11,4 A</td><td class="highlight" data-label="Disjuntor">20 A</td><td data-label="Fio">4,0 mm²</td></tr>
-<tr><td data-label="Equipamento">Aquecedor elétrico</td><td data-label="Potência">~2.000 W</td><td data-label="Corrente">9,1 A</td><td class="highlight" data-label="Disjuntor">20 A</td><td data-label="Fio">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Iluminação geral</td><td data-label="Potência">até 1.000 W</td><td data-label="Corrente" data-v127="7,9 A">4,5 A</td><td class="highlight" data-label="Disjuntor" data-v127="10 A">10 A</td><td data-label="Fio" data-v127="1,5 mm²">1,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Tomadas comuns</td><td data-label="Potência">até 1.500 W</td><td data-label="Corrente" data-v127="11,8 A">6,8 A</td><td class="highlight" data-label="Disjuntor" data-v127="16 A">16 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Chuveiro 5.500 W</td><td data-label="Potência">5.500 W</td><td data-label="Corrente" data-v127="43,3 A">25 A</td><td class="highlight" data-label="Disjuntor" data-v127="50 A">30 A</td><td data-label="Fio" data-v127="10 mm²">4,0 mm²</td></tr>
+<tr><td data-label="Equipamento">Chuveiro 6.000 W</td><td data-label="Potência">6.000 W</td><td data-label="Corrente" data-v127="47,2 A">27 A</td><td class="highlight" data-label="Disjuntor" data-v127="50 A">32 A</td><td data-label="Fio" data-v127="10 mm²">4,0 mm²</td></tr>
+<tr><td data-label="Equipamento">Chuveiro 7.500 W</td><td data-label="Potência">7.500 W</td><td data-label="Corrente" data-v127="59,1 A">34 A</td><td class="highlight" data-label="Disjuntor" data-v127="63 A">40 A</td><td data-label="Fio" data-v127="16 mm²">6,0 mm²</td></tr>
+<tr><td data-label="Equipamento">Ar-cond. 9.000 BTU</td><td data-label="Potência">~900 W</td><td data-label="Corrente" data-v127="7,1 A">4,1 A</td><td class="highlight" data-label="Disjuntor" data-v127="10 A">10 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Ar-cond. 12.000 BTU</td><td data-label="Potência">~1.200 W</td><td data-label="Corrente" data-v127="9,4 A">5,5 A</td><td class="highlight" data-label="Disjuntor" data-v127="16 A">16 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Ar-cond. 18.000 BTU</td><td data-label="Potência">~1.800 W</td><td data-label="Corrente" data-v127="14,2 A">8,2 A</td><td class="highlight" data-label="Disjuntor" data-v127="16 A">16 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Ar-cond. 24.000 BTU</td><td data-label="Potência">~2.400 W</td><td data-label="Corrente" data-v127="18,9 A">10,9 A</td><td class="highlight" data-label="Disjuntor" data-v127="20 A">20 A</td><td data-label="Fio" data-v127="4 mm²">4,0 mm²</td></tr>
+<tr><td data-label="Equipamento">Forno elétrico</td><td data-label="Potência">~2.000 W</td><td data-label="Corrente" data-v127="15,7 A">9,1 A</td><td class="highlight" data-label="Disjuntor" data-v127="20 A">20 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Micro-ondas</td><td data-label="Potência">~1.300 W</td><td data-label="Corrente" data-v127="10,2 A">5,9 A</td><td class="highlight" data-label="Disjuntor" data-v127="16 A">16 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Geladeira comum</td><td data-label="Potência">~150 W</td><td data-label="Corrente" data-v127="1,2 A">0,7 A</td><td class="highlight" data-label="Disjuntor" data-v127="10 A">10 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Máq. de lavar 10 kg</td><td data-label="Potência">~500 W</td><td data-label="Corrente" data-v127="3,9 A">2,3 A</td><td class="highlight" data-label="Disjuntor" data-v127="16 A">16 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
+<tr><td data-label="Equipamento">Secadora de roupas</td><td data-label="Potência">~2.500 W</td><td data-label="Corrente" data-v127="19,7 A">11,4 A</td><td class="highlight" data-label="Disjuntor" data-v127="20 A">20 A</td><td data-label="Fio" data-v127="4 mm²">4,0 mm²</td></tr>
+<tr><td data-label="Equipamento">Aquecedor elétrico</td><td data-label="Potência">~2.000 W</td><td data-label="Corrente" data-v127="15,7 A">9,1 A</td><td class="highlight" data-label="Disjuntor" data-v127="20 A">20 A</td><td data-label="Fio" data-v127="2,5 mm²">2,5 mm²</td></tr>
 </tbody>
-</table><p class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6">Referência de dimensionamento a conferir: cobre, PVC 70 °C, método B1, 2 condutores carregados, ambiente 30 °C (ABNT NBR 5410). Para exemplos de potência em 220 V: em 127 V a corrente é maior; use a <a href="/calculadora-bitola-cabo.html">calculadora de bitola</a> e a <a href="/calculadora-disjuntor.html">calculadora de disjuntor</a>. Capacidades e fatores de correção exigem conferência da norma e das condições reais.</p>
+</table><p class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6">Capacidades de condução conforme ABNT NBR 5410:2004, Versão Corrigida:2008, Tabela 36 (método B1, PVC, 2 condutores carregados; cobre, 70 °C, ambiente 30 °C). Esta é a edição vigente em 27/10/2026; a norma está em revisão e este conteúdo será atualizado quando a nova edição for publicada. Use a <a href="/calculadora-bitola-cabo.html">calculadora de bitola</a> e a <a href="/calculadora-disjuntor.html">calculadora de disjuntor</a> e confirme com um profissional habilitado o método de instalação, o agrupamento e a temperatura reais.</p>
+<p id="volt-info" class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6" hidden>Valores para 127 V: corrente = potência ÷ 127 V; disjuntor e fio pela regra Ib ≤ In ≤ Iz (Tabela 36, B1, 2 condutores carregados), nunca abaixo dos valores de 220 V. Correntes altas em 127 V exigem fios grossos; vale avaliar a ligação em 220 V.</p>
+<p class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6"><strong>Chuveiro de 6.000 W em 220 V:</strong> o fio de 4 mm² atende à relação Ib (27 A) ≤ In (32 A) ≤ Iz (32 A), mas no limite exato da Tabela 36, sem folga. Com eletrodutos agrupados, ambiente acima de 30 °C ou trecho longo, use 6 mm².</p>
 
 <p class="table-note">
 Os valores de disjuntor e fio nesta tabela são referências para condições típicas de instalação residencial.
@@ -607,12 +680,23 @@ temperatura ambiente e distância do circuito (queda de tensão) — use nossa
 para o seu caso específico, e confirme com um profissional antes de instalar.
 </p>
 
+<div class="affiliate-banner" style="margin-bottom:16px">
+<div>
+<h3>Quer dimensionar do zero, passo a passo?</h3>
+<p>Baixe o checklist grátis de instalação elétrica residencial (PDF) ou conheça o e-book completo, com planilhas em Excel.</p>
+</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="material-gratuito.html" class="btn-affiliate">Checklist grátis (PDF) →</a>
+<a href="ebook-instalacoes-eletricas-residenciais.html" class="btn-affiliate" style="background:transparent;border:1px solid var(--yellow);color:var(--yellow)">E-book — R$ 49,90 →</a>
+</div>
+</div>
+
 <div class="affiliate-banner">
 <div>
 <h3>Precisa comprar disjuntores ou fios?</h3>
 <p>Compare preços e veja os mais vendidos no Mercado Livre. Entrega rápida para todo o Brasil.</p>
+<p class="aff-note" style="font-size:12px;color:#888;margin-top:8px">Links de afiliado: podemos receber comissão sem custo extra para você. Os produtos ficam na página de ofertas.</p>
 </div>
-<!-- SUBSTITUA ESSE LINK PELO SEU LINK DE AFILIADO DO MERCADO LIVRE -->
 <a href="ofertas.html" class="btn-affiliate">Ver materiais elétricos →</a>
 </div>
 </div>
@@ -636,19 +720,19 @@ para o seu caso específico, e confirme com um profissional antes de instalar.
 </tr>
 </thead>
 <tbody>
-<tr><td data-label="Aparelho">Geladeira frost-free</td><td data-label="Potência">150 W</td><td data-label="Uso/dia">24h (compressor varia)</td><td class="highlight" data-label="Consumo/mês">30–45 kWh</td><td data-label="Custo/mês">R$ 30–50</td></tr>
-<tr><td data-label="Aparelho">Ar-cond. 12.000 BTU</td><td data-label="Potência">1.200 W</td><td data-label="Uso/dia">8h</td><td class="highlight" data-label="Consumo/mês">288 kWh</td><td data-label="Custo/mês">R$ 250–320</td></tr>
-<tr><td data-label="Aparelho">Chuveiro elétrico</td><td data-label="Potência">5.500 W</td><td data-label="Uso/dia">20 min</td><td class="highlight" data-label="Consumo/mês">55 kWh</td><td data-label="Custo/mês">R$ 50–70</td></tr>
-<tr><td data-label="Aparelho">TV LED 50"</td><td data-label="Potência">100 W</td><td data-label="Uso/dia">5h</td><td class="highlight" data-label="Consumo/mês">15 kWh</td><td data-label="Custo/mês">R$ 13–18</td></tr>
-<tr><td data-label="Aparelho">Computador desktop</td><td data-label="Potência">300 W</td><td data-label="Uso/dia">6h</td><td class="highlight" data-label="Consumo/mês">54 kWh</td><td data-label="Custo/mês">R$ 47–65</td></tr>
-<tr><td data-label="Aparelho">Máq. lavar 10 kg</td><td data-label="Potência">500 W</td><td data-label="Uso/dia">1h (12x/mês)</td><td class="highlight" data-label="Consumo/mês">6 kWh</td><td data-label="Custo/mês">R$ 5–8</td></tr>
-<tr><td data-label="Aparelho">Ferro de passar</td><td data-label="Potência">1.000 W</td><td data-label="Uso/dia">30 min</td><td class="highlight" data-label="Consumo/mês">15 kWh</td><td data-label="Custo/mês">R$ 13–18</td></tr>
-<tr><td data-label="Aparelho">Micro-ondas</td><td data-label="Potência">1.300 W</td><td data-label="Uso/dia">15 min</td><td class="highlight" data-label="Consumo/mês">9,75 kWh</td><td data-label="Custo/mês">R$ 8–12</td></tr>
-<tr><td data-label="Aparelho">Lâmpada LED 9W</td><td data-label="Potência">9 W</td><td data-label="Uso/dia">6h</td><td class="highlight" data-label="Consumo/mês">1,62 kWh</td><td data-label="Custo/mês">R$ 1,50</td></tr>
+<tr><td data-label="Aparelho">Geladeira frost-free</td><td data-label="Potência">150 W</td><td data-label="Uso/dia">24h (compressor varia)</td><td class="highlight" data-label="Consumo/mês">30–45 kWh</td><td data-label="Custo/mês">R$ 24–37</td></tr>
+<tr><td data-label="Aparelho">Ar-cond. 12.000 BTU</td><td data-label="Potência">1.200 W</td><td data-label="Uso/dia">8h</td><td class="highlight" data-label="Consumo/mês">288 kWh</td><td data-label="Custo/mês">R$ 234</td></tr>
+<tr><td data-label="Aparelho">Chuveiro elétrico</td><td data-label="Potência">5.500 W</td><td data-label="Uso/dia">20 min</td><td class="highlight" data-label="Consumo/mês">55 kWh</td><td data-label="Custo/mês">R$ 45</td></tr>
+<tr><td data-label="Aparelho">TV LED 50"</td><td data-label="Potência">100 W</td><td data-label="Uso/dia">5h</td><td class="highlight" data-label="Consumo/mês">15 kWh</td><td data-label="Custo/mês">R$ 12</td></tr>
+<tr><td data-label="Aparelho">Computador desktop</td><td data-label="Potência">300 W</td><td data-label="Uso/dia">6h</td><td class="highlight" data-label="Consumo/mês">54 kWh</td><td data-label="Custo/mês">R$ 44</td></tr>
+<tr><td data-label="Aparelho">Máq. lavar 10 kg</td><td data-label="Potência">500 W</td><td data-label="Uso/dia">1h (12x/mês)</td><td class="highlight" data-label="Consumo/mês">6 kWh</td><td data-label="Custo/mês">R$ 4,88</td></tr>
+<tr><td data-label="Aparelho">Ferro de passar</td><td data-label="Potência">1.000 W</td><td data-label="Uso/dia">30 min</td><td class="highlight" data-label="Consumo/mês">15 kWh</td><td data-label="Custo/mês">R$ 12</td></tr>
+<tr><td data-label="Aparelho">Micro-ondas</td><td data-label="Potência">1.300 W</td><td data-label="Uso/dia">15 min</td><td class="highlight" data-label="Consumo/mês">9,75 kWh</td><td data-label="Custo/mês">R$ 7,92</td></tr>
+<tr><td data-label="Aparelho">Lâmpada LED 9W</td><td data-label="Potência">9 W</td><td data-label="Uso/dia">6h</td><td class="highlight" data-label="Consumo/mês">1,62 kWh</td><td data-label="Custo/mês">R$ 1,32</td></tr>
 </tbody>
-</table><p class="table-note" style="margin:12px 0;font-size:.85rem;line-height:1.6">Referência de dimensionamento a conferir: cobre, PVC 70 °C, método B1, 2 condutores carregados, ambiente 30 °C (ABNT NBR 5410). Para exemplos de potência em 220 V: em 127 V a corrente é maior; use a <a href="/calculadora-bitola-cabo.html">calculadora de bitola</a> e a <a href="/calculadora-disjuntor.html">calculadora de disjuntor</a>. Capacidades e fatores de correção exigem conferência da norma e das condições reais.</p>
+</table>
 <p class="table-note">
-Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tarifa de referência usada: R$ 0,81/kWh (mediana nacional indicativa, sem impostos e bandeiras; fonte: dados abertos da ANEEL). Última revisão: 21/10/2026. Consulte sua fatura para o valor exato, ou use a
+Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tarifa de referência usada: R$ 0,81/kWh (mediana nacional indicativa, sem impostos e bandeiras; fonte: dados abertos da ANEEL). Última revisão: 27/10/2026. Consulte sua fatura para o valor exato, ou use a
 <a href="calculadora-consumo.html" style="color: var(--yellow);">calculadora de consumo</a> com a sua própria tarifa.
 </p>
 </div>
@@ -746,7 +830,7 @@ Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tari
 <p>Tabelas, guias e calculadoras gratuitas para instalações elétricas residenciais, baseadas na ABNT NBR 5410 e em referências técnicas aplicáveis.</p>
 </div>
 <div class="footer-links">
-<h5>Tabelas</h5>
+<h5>Tabelas e guias</h5>
 <ul>
 <li><a href="bitola-de-fios.html">Bitola de Fios</a></li>
 <li><a href="disjuntores.html">Disjuntores</a></li>
@@ -758,6 +842,9 @@ Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tari
 <li><a href="torneira-eletrica.html">Torneira Elétrica</a></li>
 <li><a href="energia-solar.html">Energia Solar</a></li>
 <li><a href="carregador-veiculo-eletrico.html">Carregador de VE</a></li>
+<li><a href="dimensionar-circuito-residencial.html">Dimensionar circuito</a></li>
+<li><a href="dividir-circuitos-residencial.html">Dividir circuitos</a></li>
+<li><a href="quadro-de-distribuicao-residencial.html">Quadro de distribuição</a></li>
 </ul>
 </div>
 <div class="footer-links">
@@ -766,8 +853,8 @@ Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tari
 <li><a href="calculadora-corrente.html">Corrente</a></li>
 <li><a href="calculadora-potencia.html">Potência</a></li>
 <li><a href="conversor-kva-kw-cv.html">Conversor kW/kVA/cv</a></li>
-<li><a href="material-gratuito.html">Checklist Grátis (PDF)</a></li>
 <li><a href="calculadora-consumo.html">Consumo</a></li>
+<li><a href="calculadora-lampadas.html">Lâmpadas</a></li>
 <li><a href="calculadora-queda-tensao.html">Queda de Tensão</a></li>
 <li><a href="calculadora-bitola-cabo.html">Bitola de Cabo</a></li>
 <li><a href="calculadora-disjuntor.html">Disjuntor</a></li>
@@ -780,6 +867,7 @@ Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tari
 <h5>Site</h5>
 <ul>
 <li><a href="ebooks.html">E-books</a></li>
+<li><a href="material-gratuito.html">Checklist Grátis (PDF)</a></li>
 <li><a href="blog.html">Notícias</a></li>
 <li><a href="sobre.html">Sobre</a></li>
 <li><a href="privacidade.html">Privacidade</a></li>
@@ -794,6 +882,21 @@ Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tari
 <span>© 2026 Guia Elétrica Fácil. Conteúdo informativo — consulte sempre um eletricista habilitado.</span>
 <span>Baseado na ABNT NBR 5410 e em referências técnicas aplicáveis</span>
 </div>
-<p style="text-align:center;font-size:12px;padding:12px">Conteúdo elaborado por Arthur Barbosa Harter · Última atualização: <span id="data-revisao">21/10/2026</span></p></footer>
+<p style="text-align:center;font-size:12px;padding:12px">Conteúdo elaborado por Arthur Barbosa Harter · Última atualização: <span id="data-revisao">27/10/2026</span></p></footer>
+<script>
+(function(){
+var sec=document.getElementById('disjuntores'); if(!sec) return;
+var table=sec.querySelector('table.full-table'); var btns=sec.querySelectorAll('.volt-btn'); var info=document.getElementById('volt-info');
+if(!table||!btns.length) return;
+var cells=table.querySelectorAll('td[data-v127]');
+cells.forEach(function(c){c.setAttribute('data-v220',c.textContent);});
+function setV(v){
+ cells.forEach(function(c){c.textContent=c.getAttribute('data-v'+v);});
+ btns.forEach(function(b){var on=b.getAttribute('data-v')===v;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false');});
+ if(info){info.hidden=(v!=='127');}
+}
+btns.forEach(function(b){b.addEventListener('click',function(){setV(b.getAttribute('data-v'));});});
+})();
+</script>
 </body>
 </html>
