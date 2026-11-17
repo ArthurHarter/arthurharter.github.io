@@ -1,7 +1,7 @@
 """Atualiza carimbo editorial, dados estruturados (schema.org) e sitemap.xml de todas as páginas.
 
 Uso, na raiz do projeto:
-    python3 ferramentas/atualizar-site.py pagina-alterada.html outra.html
+    python3 atualizar-site.py pagina-alterada.html outra.html
 As páginas informadas recebem a data de hoje; as demais mantêm a data que já tinham.
 """
 import datetime, glob, json, os, re, sys

@@ -295,10 +295,6 @@ main>section{position:relative}
 :where(.warn-box){background:rgba(255,107,43,.08);border:1px solid rgba(255,107,43,.3);border-radius:8px;padding:20px 24px;margin-top:24px}
 :where(.warn-box h4){font-size:15px;font-weight:700;color:#FF6B2B;margin-bottom:6px}
 :where(.warn-box p){font-size:14px;color:var(--muted,#888)}
-/* Diagramas próprios (SVG em /diagramas) */
-.diagrama{margin:28px 0 8px}
-.diagrama img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border,#2E2E2E)}
-.diagrama figcaption{font-size:13px;color:var(--muted,#888);margin-top:8px}
 /* ---------- Projeto elétrico da casa ---------- */
 .proj-form{display:grid;gap:28px}
 .proj-param{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
@@ -329,3 +325,24 @@ main>section{position:relative}
 .proj-fases span,.proj-fases strong{position:relative}
 @media print{.proj-form,.proj-btns,.efx-related{display:none!important}.proj-out,.proj-out *{color:#000!important;background:#fff!important;border-color:#bbb!important}body{background:#fff!important}}
 .proj-out td{white-space:nowrap}.proj-out td:nth-child(2){white-space:normal;min-width:220px}
+/* ---------- Diagramas interativos (clique numa peça; "Desmontar" separa as partes) ---------- */
+.dx{margin:28px 0;background:#141414;border:1px solid var(--border,#2E2E2E);border-radius:14px;padding:18px 18px 16px}
+.dx-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.dx-bar strong{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--text,#F0EDE6)}
+.dx-hint{font-size:12.5px;color:var(--muted,#888)}
+.dx-toggle{background:transparent;border:1px solid var(--yellow,#F5C518);color:var(--yellow,#F5C518);border-radius:999px;padding:7px 16px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.dx-toggle:hover,.dx-toggle[aria-pressed="true"]{background:var(--yellow,#F5C518);color:#0F0F0F}
+.dx svg{display:block;width:100%;height:auto;font-family:inherit}
+.dx-p{cursor:pointer;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .3s,filter .3s;outline:none}
+.dx.open .dx-p{transform:translate(var(--x,0px),var(--y,0px))}
+.dx.sel .dx-p:not(.on){opacity:.4}
+.dx-p.on{filter:drop-shadow(0 0 7px rgba(245,197,24,.85))}
+.dx-p:focus-visible{filter:drop-shadow(0 0 5px rgba(245,197,24,.9))}
+.dx-lbl{opacity:0;transition:opacity .35s;pointer-events:none}
+.dx.open .dx-lbl,.dx-static .dx-lbl{opacity:1;transition-delay:.35s}
+.dx-info{margin-top:12px;border-left:3px solid var(--yellow,#F5C518);background:#1A1A1A;border-radius:0 8px 8px 0;padding:12px 16px;min-height:62px}
+.dx-info h4{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--yellow,#F5C518);margin:0 0 4px}
+.dx-info p{font-size:14px;color:var(--muted,#B8B4AC);margin:0;line-height:1.6}
+.dx figcaption{font-size:12.5px;color:var(--muted,#888);margin-top:10px}
+@media (prefers-reduced-motion:reduce){.dx-p,.dx-lbl{transition:none}}
+@media print{.dx-toggle,.dx-hint{display:none}.dx .dx-lbl{opacity:1}}

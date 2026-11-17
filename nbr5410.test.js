@@ -1,8 +1,8 @@
 /* Testes dos cálculos e da coerência dos valores da NBR 5410 no site.
-   Rodar na raiz do projeto: node testes/nbr5410.test.js */
+   Rodar na raiz do projeto: node nbr5410.test.js */
 const fs = require('fs'), path = require('path'), assert = require('assert');
-const N = require('../nbr5410.js');
-const raiz = path.join(__dirname, '..');
+const N = require('./nbr5410.js');
+const raiz = __dirname;
 let ok = 0;
 function t(nome, fn) { fn(); ok++; console.log('ok -', nome); }
 const perto = (a, b, tol = 0.01) => Math.abs(a - b) <= tol;

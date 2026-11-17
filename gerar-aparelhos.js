@@ -1,8 +1,8 @@
 /* Gera as páginas "Qual fio e disjuntor para <aparelho>" a partir dos dados abaixo e de nbr5410.js.
-   Uso, na raiz do projeto:  node ferramentas/gerar-aparelhos.js
-   Depois rode:              python3 ferramentas/atualizar-site.py <páginas geradas>  */
+   Uso, na raiz do projeto:  node gerar-aparelhos.js
+   Depois rode:              python3 atualizar-site.py <páginas geradas>  */
 const fs = require('fs');
-const N = require('../nbr5410.js');
+const N = require('./nbr5410.js');
 const BASE = 'https://guiaeletricafacil.com.br/';
 const MODELO = 'diferenca-tug-tue.html';
 
@@ -156,7 +156,7 @@ ${distL}
   <section>
     <div class="section-inner">
       <h2>Cuidados na instalação</h2>
-${a.tipo === 'chuveiro' ? '<figure class="diagrama"><img src="/diagramas/ligacao-chuveiro.svg" width="800" height="360" loading="lazy" decoding="async" alt="Esquema de ligação de chuveiro em 220 V entre fases com DR de 30 mA, disjuntor bipolar, duas fases e terra"><figcaption>Ligação típica em 220 V entre fases. O exemplo mostra 5500 W; ajuste fio e disjuntor pela tabela acima.</figcaption></figure>\n' : ''}      <div class="steps">
+${a.tipo === 'chuveiro' ? '<!--dx:ligacao-chuveiro--><!--/dx:ligacao-chuveiro-->\n' : ''}      <div class="steps">
 ${cuid}
       </div>
     </div>

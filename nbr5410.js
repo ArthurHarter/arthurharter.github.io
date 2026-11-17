@@ -1,5 +1,5 @@
 /* Guia Elétrica Fácil — dados e cálculos de referência da ABNT NBR 5410:2004, Versão Corrigida:2008.
-   Fonte única: todas as calculadoras leem daqui. Ao corrigir um valor, rode `node testes/nbr5410.test.js`. */
+   Fonte única: todas as calculadoras leem daqui. Ao corrigir um valor, rode `node nbr5410.test.js`. */
 (function (root) {
   'use strict';
 

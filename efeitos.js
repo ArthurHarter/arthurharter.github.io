@@ -314,3 +314,30 @@
     }
   });
 })();
+
+/* Diagramas interativos: clique (ou Enter) numa peça mostra a explicação; o botão desmonta/monta as partes. */
+(function () {
+  function iniciar(fig) {
+    var dados = JSON.parse(fig.querySelector('.dx-data').textContent);
+    var info = fig.querySelector('.dx-info'), btn = fig.querySelector('.dx-toggle');
+    var partes = Array.prototype.slice.call(fig.querySelectorAll('.dx-p'));
+    function mostrar(k) {
+      partes.forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-k') === k); });
+      fig.classList.add('sel');
+      info.innerHTML = '<h4>' + dados[k].t + '</h4><p>' + dados[k].d + '</p>';
+    }
+    partes.forEach(function (p) {
+      var k = p.getAttribute('data-k');
+      p.setAttribute('tabindex', '0'); p.setAttribute('role', 'button'); p.setAttribute('aria-label', dados[k].t);
+      p.addEventListener('click', function () { mostrar(k); });
+      p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mostrar(k); } });
+    });
+    if (btn) btn.addEventListener('click', function () {
+      var aberto = fig.classList.toggle('open');
+      btn.setAttribute('aria-pressed', String(aberto));
+      btn.textContent = aberto ? 'Montar' : 'Desmontar';
+    });
+  }
+  function todos() { Array.prototype.forEach.call(document.querySelectorAll('.dx'), iniciar); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', todos); else todos();
+})();
