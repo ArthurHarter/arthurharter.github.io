@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Página não encontrada — Guia Elétrica Fácil</title>
 <meta name="robots" content="noindex">
@@ -10,8 +10,9 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fontes/fontes.css?v=1">
 <style>
 :root{--yellow:#F5C518;--dark:#0F0F0F;--surface:#1A1A1A;--text:#F0EDE6;--muted:#888;--border:#2E2E2E}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -38,8 +39,8 @@ p{color:var(--muted);font-size:17px;max-width:520px;margin:0 auto 32px}
 .links a{color:var(--muted)}
 .links a:hover{color:var(--yellow)}
 </style>
-<link rel="stylesheet" href="/efeitos.css?v=8">
-<script src="/efeitos.js?v=8" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=9">
+<script src="/efeitos.js?v=9" defer></script>
 </head>
 <body>
 <header>

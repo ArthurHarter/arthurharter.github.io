@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92EY9PKFW"></script>
@@ -15,7 +16,6 @@ gtag('config', 'G-D92EY9PKFW');
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E-books e Aprendizado — Guia Elétrica Fácil</title>
 <meta name="description" content="E-books práticos e planilhas editáveis em Excel sobre instalações elétricas residenciais. Do zero à execução, conforme as normas técnicas.">
@@ -25,14 +25,14 @@ gtag('config', 'G-D92EY9PKFW');
 <meta property="og:description" content="E-books práticos sobre instalações elétricas residenciais.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://guiaeletricafacil.com.br/ebooks.html">
-<meta property="og:image" content="https://guiaeletricafacil.com.br/capa-instalacoes-eletricas-residenciais.png">
+<meta property="og:image" content="https://guiaeletricafacil.com.br/capa-instalacoes-eletricas-residenciais.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="E-books e Aprendizado — Guia Elétrica Fácil">
 <meta name="twitter:description" content="E-books práticos e planilhas editáveis em Excel sobre instalações elétricas residenciais.">
 <link rel="canonical" href="https://guiaeletricafacil.com.br/ebooks.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fontes/fontes.css?v=1">
 <style>
   :root{
     --bg:#0F0F0F;
@@ -100,6 +100,7 @@ gtag('config', 'G-D92EY9PKFW');
   .ebook-card .cover{
     aspect-ratio:3/4;
     width:100%;
+    height:auto;
     object-fit:cover;
     display:block;
     border-bottom:1px solid var(--card-border);
@@ -174,9 +175,9 @@ gtag('config', 'G-D92EY9PKFW');
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "E-books e Aprendizado", "item": "https://guiaeletricafacil.com.br/ebooks.html"}]}</script>
-<link rel="stylesheet" href="/efeitos.css?v=8">
-<script src="/efeitos.js?v=8" defer></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "E-books e Aprendizado — Guia Elétrica Fácil", "item": "https://guiaeletricafacil.com.br/ebooks.html"}]}</script>
+<link rel="stylesheet" href="/efeitos.css?v=9">
+<script src="/efeitos.js?v=9" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "E-books e Aprendizado", "mainEntityOfPage": "https://guiaeletricafacil.com.br/ebooks.html", "inLanguage": "pt-BR", "dateModified": "2026-10-23", "author": {"@type": "Person", "name": "Arthur Barbosa Harter", "url": "https://guiaeletricafacil.com.br/sobre.html"}, "publisher": {"@type": "Organization", "name": "Guia Elétrica Fácil", "url": "https://guiaeletricafacil.com.br/", "logo": {"@type": "ImageObject", "url": "https://guiaeletricafacil.com.br/logo-192.png"}}, "image": "https://guiaeletricafacil.com.br/og-image.png", "description": "E-books práticos e planilhas editáveis em Excel sobre instalações elétricas residenciais. Do zero à execução, conforme as normas técnicas.", "citation": "ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente)"}</script>
 </head>
 <body>
 
@@ -203,7 +204,7 @@ gtag('config', 'G-D92EY9PKFW');
   <div class="grid">
 
     <div class="ebook-card">
-      <img class="cover" src="capa-instalacoes-eletricas-residenciais.png" alt="Capa do e-book Guia Prático de Instalações Elétricas Residenciais">
+      <img class="cover" src="/capa-instalacoes-eletricas-residenciais.webp" width="800" height="1200" loading="lazy" decoding="async" alt="Capa do e-book Guia Prático de Instalações Elétricas Residenciais">
       <div class="body">
         <h3>Guia Prático de Instalações Elétricas Residenciais — do zero à execução</h3>
         <p>Aprenda a dimensionar circuitos, disjuntores e cabos, ler projetos básicos e executar uma instalação residencial com segurança e conforme a NBR 5410. Inclui planilhas editáveis em Excel para levantamento de cargas, dimensionamento, materiais e checklists.</p>
@@ -217,7 +218,7 @@ gtag('config', 'G-D92EY9PKFW');
     <div class="empty-slot">Novos e-books em breve</div>
 
   </div>
-<!-- editorial-stamp --><aside style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 23/10/2026 · Referências técnicas: ABNT NBR 5410 (consultar edição vigente e tabelas aplicáveis). <a href="/sobre.html">Política editorial</a>.</aside></main>
+<!-- editorial-stamp --><aside class="carimbo" style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 23/10/2026 · Autor: Arthur Barbosa Harter · Referência: ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente) · <a href="/sobre.html#metodologia">Metodologia e registro de revisões</a></aside></main>
 
 <footer>
   © 2026 Guia Elétrica Fácil — Conteúdo informativo. Consulte sempre um eletricista habilitado (NR10 / CREA).

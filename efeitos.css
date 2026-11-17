@@ -278,3 +278,54 @@ main>section{position:relative}
 /* o fundo animado não vai para o papel nem para quem prefere menos movimento */
 @media print{.efx-net{display:none!important}}
 @media (prefers-reduced-motion:reduce){.efx-net{display:none!important}.path-card{transform:none}.path-card::before,.efx-quick-grid a::before{transition:none}}
+
+/* ---------- Conteúdo explicativo abaixo das calculadoras ---------- */
+.guia{max-width:1100px;margin:48px auto 0;padding:0 24px;line-height:1.7}
+.guia h2{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,28px);font-weight:800;margin:40px 0 12px}
+.guia h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin:28px 0 8px}
+.guia p,.guia li{color:var(--muted,#999);font-size:15px;margin-bottom:10px}
+.guia strong{color:var(--text,#F0EDE6)}
+.guia ul,.guia ol{padding-left:22px;margin-bottom:12px}
+.guia a{color:var(--yellow,#F5C518)}
+.guia .formula{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--surface,#1A1A1A);border:1px solid var(--border,#2E2E2E);border-left:3px solid var(--yellow,#F5C518);border-radius:6px;padding:12px 16px;margin:12px 0;color:var(--text,#F0EDE6);font-size:14px;overflow-x:auto}
+.guia details{border:1px solid var(--border,#2E2E2E);border-radius:8px;padding:14px 18px;margin:10px 0;background:var(--surface,#1A1A1A)}
+.guia summary{cursor:pointer;font-weight:700;color:var(--text,#F0EDE6)}
+.guia details p{margin:10px 0 0}
+/* Caixa de alerta padrão (páginas que não definem a própria) */
+:where(.warn-box){background:rgba(255,107,43,.08);border:1px solid rgba(255,107,43,.3);border-radius:8px;padding:20px 24px;margin-top:24px}
+:where(.warn-box h4){font-size:15px;font-weight:700;color:#FF6B2B;margin-bottom:6px}
+:where(.warn-box p){font-size:14px;color:var(--muted,#888)}
+/* Diagramas próprios (SVG em /diagramas) */
+.diagrama{margin:28px 0 8px}
+.diagrama img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border,#2E2E2E)}
+.diagrama figcaption{font-size:13px;color:var(--muted,#888);margin-top:8px}
+/* ---------- Projeto elétrico da casa ---------- */
+.proj-form{display:grid;gap:28px}
+.proj-param{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.proj-param label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--text,#F0EDE6)}
+.proj-param small{font-weight:400;color:var(--muted,#888)}
+.proj input,.proj select{width:100%;padding:9px 10px;border-radius:6px;border:1px solid var(--border,#2E2E2E);background:var(--dark,#0F0F0F);color:var(--text,#F0EDE6);font:inherit;font-size:14px}
+.proj input:focus,.proj select:focus{outline:none;border-color:var(--yellow,#F5C518)}
+.proj-tab{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.proj-edit{width:100%;border-collapse:collapse;min-width:560px}
+.proj-edit th{font-size:12px;text-align:left;color:var(--yellow,#F5C518);padding:6px 6px;font-weight:700}
+.proj-edit td{padding:4px 6px}
+.proj-x{background:none;border:1px solid var(--border,#2E2E2E);color:var(--muted,#888);border-radius:6px;width:34px;height:34px;cursor:pointer;font-size:18px}
+.proj-x:hover{color:#FF6B2B;border-color:#FF6B2B}
+.proj-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.proj-btn{background:var(--surface2,#242424);border:1px solid var(--border,#2E2E2E);color:var(--text,#F0EDE6);padding:9px 16px;border-radius:6px;cursor:pointer;font:inherit;font-size:14px}
+.proj-btn:hover{border-color:var(--yellow,#F5C518)}
+.proj-btn.pri{background:var(--yellow,#F5C518);color:#0F0F0F;font-weight:700;border-color:var(--yellow,#F5C518)}
+.proj-out h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin:36px 0 10px}
+.proj-out h4{font-size:15px;margin-bottom:8px}
+.proj-out .full-table{font-size:13.5px}
+.proj-nota{font-size:13px;color:var(--muted,#888);margin:8px 0}
+.proj-lista{padding-left:20px;color:var(--muted,#888);font-size:14.5px;line-height:1.8}
+.proj-lista strong{color:var(--text,#F0EDE6)}
+.proj-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.proj-fases{display:grid;gap:10px;max-width:520px}
+.proj-fases div{position:relative;display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--border,#2E2E2E);border-radius:8px;overflow:hidden}
+.proj-fases i{position:absolute;left:0;top:0;bottom:0;background:var(--yellow,#F5C518);opacity:.14}
+.proj-fases span,.proj-fases strong{position:relative}
+@media print{.proj-form,.proj-btns,.efx-related{display:none!important}.proj-out,.proj-out *{color:#000!important;background:#fff!important;border-color:#bbb!important}body{background:#fff!important}}
+.proj-out td{white-space:nowrap}.proj-out td:nth-child(2){white-space:normal;min-width:220px}

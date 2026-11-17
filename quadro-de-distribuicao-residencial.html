@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92EY9PKFW"></script>
@@ -15,7 +16,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Quadro de distribuição residencial: DR, DPS, disjuntores, espaço de reserva e identificação exigidos pela NBR 5410, com calculadora de posições.">
@@ -30,8 +30,9 @@
 <meta name="twitter:description" content="Quadro de distribuição residencial: DR, DPS, disjuntores, espaço de reserva e identificação exigidos pela NBR 5410, com calculadora de posições.">
 <title>Quadro de Distribuição Residencial: o que Instalar (NBR 5410) — Guia Elétrica Fácil</title>
 <link rel="canonical" href="https://guiaeletricafacil.com.br/quadro-de-distribuicao-residencial.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fontes/fontes.css?v=1">
 <style>
   :root{--yellow:#F5C518;--dark:#0F0F0F;--surface:#1A1A1A;--surface2:#242424;--text:#F0EDE6;--muted:#888;--border:#2E2E2E;--accent:#FF6B2B}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -149,8 +150,9 @@
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Quadro de distribuição residencial", "item": "https://guiaeletricafacil.com.br/quadro-de-distribuicao-residencial.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quantas posições o quadro de distribuição deve ter?", "acceptedAnswer": {"@type": "Answer", "text": "O número de circuitos mais o espaço de reserva da Tabela 59 da NBR 5410 (2 de reserva até 6 circuitos, 3 de 7 a 12, 4 de 13 a 30 e 15% acima de 30). Some ainda o espaço do disjuntor geral, do DR e do DPS."}}, {"@type": "Question", "name": "Preciso de DR em todos os circuitos?", "acceptedAnswer": {"@type": "Answer", "text": "A norma lista os casos obrigatórios: banheiro e chuveiro, tomadas externas, e cozinha, lavanderia, área de serviço, garagem e outras áreas molhadas em habitações (item 5.1.3.2.2). Proteger mais circuitos é uma decisão de projeto."}}, {"@type": "Question", "name": "O DR substitui o disjuntor?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O DR protege contra fuga de corrente, como no choque elétrico. O disjuntor protege contra sobrecarga e curto-circuito. Os dois trabalham juntos."}}, {"@type": "Question", "name": "Posso trocar o disjuntor por um de maior corrente?", "acceptedAnswer": {"@type": "Answer", "text": "Só depois de trocar os fios por outros de maior seção. A advertência exigida pela norma nos quadros residenciais (item 6.5.4.10) diz isso expressamente, e diz também para nunca desativar ou remover o DR."}}, {"@type": "Question", "name": "O DPS é obrigatório em casa?", "acceptedAnswer": {"@type": "Answer", "text": "Depende. A norma exige DPS quando a alimentação é por linha aérea em região com mais de 25 dias de trovoadas por ano, e em regiões de exposição direta a descargas (AQ3). Nos demais casos, é uma decisão de projeto."}}]}</script>
-<link rel="stylesheet" href="/efeitos.css?v=8">
-<script src="/efeitos.js?v=8" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=9">
+<script src="/efeitos.js?v=9" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Quadro de Distribuição Residencial: o que Instalar (NBR 5410)", "mainEntityOfPage": "https://guiaeletricafacil.com.br/quadro-de-distribuicao-residencial.html", "inLanguage": "pt-BR", "dateModified": "2026-11-17", "author": {"@type": "Person", "name": "Arthur Barbosa Harter", "url": "https://guiaeletricafacil.com.br/sobre.html"}, "publisher": {"@type": "Organization", "name": "Guia Elétrica Fácil", "url": "https://guiaeletricafacil.com.br/", "logo": {"@type": "ImageObject", "url": "https://guiaeletricafacil.com.br/logo-192.png"}}, "image": "https://guiaeletricafacil.com.br/og-image.png", "description": "Quadro de distribuição residencial: DR, DPS, disjuntores, espaço de reserva e identificação exigidos pela NBR 5410, com calculadora de posições.", "citation": "ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente)"}</script>
 </head>
 <body>
 <header>
@@ -171,7 +173,7 @@
     <p class="breadcrumb"><a href="/index.html">Início</a> → Quadro de distribuição residencial</p>
     <h1>Quadro de distribuição residencial: <em>o que instalar</em> e quantas posições</h1>
     <p class="page-sub">Componentes, espaço de reserva, DR, DPS e identificação exigidos pela NBR 5410, com calculadora para saber o tamanho do quadro.</p>
-    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-10-27">27 de outubro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
+    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-11-17">17 de novembro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
   </div>
   <section>
     <div class="section-inner">
@@ -187,6 +189,7 @@
   <section style="background:var(--surface)">
     <div class="section-inner">
       <h2>O que vai no quadro</h2>
+<figure class="diagrama"><img src="/diagramas/quadro-distribuicao.svg" width="800" height="470" loading="lazy" decoding="async" alt="Esquema do quadro de distribuição residencial: medidor, disjuntor geral, DPS, DR de 30 mA e disjuntores dos circuitos, com barramentos de neutro e terra separados"><figcaption>Ordem dos dispositivos no quadro. Diagrama do Guia Elétrica Fácil.</figcaption></figure>
       <table class="full-table">
         <thead><tr><th>Componente</th><th>Para que serve</th><th>O que a NBR 5410 diz</th></tr></thead>
         <tbody>
@@ -291,7 +294,8 @@
       <p class="section-note related"><a href="/dimensionar-circuito-residencial.html">Dimensionar um circuito residencial</a> · <a href="/dividir-circuitos-residencial.html">Dividir os circuitos de uma casa</a> · <a href="/disjuntores.html">Tabela de disjuntores</a> · <a href="/bitola-de-fios.html">Bitola de fios</a> · <a href="/calculadoras.html">Todas as calculadoras</a></p>
     </div>
   </section>
-<!-- editorial-stamp --><aside style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 27/10/2026 · Referências técnicas: ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente nesta data). <a href="/sobre.html">Política editorial</a>.</aside><p style="max-width:1100px;margin:20px auto;padding:0 24px">Quer estudar o dimensionamento da instalação completa? <a href="/ebook-instalacoes-eletricas-residenciais.html">Veja o guia e as planilhas</a>.</p></main>
+<aside class="efx-related" aria-label="Ferramenta"><strong>Faça para a casa inteira:</strong> <a href="/projeto-eletrico-casa.html">Projeto elétrico da casa — cargas, circuitos, quadro e materiais em uma tela</a></aside>
+<!-- editorial-stamp --><aside class="carimbo" style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 17/11/2026 · Autor: Arthur Barbosa Harter · Referência: ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente) · <a href="/sobre.html#metodologia">Metodologia e registro de revisões</a></aside><p style="max-width:1100px;margin:20px auto;padding:0 24px">Quer estudar o dimensionamento da instalação completa? <a href="/ebook-instalacoes-eletricas-residenciais.html">Veja o guia e as planilhas</a>.</p></main>
 <footer>
   <p>© 2026 Guia Elétrica Fácil — Conteúdo informativo. Consulte sempre um eletricista habilitado (NR10 / CREA).</p>
 <p class="foot-links" style="text-align:center"><a href="/calculadoras.html">Calculadoras</a><a href="/blog.html">Notícias</a><a href="/ebooks.html">E-books</a><a href="/contato.html">Contato</a></p>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92EY9PKFW"></script>
@@ -15,7 +16,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Como dimensionar um circuito residencial em 5 passos: corrente, seção mínima, capacidade do fio, disjuntor e queda de tensão, com exemplos e NBR 5410.">
@@ -30,8 +30,9 @@
 <meta name="twitter:description" content="Como dimensionar um circuito residencial em 5 passos: corrente, seção mínima, capacidade do fio, disjuntor e queda de tensão, com exemplos e NBR 5410.">
 <title>Como Dimensionar um Circuito Residencial (Passo a Passo) — Guia Elétrica Fácil</title>
 <link rel="canonical" href="https://guiaeletricafacil.com.br/dimensionar-circuito-residencial.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fontes/fontes.css?v=1">
 <style>
   :root{--yellow:#F5C518;--dark:#0F0F0F;--surface:#1A1A1A;--surface2:#242424;--text:#F0EDE6;--muted:#888;--border:#2E2E2E;--accent:#FF6B2B}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -149,8 +150,9 @@
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Dimensionar circuito residencial", "item": "https://guiaeletricafacil.com.br/dimensionar-circuito-residencial.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual a diferença entre Ib, In e Iz?", "acceptedAnswer": {"@type": "Answer", "text": "Ib é a corrente que o circuito realmente puxa. In é a corrente nominal do disjuntor. Iz é quanto o fio suporta nas condições reais de instalação. A proteção contra sobrecarga está correta quando Ib ≤ In ≤ Iz (NBR 5410, item 5.3.4.1)."}}, {"@type": "Question", "name": "Posso usar fio de 1,5 mm² em tomadas?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Em instalações fixas com cabos isolados de cobre, a seção mínima é 1,5 mm² para circuitos de iluminação e 2,5 mm² para circuitos de força, como os de tomadas (Tabela 47)."}}, {"@type": "Question", "name": "Como calcular a corrente em 127 V e em 220 V?", "acceptedAnswer": {"@type": "Answer", "text": "Divida a potência pela tensão: I = P ÷ V. Para a mesma potência, a corrente em 127 V é cerca de 1,7 vez a de 220 V, o que exige fio e disjuntor maiores."}}, {"@type": "Question", "name": "Com qual corrente se calcula a queda de tensão?", "acceptedAnswer": {"@type": "Answer", "text": "Com a corrente de projeto do circuito (item 6.2.7.4 da NBR 5410). Nos circuitos terminais a queda não pode passar de 4%."}}, {"@type": "Question", "name": "A tabela serve para circuito trifásico?", "acceptedAnswer": {"@type": "Answer", "text": "Use a coluna de 3 condutores carregados da Tabela 36 e a fórmula com √3 no cálculo da queda de tensão. A calculadora de queda de tensão do site faz as duas versões."}}]}</script>
-<link rel="stylesheet" href="/efeitos.css?v=8">
-<script src="/efeitos.js?v=8" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=9">
+<script src="/efeitos.js?v=9" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Como Dimensionar um Circuito Residencial (Passo a Passo)", "mainEntityOfPage": "https://guiaeletricafacil.com.br/dimensionar-circuito-residencial.html", "inLanguage": "pt-BR", "dateModified": "2026-11-17", "author": {"@type": "Person", "name": "Arthur Barbosa Harter", "url": "https://guiaeletricafacil.com.br/sobre.html"}, "publisher": {"@type": "Organization", "name": "Guia Elétrica Fácil", "url": "https://guiaeletricafacil.com.br/", "logo": {"@type": "ImageObject", "url": "https://guiaeletricafacil.com.br/logo-192.png"}}, "image": "https://guiaeletricafacil.com.br/og-image.png", "description": "Como dimensionar um circuito residencial em 5 passos: corrente, seção mínima, capacidade do fio, disjuntor e queda de tensão, com exemplos e NBR 5410.", "citation": "ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente)"}</script>
 </head>
 <body>
 <header>
@@ -171,7 +173,7 @@
     <p class="breadcrumb"><a href="/index.html">Início</a> → Dimensionar circuito residencial</p>
     <h1>Como <em>dimensionar um circuito</em> residencial: fio, disjuntor e queda de tensão</h1>
     <p class="page-sub">Método em 5 passos baseado na NBR 5410, com dois exemplos resolvidos e uma calculadora para conferir os seus números.</p>
-    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-10-27">27 de outubro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
+    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-11-17">17 de novembro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
   </div>
   <section>
     <div class="section-inner">
@@ -227,6 +229,7 @@
   </section>
   <section style="background:var(--surface)">
     <div class="section-inner">
+<figure class="diagrama"><img src="/diagramas/ib-in-iz.svg" width="800" height="330" loading="lazy" decoding="async" alt="Diagrama da regra Ib menor ou igual a In menor ou igual a Iz para chuveiro de 5500 W em 220 V com fio de 4 mm²"><figcaption>A regra de proteção contra sobrecarga em um exemplo real.</figcaption></figure>
       <h2>Exemplo 1: chuveiro de 6.000 W em 220 V</h2>
       <p class="section-note">Dois circuitos passam juntos no mesmo eletroduto.</p>
       <div class="prose">
@@ -236,16 +239,16 @@
         <p><strong>3. Fio.</strong> Com 2 circuitos agrupados o fator é 0,80. O fio de 4 mm² (32 A) cai para 32 × 0,80 = 25,6 A, que é menos que os 27,3 A do chuveiro: <strong>não serve</strong>. O de 6 mm² (41 A) fica com 41 × 0,80 = 32,8 A e atende:</p>
         <div class="formula">27,3 A ≤ 32 A ≤ 32,8 A → fio de 6 mm² e disjuntor de 32 A</div>
         <p><strong>4. Queda de tensão</strong> com 20 m de distância (fórmula e calculadora em <a href="/como-calcular-queda-de-tensao.html" style="color:var(--yellow)">como calcular a queda de tensão</a>):</p>
-        <div class="formula">ΔV = 2 × 0.0172 × 20 × 27,3 ÷ 6 = 3,1 V → 1,4% (abaixo de 4%)</div>
+        <div class="formula">ΔV = 2 × 0,0206 × 20 × 27,3 ÷ 6 = 3,8 V → 1,7% (abaixo de 4%)</div>
       </div>
       <h2 style="margin-top:40px">Exemplo 2: tomadas da cozinha em 127 V</h2>
       <div class="prose">
         <p><strong>1. Carga.</strong> Uma cozinha com 5 tomadas: a NBR 5410 manda atribuir no mínimo 600 VA a cada uma das 3 primeiras e 100 VA às demais (item 9.5.2.2.2). Isso dá 3 × 600 + 2 × 100 = <strong>2.000 VA</strong>.</p>
         <div class="formula">Ib = 2.000 ÷ 127 = 15,7 A (em 220 V: 9,1 A)</div>
         <p><strong>2. Fio e disjuntor.</strong> Circuito de tomadas pede no mínimo 2,5 mm² (Tabela 47), que suporta 24 A. O disjuntor de <strong>16 A</strong> respeita 15,7 A ≤ 16 A ≤ 24 A.</p>
-        <p><strong>3. Queda de tensão.</strong> Com 15 m de circuito: 2,6%, dentro do limite. Com <strong>25 m</strong> a queda passa a 4,3% e ultrapassa os 4%: é preciso subir para 4 mm², que dá 2,7%. Neste caso a seção foi definida pela distância, e não pela corrente.</p>
+        <p><strong>3. Queda de tensão.</strong> Com 15 m de circuito: 3,1%, dentro do limite. Com <strong>25 m</strong> a queda passa a 5,1% e ultrapassa os 4%: é preciso subir para 4 mm², que dá 3,2%. Neste caso a seção foi definida pela distância, e não pela corrente.</p>
       </div>
-      <p class="section-note" style="margin-top:16px">Nos exemplos usamos ρ = 0.0172 Ω·mm²/m, o mesmo valor da <a href="/calculadora-queda-tensao.html" style="color:var(--yellow)">calculadora de queda de tensão</a> (cobre a 20 °C). Com o cabo em carga a resistência é cerca de 20% maior, então deixe margem quando o resultado ficar perto de 4%.</p>
+      <p class="section-note" style="margin-top:16px">Nos exemplos usamos ρ = 0,0206 Ω·mm²/m (cobre a 70 °C, cabo em carga), o mesmo valor da <a href="/calculadora-queda-tensao.html" style="color:var(--yellow)">calculadora de queda de tensão</a>.</p>
     </div>
   </section>
   <section>
@@ -302,20 +305,22 @@
       <p class="section-note related"><a href="/dividir-circuitos-residencial.html">Dividir os circuitos de uma casa</a> · <a href="/quadro-de-distribuicao-residencial.html">Quadro de distribuição residencial</a> · <a href="/disjuntores.html">Tabela de disjuntores</a> · <a href="/bitola-de-fios.html">Bitola de fios</a> · <a href="/calculadoras.html">Todas as calculadoras</a></p>
     </div>
   </section>
-<!-- editorial-stamp --><aside style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 27/10/2026 · Referências técnicas: ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente nesta data). <a href="/sobre.html">Política editorial</a>.</aside><p style="max-width:1100px;margin:20px auto;padding:0 24px">Quer estudar o dimensionamento da instalação completa? <a href="/ebook-instalacoes-eletricas-residenciais.html">Veja o guia e as planilhas</a>.</p></main>
+<aside class="efx-related" aria-label="Ferramenta"><strong>Faça para a casa inteira:</strong> <a href="/projeto-eletrico-casa.html">Projeto elétrico da casa — cargas, circuitos, quadro e materiais em uma tela</a></aside>
+<!-- editorial-stamp --><aside class="carimbo" style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 17/11/2026 · Autor: Arthur Barbosa Harter · Referência: ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente) · <a href="/sobre.html#metodologia">Metodologia e registro de revisões</a></aside><p style="max-width:1100px;margin:20px auto;padding:0 24px">Quer estudar o dimensionamento da instalação completa? <a href="/ebook-instalacoes-eletricas-residenciais.html">Veja o guia e as planilhas</a>.</p></main>
 <footer>
   <p>© 2026 Guia Elétrica Fácil — Conteúdo informativo. Consulte sempre um eletricista habilitado (NR10 / CREA).</p>
 <p class="foot-links" style="text-align:center"><a href="/calculadoras.html">Calculadoras</a><a href="/blog.html">Notícias</a><a href="/ebooks.html">E-books</a><a href="/contato.html">Contato</a></p>
 </footer>
 
 
+<script src="/nbr5410.js?v=1"></script>
 <script>
 (function(){
   var IZ=[[1.5,17.5],[2.5,24],[4,32],[6,41],[10,57],[16,76],[25,101],[35,125],[50,151],[70,192],[95,232]];
   var DJ=[10,16,20,25,32,40,50,63];
   var FA=[1,1,0.80,0.70,0.65,0.60,0.57];
   var FT={30:1,35:0.94,40:0.87,45:0.79,50:0.71};
-  var RHO=0.0172;
+  var RHO=NBR5410.resistividade('cobre',70);
   function f(n,d){return n.toFixed(d===undefined?1:d).replace('.',',');}
   function v(id){return document.getElementById(id).value;}
   window.calcDim=function(){

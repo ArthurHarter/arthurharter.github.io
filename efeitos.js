@@ -206,12 +206,11 @@
     }
 
 
-    /* ---------- Rede de energia em todas as seções ----------
-       Mesmo efeito do topo (partículas ligadas por fios e uma faísca ocasional).
-       Cada seção ganha o seu fundo ao entrar na tela, que sobe de baixo como os demais elementos,
-       e o libera ao sair: só as seções visíveis gastam processamento e memória. */
+    /* ---------- Rede de energia no topo da página ----------
+       Partículas ligadas por fios e uma faísca ocasional, só no hero (as seções de conteúdo ficam limpas).
+       Roda apenas com o topo visível e a aba ativa. */
     (function () {
-      var hosts = document.querySelectorAll('main > section, main > .page-hero');
+      var hosts = document.querySelectorAll('main > .page-hero, main > .hero');
       if (!hosts.length) return;
       var small = window.innerWidth < 700;
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92EY9PKFW"></script>
@@ -15,7 +16,6 @@ gtag('config', 'G-D92EY9PKFW');
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Tabelas técnicas e calculadoras de elétrica residencial: bitola de fios, disjuntores, consumo de eletrodomésticos, corrente, potência, queda de tensão e mais.">
@@ -39,8 +39,9 @@ gtag('config', 'G-D92EY9PKFW');
   "description": "Tabelas técnicas e calculadoras gratuitas de elétrica residencial, baseadas na ABNT NBR 5410."
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fontes/fontes.css?v=1">
 <style>
 :root {
   --yellow: #F5C518;
@@ -437,9 +438,8 @@ footer {
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
-<link rel="stylesheet" href="/efeitos.css?v=8">
-<script src="/efeitos.js?v=8" defer></script>
-<script src="/efeitos3d.js?v=8" defer></script>
+<link rel="stylesheet" href="/efeitos.css?v=9">
+<script src="/efeitos.js?v=9" defer></script>
 </head>
 <body>
 <header>
@@ -498,15 +498,18 @@ footer {
 <li><a href="material-gratuito.html">Checklist grátis (PDF)</a></li>
 <li><a href="diferenca-tug-tue.html">Diferença entre TUG e TUE</a></li>
 <li><a href="como-calcular-queda-de-tensao.html">Como calcular a queda de tensão</a></li>
-<li><a href="ebooks.html">E-books</a></li>
-<li><a href="blog.html">Notícias</a></li></ul></div>
+<li><a href="glossario-eletrica.html">Glossário: Ib, In, Iz, DR, DPS</a></li>
+<li><a href="nova-nbr-5410.html">O que muda na nova NBR 5410</a></li>
+<li><a href="ebooks.html">E-books</a></li></ul></div>
 <div class="path-card"><span class="path-icon" aria-hidden="true">🔎</span><h3>Consulte</h3><p>Tabelas rápidas de referência.</p><ul>
 <li><a href="bitola-de-fios.html">Bitola de fios</a></li>
 <li><a href="disjuntores.html">Disjuntores</a></li>
 <li><a href="consumo-eletrico.html">Consumo elétrico</a></li>
 <li><a href="chuveiro-eletrico.html">Chuveiro elétrico</a></li>
-<li><a href="tomadas-padrao.html">Tomadas e pontos</a></li></ul></div>
+<li><a href="tomadas-padrao.html">Tomadas e pontos</a></li>
+<li><a href="fio-e-disjuntor-por-aparelho.html">Fio e disjuntor por aparelho</a></li></ul></div>
 <div class="path-card"><span class="path-icon" aria-hidden="true">📐</span><h3>Dimensione</h3><p>Do circuito ao quadro, passo a passo.</p><ul>
+<li><a href="projeto-eletrico-casa.html"><strong>Projeto elétrico da casa (novo)</strong></a></li>
 <li><a href="dimensionar-circuito-residencial.html">Dimensionar um circuito</a></li>
 <li><a href="dividir-circuitos-residencial.html">Dividir os circuitos da casa</a></li>
 <li><a href="quadro-de-distribuicao-residencial.html">Quadro de distribuição</a></li>
@@ -578,7 +581,7 @@ footer {
 <div class="card">
 <span class="card-icon">🏠</span>
 <h3>Tomadas e Pontos</h3>
-<p>Altura padrão de tomadas e interruptores conforme NBR 5410. Evite multas e reprovações.</p>
+<p>Alturas usuais por cômodo e o que a NBR 5410 realmente exige no banheiro e nas áreas molhadas.</p>
 <a href="tomadas-padrao.html" class="card-link">Ver guia →</a>
 </div>
 <div class="card">
@@ -826,6 +829,10 @@ Estimativas de consumo; informe sua tarifa efetiva (R$/kWh) na calculadora. Tari
 <li><a href="dimensionar-circuito-residencial.html">Dimensionar circuito</a></li>
 <li><a href="dividir-circuitos-residencial.html">Dividir circuitos</a></li>
 <li><a href="quadro-de-distribuicao-residencial.html">Quadro de distribuição</a></li>
+<li><a href="projeto-eletrico-casa.html">Projeto elétrico da casa</a></li>
+<li><a href="fio-e-disjuntor-por-aparelho.html">Fio e disjuntor por aparelho</a></li>
+<li><a href="glossario-eletrica.html">Glossário</a></li>
+<li><a href="nova-nbr-5410.html">Nova NBR 5410</a></li>
 </ul>
 </div>
 <div class="footer-links">

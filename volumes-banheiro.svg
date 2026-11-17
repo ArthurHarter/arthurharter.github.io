@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+<title id="t">Volumes do banheiro em planta (NBR 5410, seção 9.1)</title>
+<desc id="d">Vista de cima de um banheiro. O box corresponde aos volumes 0 e 1. O volume 2 é a faixa de 60 cm ao redor do box. A tomada do lavatório fica fora do volume 2.</desc>
+<rect width="800" height="420" rx="14" fill="#141414"/>
+<text x="32" y="44" fill="#F0EDE6" font-size="20" font-weight="700">Volumes do banheiro (vista de cima)</text>
+<text x="32" y="68" fill="#888" font-size="13">NBR 5410:2004, seção 9.1 · simplificado, sem as alturas · os circuitos do banheiro exigem DR de 30 mA (5.1.3.2.2)</text>
+<rect x="60" y="95" width="440" height="290" fill="none" stroke="#5A5A5A" stroke-width="6"/>
+<rect x="66" y="101" width="220" height="200" fill="#F5C518" fill-opacity=".12" stroke="#F5C518" stroke-dasharray="8 6" stroke-width="2"/>
+<rect x="66" y="101" width="130" height="110" fill="#E5484D" fill-opacity=".22" stroke="#E5484D" stroke-width="2"/>
+<circle cx="131" cy="156" r="16" fill="none" stroke="#4EA8DE" stroke-width="2"/><circle cx="131" cy="156" r="3" fill="#4EA8DE"/>
+<g fill="#F0EDE6" font-size="13" text-anchor="middle">
+<text x="131" y="196" font-weight="700">Box</text><text x="131" y="230" fill="#E5484D" font-size="12" font-weight="700">volumes 0 e 1</text>
+<text x="241" y="255" fill="#F5C518" font-size="12" font-weight="700">volume 2</text><text x="241" y="271" fill="#F5C518" font-size="11">até 60 cm do box</text>
+</g>
+<path d="M196 320 H286" stroke="#888"/><path d="M196 314 V326 M286 314 V326" stroke="#888"/><text x="241" y="340" fill="#B8B4AC" font-size="12" text-anchor="middle">0,60 m</text>
+<rect x="360" y="300" width="120" height="70" rx="6" fill="#1E1E1E" stroke="#3A3A3A"/><text x="420" y="340" fill="#F0EDE6" font-size="12" text-anchor="middle">Lavatório</text>
+<rect x="455" y="260" width="22" height="22" rx="4" fill="#3CB371"/><text x="466" y="276" fill="#141414" font-size="12" font-weight="700" text-anchor="middle">T</text>
+<g font-size="13" fill="#B8B4AC">
+<text x="530" y="140"><tspan fill="#E5484D" font-weight="700">Volumes 0 e 1:</tspan></text><text x="530" y="160">área do box ou banheira.</text><text x="530" y="180">Sem tomadas.</text>
+<text x="530" y="220"><tspan fill="#F5C518" font-weight="700">Volume 2:</tspan></text><text x="530" y="240">faixa de 60 cm em volta.</text><text x="530" y="260">Evite tomadas e interruptores.</text>
+<text x="530" y="300"><tspan fill="#3CB371" font-weight="700">T = tomada</tspan></text><text x="530" y="320">fora do volume 2, junto</text><text x="530" y="340">ao lavatório.</text>
+<text x="530" y="380" fill="#888" font-size="12">guiaeletricafacil.com.br</text>
+</g>
+</svg>

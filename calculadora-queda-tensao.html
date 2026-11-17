@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.adtrafficquality.google https://www.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://pagead2.googlesyndication.com https://*.adtrafficquality.google; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://*.googlesyndication.com https://www.google.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D92EY9PKFW"></script>
@@ -18,7 +18,6 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-<meta charset="UTF-8">
 <meta name="google-adsense-account" content="ca-pub-9229331673302760">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Calcule a queda de tensão de um circuito elétrico com base na corrente, comprimento e seção do cabo.">
@@ -34,8 +33,9 @@
 <title>Calculadora de Queda de Tensão — Guia Elétrica Fácil</title>
 <link rel="canonical" href="https://guiaeletricafacil.com.br/calculadora-queda-tensao.html">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/fontes/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fontes/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fontes/fontes.css?v=1">
 
 <style>
 :root {
@@ -292,9 +292,9 @@ footer {
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://guiaeletricafacil.com.br/og-image.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Calculadoras", "item": "https://guiaeletricafacil.com.br/calculadoras.html"}, {"@type": "ListItem", "position": 3, "name": "Queda de Tensão", "item": "https://guiaeletricafacil.com.br/calculadora-queda-tensao.html"}]}</script>
-<link rel="stylesheet" href="/efeitos.css?v=8">
-<script src="/efeitos.js?v=8" defer></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://guiaeletricafacil.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Calculadora de Queda de Tensão — Guia Elétrica Fácil", "item": "https://guiaeletricafacil.com.br/calculadora-queda-tensao.html"}]}</script>
+<link rel="stylesheet" href="/efeitos.css?v=9">
+<script src="/efeitos.js?v=9" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora de Queda de Tensão", "url": "https://guiaeletricafacil.com.br/calculadora-queda-tensao.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Qualquer (navegador)", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL"}, "inLanguage": "pt-BR", "dateModified": "2026-11-17", "author": {"@type": "Person", "name": "Arthur Barbosa Harter", "url": "https://guiaeletricafacil.com.br/sobre.html"}, "publisher": {"@type": "Organization", "name": "Guia Elétrica Fácil", "url": "https://guiaeletricafacil.com.br/", "logo": {"@type": "ImageObject", "url": "https://guiaeletricafacil.com.br/logo-192.png"}}, "description": "Calcule a queda de tensão de um circuito elétrico com base na corrente, comprimento e seção do cabo.", "citation": "ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente)"}</script>
 </head>
 <body>
 
@@ -318,7 +318,7 @@ footer {
     <div class="section-tag">Calculadora · Queda de Tensão</div>
     <h1>Calculadora de <span class="em">Queda de Tensão</span></h1>
     <p class="lead">Verifique se a bitola do cabo escolhida está adequada para a distância do circuito, evitando perdas de tensão.</p>
-    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-10-08">8 de outubro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
+    <p style="font-size:13px;color:#888;margin-top:14px">Última revisão: <time datetime="2026-11-17">17 de novembro de 2026</time> · <a href="/sobre.html#metodologia" style="color:var(--yellow)">Como elaboramos este conteúdo</a></p>
   </div>
 
 
@@ -367,9 +367,14 @@ footer {
       <div class="field">
         <label>Tipo de circuito</label>
         <div class="radio-group">
-          <label><input type="radio" name="tipo" value="mono" checked> Monofásico</label>
-          <label><input type="radio" name="tipo" value="tri"> Trifásico</label>
+          <label><input type="radio" name="tipo" value="mono" checked> Monofásico ou bifásico (2 condutores)</label>
+          <label><input type="radio" name="tipo" value="tri"> Trifásico equilibrado</label>
         </div>
+      </div>
+      <div class="field">
+        <label for="tcabo">Temperatura do condutor</label>
+        <select id="tcabo"><option value="70" selected>70 °C — cabo em carga (recomendado)</option><option value="20">20 °C — cabo frio (valor de catálogo)</option></select>
+        <div class="hint">Em funcionamento o cabo de PVC esquenta e a resistência sobe cerca de 20%. Calcular a 70 °C é o lado seguro.</div>
       </div>
       <button class="btn-calc" onclick="calcular()">Calcular queda de tensão ⚡</button>
     </div>
@@ -410,7 +415,22 @@ footer {
   <p class="disclaimer" style="border-top:none;margin-top:0;padding-top:0">Quer entender a conta? Leia <a href="/como-calcular-queda-de-tensao.html" style="color:var(--yellow)">como calcular a queda de tensão</a>.</p>
 
 <aside class="efx-related" aria-label="Leia também"><strong>Leia também:</strong> <a href="/como-calcular-queda-de-tensao.html">Como calcular a queda de tensão em cabos (fórmula e exemplo)</a></aside>
-<!-- editorial-stamp --><aside style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 23/10/2026 · Referências técnicas: ABNT NBR 5410 (consultar edição vigente e tabelas aplicáveis). <a href="/sobre.html">Política editorial</a>.</aside></main>
+<div class="guia">
+  <h2>Limites de queda de tensão na NBR 5410</h2>
+  <p>O item 6.2.7 fixa dois limites que precisam ser atendidos ao mesmo tempo:</p>
+  <ul>
+    <li><strong>Circuito terminal:</strong> no máximo <strong>4%</strong>, do quadro até o ponto de uso.</li>
+    <li><strong>Instalação completa:</strong> no máximo <strong>5%</strong> do ponto de entrega até o ponto de uso quando a casa é ligada direto na rede de baixa tensão da concessionária, e 7% quando há transformador ou gerador próprio.</li>
+  </ul>
+  <h3>Exemplo: chuveiro de 5.500 W a 20 m do quadro</h3>
+  <div class="formula">ΔV = 2 × 0,0206 × 20 × 25 ÷ 4 = 5,2 V → 5,2 ÷ 220 = 2,3%</div>
+  <p>Dentro do limite. A 40 m, com o mesmo fio de 4 mm², a queda passaria de 4% e seria preciso subir para 6 mm². Veja a <a href="/como-calcular-queda-de-tensao.html">tabela de distâncias máximas</a>.</p>
+  <h2>Perguntas frequentes</h2>
+  <details><summary>O comprimento é de ida ou de ida e volta?</summary><p>Informe só a ida. O fator 2 da fórmula já considera os dois condutores.</p></details>
+  <details><summary>Por que usar 70 °C?</summary><p>É a temperatura do cabo de PVC em plena carga. A resistência é cerca de 20% maior que a 20 °C; calcular com o cabo frio dá um resultado otimista.</p></details>
+  <details><summary>Qual corrente usar?</summary><p>A corrente de projeto do circuito (Ib), conforme o item 6.2.7 da NBR 5410.</p></details>
+</div>
+<!-- editorial-stamp --><aside class="carimbo" style="max-width:1100px;margin:28px auto;padding:14px 24px;border-left:3px solid var(--yellow,#e8bc39);font-size:.85rem;color:var(--muted,#999)">Atualizado em: 17/11/2026 · Autor: Arthur Barbosa Harter · Referência: ABNT NBR 5410:2004, Versão Corrigida:2008 (edição vigente) · <a href="/sobre.html#metodologia">Metodologia e registro de revisões</a></aside></main>
 
 <footer>
   <div class="footer-inner">
@@ -420,6 +440,7 @@ footer {
 <p class="foot-links" style="max-width:1100px;margin:14px auto 0"><a href="/calculadoras.html">Calculadoras</a><a href="/blog.html">Notícias</a><a href="/ebooks.html">E-books</a><a href="/contato.html">Contato</a></p>
 </footer>
 
+<script src="/nbr5410.js?v=1"></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -455,38 +476,38 @@ function calcular(){
   const s = parseFloat(document.getElementById('secao').value);
   const v = parseFloat(document.getElementById('tensao').value);
   const material = document.querySelector('input[name="material"]:checked').value;
-  const tipo = document.querySelector('input[name="tipo"]:checked').value;
-
+  const tri = document.querySelector('input[name="tipo"]:checked').value === 'tri';
+  const temp = parseInt(document.getElementById('tcabo').value, 10);
   if(!i || !l || !s || !v || i <= 0 || l <= 0 || s <= 0 || v <= 0){ hidePanels(); return; }
 
-  const rho = material === 'cobre' ? 0.0172 : 0.0278;
-  const quedaV = tipo === 'mono' ? ((2 * rho * l * i) / s) : ((Math.sqrt(3) * rho * l * i) / s);
-  const quedaPct = (quedaV / v) * 100;
+  const q = NBR5410.quedaTensao({ corrente: i, comprimento: l, secao: s, tensao: v, trifasico: tri, material, temperatura: temp });
   const fmt = (n, d=2) => n.toLocaleString('pt-BR', {minimumFractionDigits:d, maximumFractionDigits:d});
+  const rho = q.rho.toFixed(4).replace('.', ',');
 
-  document.getElementById('resultValue').textContent = fmt(quedaPct) + ' %';
-  document.getElementById('resultContext').textContent = `Queda ≈ ${fmt(quedaV)} V sobre ${v} V nominais`;
+  document.getElementById('resultValue').textContent = fmt(q.pct) + ' %';
+  document.getElementById('resultContext').textContent = `Queda ≈ ${fmt(q.volts)} V sobre ${v} V nominais`;
   document.getElementById('resultBreakdown').innerHTML = `
     <div><span>Corrente</span><strong>${fmt(i)} A</strong></div>
-    <div><span>Comprimento</span><strong>${fmt(l,0)} m</strong></div>
-    <div><span>Seção do cabo</span><strong>${s} mm²</strong></div>
-    <div><span>Material</span><strong>${material === 'cobre' ? 'Cobre' : 'Alumínio'}</strong></div>
+    <div><span>Comprimento (ida)</span><strong>${fmt(l,0)} m</strong></div>
+    <div><span>Seção do cabo</span><strong>${String(s).replace('.', ',')} mm²</strong></div>
+    <div><span>Resistividade (${temp} °C)</span><strong>${rho} Ω·mm²/m</strong></div>
   `;
 
   const warnEl = document.getElementById('resultWarn');
-  if(quedaPct > 4){
-    warnEl.style.display = 'block';
-    warnEl.textContent = 'Queda acima de 4% — a NBR 5410 recomenda limites que variam conforme o tipo de instalação (em geral entre 4% e 7%). Considere aumentar a seção do cabo ou reduzir a distância, e valide com um profissional.';
+  warnEl.style.display = 'block';
+  if(q.pct > 4){
+    warnEl.textContent = 'Acima de 4%: num circuito terminal isso não atende a NBR 5410 (item 6.2.7). Aumente a seção do cabo ou encurte o trajeto.';
   } else {
-    warnEl.style.display = 'none';
+    warnEl.textContent = 'Dentro do limite de 4% para circuitos terminais (item 6.2.7). Lembre que a queda do alimentador soma: o total, do ponto de entrega até o aparelho, não pode passar de 5% em ligação direta na rede da concessionária.';
   }
 
-  const formula = tipo === 'mono' ? 'ΔV% = (2 × ρ × L × I) / S ÷ V × 100' : 'ΔV% = (√3 × ρ × L × I) / S ÷ V × 100';
+  const k = tri ? '√3' : '2';
   document.getElementById('howtoBody').innerHTML = `
-    <p>Fórmula:</p><code>${formula}</code>
-    <p>Substituindo os valores (ρ = ${rho} Ω·mm²/m):</p>
-    <code>ΔV = (${tipo === 'mono' ? '2' : '1,732'} × ${rho} × ${fmt(l,0)} × ${fmt(i)}) / ${s} = ${fmt(quedaV)} V</code>
-    <p>Em porcentagem:</p><code>ΔV% = ${fmt(quedaV)} / ${v} × 100 = ${fmt(quedaPct)} %</code>
+    <p>Fórmula (${tri ? 'trifásico equilibrado' : '2 condutores: ida e volta'}, cos φ = 1):</p><code>ΔV = ${k} × ρ × L × I ÷ S</code>
+    <p>ρ do ${material === 'cobre' ? 'cobre' : 'alumínio'} a ${temp} °C = ${rho} Ω·mm²/m.</p>
+    <code>ΔV = ${tri ? '1,732' : '2'} × ${rho} × ${fmt(l,0)} × ${fmt(i)} ÷ ${String(s).replace('.', ',')} = ${fmt(q.volts)} V</code>
+    <code>ΔV% = ${fmt(q.volts)} ÷ ${v} × 100 = ${fmt(q.pct)} %</code>
+    <p style="font-size:13px">${NBR5410.EDICAO}, item 6.2.7.</p>
   `;
 
   document.getElementById('nextGrid').innerHTML = `
